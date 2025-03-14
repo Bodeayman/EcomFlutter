@@ -13,6 +13,8 @@ dependencies:
   cupertino_icons : ^1.0.2
   http : any
   flutter_stripe : any
+  flutter_bloc : any
+  google_fonts : any
   
 
 dev_dependencies:
