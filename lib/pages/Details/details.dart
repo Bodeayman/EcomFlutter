@@ -170,36 +170,36 @@ i do if i didn't go on it , i should fight , there's nothing in my way """,
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Settings"),
-        ],
-        currentIndex: 0,
-        onTap: (val) {
-          if (val == 0) {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const Home()));
-          } else if (val == 1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Checkout(),
-              ),
-            );
-          } else if (val == 2) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Settings(),
-              ),
-            );
-          }
-        },
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.shopping_cart), label: "Cart"),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.settings), label: "Settings"),
+      //   ],
+      //   currentIndex: 0,
+      //   onTap: (val) {
+      //     if (val == 0) {
+      //       Navigator.pushReplacement(
+      //           context, MaterialPageRoute(builder: (context) => const Home()));
+      //     } else if (val == 1) {
+      //       Navigator.pushReplacement(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) => const Checkout(),
+      //         ),
+      //       );
+      //     } else if (val == 2) {
+      //       Navigator.pushReplacement(
+      //         context,
+      //         MaterialPageRoute(
+      //           builder: (context) => const Settings(),
+      //         ),
+      //       );
+      //     }
+      //   },
+      // ),
     );
   }
 }

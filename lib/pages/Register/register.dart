@@ -1,4 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/pages/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +55,11 @@ class Register extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    debugPrint("hello world");
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const Home(),
+                      ),
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(BTNgreen),

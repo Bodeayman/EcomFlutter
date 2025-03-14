@@ -67,62 +67,79 @@ class _CheckoutState extends State<Checkout> {
             Consumer<Cart>(builder: (context, value, child) {
               return ElevatedButton(
                 onPressed: () {
-                  while (value.selectedElements.isNotEmpty) {
-                    value.removeElement(value.selectedElements.first);
-                  }
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        child: Container(
-                          width: 300,
-                          height: 200,
-                          padding: const EdgeInsets.all(16),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Payment Method',
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 20),
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      //To do : implement the gateway method here
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: SizedBox(
-                                      height: 50,
-                                      width: 100,
-                                      child: Image.asset(
-                                        "assets/img/stripe.png",
-                                        fit: BoxFit.contain,
+                  if (value.selectedElements.isNotEmpty) {
+                    while (value.selectedElements.isNotEmpty) {
+                      value.removeElement(value.selectedElements.first);
+                    }
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Dialog(
+                          child: Container(
+                            width: 300,
+                            height: 200,
+                            padding: const EdgeInsets.all(16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Payment Method',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        //To do : implement the gateway method here
+                                        Navigator.of(context).pop();
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content:
+                                                Text("Purchase Successful"),
+                                          ),
+                                        );
+                                      },
+                                      child: SizedBox(
+                                        height: 50,
+                                        width: 100,
+                                        child: Image.asset(
+                                          "assets/img/stripe.png",
+                                          fit: BoxFit.contain,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 50,
-                                    width: 100,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('Close'),
-                              ),
-                            ],
+                                    const SizedBox(
+                                      height: 50,
+                                      width: 100,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('Close'),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  );
+                        );
+                      },
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("No elements found"),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: BTNpink),
                 child: const Text(

@@ -1,5 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/model/item.dart';
+import 'package:ecomflutter/pages/MainPages/Widgets/Switch_tile.dart';
 import 'package:ecomflutter/pages/MainPages/checkout.dart';
 import 'package:ecomflutter/pages/home.dart';
 import 'package:ecomflutter/provider/cart.dart';
@@ -16,14 +17,11 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Center(
-              child: Text("This is the settings sections"),
-            ),
-            MaterialButton(onPressed: () {}, child: Text("Debug here")),
+            SwitchTile(),
           ],
         ),
       ),
