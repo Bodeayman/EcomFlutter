@@ -1,5 +1,4 @@
 import 'package:ecomflutter/model/item.dart';
-import 'package:ecomflutter/pages/home.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-      // routes: {
-      //   '/login.dart': (context) => Login(),
-      //   '/register.dart': (context) => Register(),
-      //   //These are the routes of teh prograph
-      // },
-      //Useless

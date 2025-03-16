@@ -1,5 +1,3 @@
-import 'package:ecomflutter/pages/MainPages/checkout.dart';
-import 'package:ecomflutter/pages/MainPages/settings.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/constants/colors.dart';
@@ -34,9 +32,7 @@ class _DetailsState extends State<Details> {
           onPressed: () {
             Navigator.pushReplacement(
               (context),
-              MaterialPageRoute(
-                builder: (context) => const Home(),
-              ),
+              MaterialPageRoute(builder: (context) => const Home()),
             );
           },
         ),
@@ -68,15 +64,15 @@ class _DetailsState extends State<Details> {
                         child: Text(
                           "${value.selectedElements.length}",
                           style: const TextStyle(
-                              fontSize: 13, color: Colors.white),
+                            fontSize: 13,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.only(
-                      right: 20,
-                    ),
+                    padding: const EdgeInsets.only(right: 20),
                     child: Text(
                       "${value.total_Price}\$",
                       style: const TextStyle(fontSize: 15, color: Colors.white),
@@ -93,10 +89,7 @@ class _DetailsState extends State<Details> {
           children: [
             const Text("Details Page"),
             const SizedBox(height: 11),
-            Image.network(
-              widget.item.url,
-              fit: BoxFit.contain,
-            ),
+            Image.network(widget.item.url, fit: BoxFit.contain),
             Text("${widget.item.price}"),
             const SizedBox(height: 16),
             Row(
@@ -129,7 +122,7 @@ class _DetailsState extends State<Details> {
                     const Icon(Icons.place, color: Colors.green),
                     Text(widget.item.location),
                   ],
-                )
+                ),
               ],
             ),
             const SizedBox(height: 16),
@@ -158,15 +151,15 @@ i do if i didn't go on it , i should fight , there's nothing in my way """,
             ),
             //Color is in the container which will give the opp. to give color to the text
             TextButton(
-                onPressed: () {
-                  //maxLines : null -> as maxLines not writtin
-                  setState(() {
-                    show_text = !show_text;
-                  });
-                },
-                child: show_text
-                    ? const Text("Show More")
-                    : const Text("Show less"))
+              onPressed: () {
+                //maxLines : null -> as maxLines not writtin
+                setState(() {
+                  show_text = !show_text;
+                });
+              },
+              child:
+                  show_text ? const Text("Show More") : const Text("Show less"),
+            ),
           ],
         ),
       ),

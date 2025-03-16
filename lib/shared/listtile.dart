@@ -9,19 +9,15 @@ class ListSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => const RecordView(),
-          ),
-        );
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (context) => const RecordView()));
       },
       child: ListTile(
         leading: my_icon,
         title: Container(
           padding: const EdgeInsets.all(15),
-          child: Text(
-            hint_list,
-          ),
+          child: Text(hint_list),
         ),
       ),
     );

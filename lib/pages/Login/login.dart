@@ -1,5 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
+import 'package:ecomflutter/pages/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,18 +20,14 @@ class Login extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 64,
-              ),
+              const SizedBox(height: 64),
               const TextField(
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: false,
                 // Obscure is for the password
                 decoration: inputDec,
               ),
-              const SizedBox(
-                height: 33,
-              ),
+              const SizedBox(height: 33),
               TextField(
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
@@ -38,18 +35,16 @@ class Login extends StatelessWidget {
                 decoration: inputDec.copyWith(hintText: "Enter the password"),
                 // Second way to change the code
               ),
-              const SizedBox(
-                height: 33,
-              ),
+              const SizedBox(height: 33),
               ElevatedButton(
                 onPressed: () {
-                  debugPrint("hello world");
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Home()),
+                  );
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(BTNgreen),
-                  padding: WidgetStateProperty.all(
-                    const EdgeInsets.all(12),
-                  ),
+                  padding: WidgetStateProperty.all(const EdgeInsets.all(12)),
                   shape: WidgetStateProperty.all(
                     const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -61,9 +56,7 @@ class Login extends StatelessWidget {
                   style: TextStyle(fontSize: 19, color: Colors.white),
                 ),
               ),
-              const SizedBox(
-                height: 24,
-              ),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -81,9 +74,9 @@ class Login extends StatelessWidget {
                         ),
                       );
                     },
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
