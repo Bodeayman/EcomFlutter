@@ -1,7 +1,7 @@
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/pages/home.dart';
+import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';

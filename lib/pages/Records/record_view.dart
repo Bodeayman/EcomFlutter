@@ -1,5 +1,5 @@
 import 'package:ecomflutter/pages/Records/Widgets/record_view_body.dart';
-import 'package:ecomflutter/pages/home.dart';
+import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:flutter/material.dart';
 
 class RecordView extends StatelessWidget {

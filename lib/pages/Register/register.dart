@@ -1,5 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/pages/home.dart';
+import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/constants/constant.dart';
 import 'package:ecomflutter/pages/Login/login.dart';
