@@ -4,6 +4,7 @@ import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/home.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class _DetailsState extends State<Details> {
         title: const Text("E-com"),
         backgroundColor: appbarSec,
         leading: IconButton(
-          icon: const Icon(Icons.subdirectory_arrow_left_outlined),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pushReplacement(
               (context),
@@ -87,10 +88,9 @@ class _DetailsState extends State<Details> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Text("Details Page"),
             const SizedBox(height: 11),
-            Image.network(widget.item.url, fit: BoxFit.contain),
-            Text("${widget.item.price}"),
+            Image.network(widget.item.url, scale: 2),
+            Text("${widget.item.price}\$", style: TextStyle(fontSize: 20)),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -119,7 +119,7 @@ class _DetailsState extends State<Details> {
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.place, color: Colors.green),
+                    const Icon(Icons.place, color: Colors.yellow),
                     Text(widget.item.location),
                   ],
                 ),
@@ -131,17 +131,14 @@ class _DetailsState extends State<Details> {
               child: Text(
                 "Details",
                 style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
                 //Doesn't work alone in the star
               ),
             ),
             Container(
               padding: const EdgeInsets.all(5),
               child: Text(
-                """I actually love playing with flutter and the freelancing jobs , i don't
-know what should i do , the products and the things i do is useless , most of the 
-people see me as amateur , and I'm fighting a long life that i don't know what should
-i do if i didn't go on it , i should fight , there's nothing in my way """,
+                widget.item.description,
                 style: const TextStyle(fontSize: 21),
                 maxLines: show_text ? 1 : null,
                 overflow: TextOverflow.fade,

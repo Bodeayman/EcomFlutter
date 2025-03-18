@@ -1,4 +1,5 @@
 import 'package:ecomflutter/pages/Records/Widgets/record_view_body.dart';
+import 'package:ecomflutter/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class RecordView extends StatelessWidget {
@@ -6,7 +7,17 @@ class RecordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Records"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed:
+              () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => Home()),
+              ),
+        ),
+      ),
       body: RecordViewBody(),
     );
   }
