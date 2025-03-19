@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:ecomflutter/model/item.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 //Pass the values of the object to the details page
@@ -56,7 +53,7 @@ class _DetailsState extends State<Details> {
                         padding: const EdgeInsets.all(5),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: BTNpink,
+                          color: btnPink,
                         ),
                         child: Text(
                           "${value.selectedElements.length}",

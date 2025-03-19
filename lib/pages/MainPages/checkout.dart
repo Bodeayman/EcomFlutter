@@ -140,7 +140,7 @@ class _CheckoutState extends State<Checkout> {
                       );
                     }
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: BTNpink),
+                  style: ElevatedButton.styleFrom(backgroundColor: btnPink),
                   child: const Text(
                     "Buy",
                     style: TextStyle(color: Colors.white),

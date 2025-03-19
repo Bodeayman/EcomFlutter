@@ -1,4 +1,4 @@
-import 'package:ecomflutter/pages/MainPages/Widgets/Switch_tile.dart';
+import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {

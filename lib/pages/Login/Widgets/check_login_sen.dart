@@ -1,5 +1,4 @@
 import 'package:ecomflutter/pages/Register/register.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CheckLoginSen extends StatelessWidget {

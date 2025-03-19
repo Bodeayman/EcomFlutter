@@ -2,7 +2,6 @@ import 'package:ecomflutter/pages/Register/Widgets/check_register_sen.dart';
 import 'package:ecomflutter/pages/Register/Widgets/custom_valid_button.dart';
 import 'package:ecomflutter/pages/Register/Widgets/custom_valid_field.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomflutter/pages/Login/login.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
