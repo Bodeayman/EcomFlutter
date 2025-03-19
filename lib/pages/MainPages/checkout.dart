@@ -88,7 +88,6 @@ class _CheckoutState extends State<Checkout> {
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          //To do : implement the gateway method here
                                           while (value
                                               .selectedElements
                                               .isNotEmpty) {
