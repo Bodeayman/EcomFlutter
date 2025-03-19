@@ -1,7 +1,4 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/pages/Home/home_view.dart';
-import 'package:ecomflutter/pages/MainPages/settings.dart';
-import 'package:ecomflutter/shared/appbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';

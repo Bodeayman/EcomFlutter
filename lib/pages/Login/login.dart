@@ -1,7 +1,6 @@
 import 'package:ecomflutter/pages/Login/Widgets/check_login_sen.dart';
 import 'package:ecomflutter/pages/Login/Widgets/custom_button.dart';
 import 'package:ecomflutter/pages/Login/Widgets/custom_text_input.dart';
-import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

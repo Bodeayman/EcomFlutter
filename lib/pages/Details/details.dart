@@ -23,18 +23,14 @@ class _DetailsState extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
-    //Passing data is the worst thing in flutter , we should take notes about it
     return Scaffold(
       appBar: AppBar(
-        title: const Text("E-com"),
+        title: const Text("JimTan"),
         backgroundColor: appbarSec,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pushReplacement(
-              (context),
-              MaterialPageRoute(builder: (context) => const Home()),
-            );
+            Navigator.of(context).pop();
           },
         ),
         actions: [
@@ -90,7 +86,10 @@ class _DetailsState extends State<Details> {
           children: [
             const SizedBox(height: 11),
             Image.network(widget.item.url, scale: 2),
-            Text("${widget.item.price}\$", style: TextStyle(fontSize: 20)),
+            Text(
+              "Price : ${widget.item.price}\$",
+              style: TextStyle(fontSize: 20),
+            ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -101,11 +100,15 @@ class _DetailsState extends State<Details> {
                     Container(
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: Colors.amber,
+                        color: Colors.red,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: const Text("New"),
+                      child: const Text(
+                        "Sale 50%",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
+                    const SizedBox(width: 10),
                     const Row(
                       children: [
                         Icon(Icons.star, color: Colors.yellow),

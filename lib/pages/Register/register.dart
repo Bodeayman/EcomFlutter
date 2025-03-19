@@ -1,7 +1,7 @@
-import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/pages/Home/home_view.dart';
+import 'package:ecomflutter/pages/Register/Widgets/check_register_sen.dart';
+import 'package:ecomflutter/pages/Register/Widgets/custom_valid_button.dart';
+import 'package:ecomflutter/pages/Register/Widgets/custom_valid_field.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomflutter/constants/constant.dart';
 import 'package:ecomflutter/pages/Login/login.dart';
 
 class Register extends StatefulWidget {
@@ -29,109 +29,28 @@ class _RegisterState extends State<Register> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 64),
-
-                  // Username Field
-                  TextFormField(
+                  const SizedBox(height: 128),
+                  CustomValidField(
                     controller: nameController,
-                    decoration: inputDec.copyWith(
-                      hintText: "Enter the Username",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a username';
-                      }
-                      return null;
-                    },
+                    errorMessage: "Please enter the username",
+                    hintMessage: "Username",
                   ),
                   const SizedBox(height: 33),
-
-                  // Email Field (Converted to TextFormField)
-                  TextFormField(
+                  CustomValidField(
                     controller: emailController,
-                    decoration: inputDec.copyWith(hintText: "Enter your email"),
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
-                      }
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    },
+                    errorMessage: "Please enter the Email",
+                    hintMessage: "Email",
                   ),
                   const SizedBox(height: 33),
-
-                  // Password Field (Converted to TextFormField)
-                  TextFormField(
+                  CustomValidField(
                     controller: passwordController,
-                    obscureText: true,
-                    decoration: inputDec.copyWith(
-                      hintText: "Enter the password",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
+                    errorMessage: "Please enter the password",
+                    hintMessage: "Password",
                   ),
                   const SizedBox(height: 33),
-
-                  // Register Button
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        FocusScope.of(context).unfocus();
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const Home()),
-                        );
-                      }
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(BTNgreen),
-                      padding: WidgetStateProperty.all(
-                        const EdgeInsets.all(12),
-                      ),
-                      shape: WidgetStateProperty.all(
-                        const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                        ),
-                      ),
-                    ),
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(fontSize: 19, color: Colors.white),
-                    ),
-                  ),
-
+                  CustomValidButton(formKey: _formKey),
                   const SizedBox(height: 24),
-
-                  // Sign In Link
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have an account?",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      TextButton(
-                        child: const Text("Sign in"),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Login(),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  CheckRegisterSen(),
                 ],
               ),
             ),

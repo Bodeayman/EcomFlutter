@@ -29,12 +29,10 @@ class _ProductsPageState extends State<ProductsPage> {
         return GestureDetector(
           //is detecting the clicking
           onTap: () {
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Details(
-                  item: itemList[index],
-                ),
+                builder: (context) => Details(item: itemList[index]),
               ),
             );
             //For this item, we should go for another page
@@ -47,9 +45,7 @@ class _ProductsPageState extends State<ProductsPage> {
               trailing: Consumer<Cart>(
                 builder: (context, value, child) {
                   return IconButton(
-                    icon: const Icon(
-                      Icons.plus_one,
-                    ),
+                    icon: const Icon(Icons.plus_one),
                     onPressed: () {
                       value.add(itemList[index]);
                     },
@@ -75,10 +71,7 @@ class _ProductsPageState extends State<ProductsPage> {
                   right: 0,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(55),
-                    child: Image.network(
-                      itemList[index].url,
-                      scale: 1,
-                    ),
+                    child: Image.network(itemList[index].url, scale: 1),
                   ),
                 ),
               ],

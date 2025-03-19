@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
         );
       },
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all(BTNgreen),
+        backgroundColor: WidgetStateProperty.all(appbarSec),
         padding: WidgetStateProperty.all(EdgeInsets.all(12)),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
