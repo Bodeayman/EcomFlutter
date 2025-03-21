@@ -16,15 +16,21 @@ void Logout(BuildContext context) {
       duration: Duration(milliseconds: 500),
     ),
   );
-  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login()));
+  Navigator.of(
+    context,
+  ).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
 }
 
 void GoToSettings(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+  Navigator.of(
+    context,
+  ).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
 }
 
 void GoToProducts(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+  Navigator.of(
+    context,
+  ).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
 }
 
 void GoToHelp(BuildContext context) {

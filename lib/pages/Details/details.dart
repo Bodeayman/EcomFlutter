@@ -39,12 +39,7 @@ class _DetailsState extends State<Details> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            (context),
-                            MaterialPageRoute(
-                              builder: (context) => const Home(),
-                            ),
-                          );
+                          Navigator.of(context).pop();
                         },
                         padding: const EdgeInsets.only(right: 8, top: 15),
                         icon: const Icon(Icons.shopping_cart, size: 30),
