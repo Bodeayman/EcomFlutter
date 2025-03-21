@@ -20,14 +20,14 @@ class _HomeState extends State<Home> {
   Home({Key? key}) : super(key: key);
   Don't know what is the use of this shit
    */
-  int product_needed = 0;
-  int total_price = 0;
-  int _current_index = 0;
+  int productNeeded = 0;
+  int totalPrice = 0;
+  int current_index = 0;
   late PageController _pageController = PageController();
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _current_index);
+    _pageController = PageController(initialPage: current_index);
   }
 
   @override
@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
                       IconButton(
                         onPressed: () {
                           setState(() {
-                            _current_index = 1;
+                            current_index = 1;
                           });
                           _pageController.animateToPage(
                             1,
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
                   Container(
                     padding: const EdgeInsets.only(right: 20),
                     child: Text(
-                      "${value.total_Price}\$",
+                      "${value.totalPrice}\$",
                       style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
-            _current_index = index;
+            current_index = index;
           });
         },
         children: const [ProductsPage(), Checkout(), Settings()],
@@ -123,10 +123,10 @@ class _HomeState extends State<Home> {
             elevation: 0, // Removes default shadow
             selectedFontSize: 14, // Larger text
             unselectedFontSize: 12, // Slightly smaller unselected text
-            currentIndex: _current_index,
+            currentIndex: current_index,
             onTap: (index) {
               setState(() {
-                _current_index = index;
+                current_index = index;
               });
               _pageController.animateToPage(
                 index,

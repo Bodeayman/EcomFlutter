@@ -1,5 +1,4 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +47,7 @@ class _CheckoutState extends State<Checkout> {
                               leading: IconButton(
                                 icon: const Icon(Icons.remove),
                                 onPressed: () {
-                                  value.removeElement(item);
+                                  value.removeElementFromCart(item);
                                 },
                               ),
                               contentPadding: const EdgeInsets.all(20),
@@ -91,7 +90,7 @@ class _CheckoutState extends State<Checkout> {
                                           while (value
                                               .selectedElements
                                               .isNotEmpty) {
-                                            value.removeElement(
+                                            value.removeElementFromCart(
                                               value.selectedElements.first,
                                             );
                                           }
@@ -106,7 +105,7 @@ class _CheckoutState extends State<Checkout> {
                                               ),
                                             ),
                                           );
-                                          value.total_Price = 0;
+                                          value.totalPrice = 0;
                                         },
                                         child: SizedBox(
                                           height: 50,

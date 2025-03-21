@@ -1,7 +1,6 @@
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/Details/details.dart';
 import 'package:ecomflutter/provider/cart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -47,7 +46,7 @@ class _ProductsPageState extends State<ProductsPage> {
                   return IconButton(
                     icon: const Icon(Icons.plus_one),
                     onPressed: () {
-                      value.add(itemList[index]);
+                      value.addElementToCart(itemList[index]);
                     },
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all(

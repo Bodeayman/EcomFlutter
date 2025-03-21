@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:ecomflutter/model/item.dart';
 
 class Cart extends ChangeNotifier {
-  double total_Price = 0;
+  double totalPrice = 0;
 
   List<Item> selectedElements = [];
 
-  void add(Item product) {
+  void addElementToCart(Item product) {
     selectedElements.add(product);
-    total_Price += (product.price);
+    totalPrice += (convertNumber(product.price));
     notifyListeners();
   }
 
-  void removeElement(Item product) {
+  void removeElementFromCart(Item product) {
     selectedElements.remove(product);
-    total_Price -= (product.price);
+    totalPrice -= (convertNumber(product.price));
     notifyListeners();
   }
+}
+
+double convertNumber(double value) {
+  value = double.parse(value.toStringAsFixed(2));
+  return value;
 }

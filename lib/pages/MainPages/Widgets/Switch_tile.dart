@@ -1,3 +1,4 @@
+import 'package:ecomflutter/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class SwitchTile extends StatefulWidget {
@@ -8,16 +9,26 @@ class SwitchTile extends StatefulWidget {
 }
 
 class _SwitchTileState extends State<SwitchTile> {
-  var sw = false;
+  var isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text("Push Notifications"),
-      trailing: Switch(
-        onChanged: (sw) => {sw = !sw},
-        value: sw,
+    return SwitchListTile(
+      title: Text(
+        'Push Notifications',
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
+      value: isSwitched,
+      onChanged: (bool value) {
+        setState(() {
+          isSwitched = value;
+        });
+      },
+      activeColor: Colors.white,
+      activeTrackColor: Colors.yellow[700],
+      inactiveThumbColor: Colors.yellow[800],
+      inactiveTrackColor: Colors.yellow[300],
+      secondary: Icon(Icons.notification_add, color: Colors.yellow[700]),
     );
   }
 }

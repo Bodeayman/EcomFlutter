@@ -1,4 +1,5 @@
 import 'package:ecomflutter/shared/listtile.dart';
+import 'package:ecomflutter/shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -22,30 +23,44 @@ class HomeDrawer extends StatelessWidget {
                   style: TextStyle(color: Colors.black),
                 ),
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/img/my_img.jpg"),
+                  backgroundImage: AssetImage("assets/img/background.jpg"),
                   radius: 55,
                 ),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/img/background.jpg"),
-                      fit: BoxFit.cover),
+                    image: AssetImage("assets/img/background.jpg"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Column(
                 children: [
                   //They are self defined widgets
                   ListSetting(
-                      my_icon: const Icon(Icons.settings),
-                      hint_list: "Settings"),
+                    myIcon: const Icon(Icons.settings),
+                    hintList: "Settings",
+                    onPressFunc: (context) => GoToSettings(context),
+                  ),
                   ListSetting(
-                      my_icon: const Icon(Icons.shopping_cart),
-                      hint_list: "My products"),
+                    myIcon: const Icon(Icons.shopping_cart),
+                    hintList: "My products",
+                    onPressFunc: (context) => GoToProducts(context),
+                  ),
                   ListSetting(
-                      my_icon: const Icon(Icons.help), hint_list: "Help"),
+                    myIcon: const Icon(Icons.help),
+                    hintList: "Help",
+                    onPressFunc: (context) => GoToHelp(context),
+                  ),
                   ListSetting(
-                      my_icon: const Icon(Icons.logout), hint_list: "Logout"),
+                    myIcon: const Icon(Icons.logout),
+                    hintList: "Logout",
+                    onPressFunc: (context) => Logout(context),
+                  ),
                   ListSetting(
-                      my_icon: const Icon(Icons.receipt), hint_list: "Records"),
+                    myIcon: const Icon(Icons.receipt),
+                    hintList: "Records",
+                    onPressFunc: (context) => GoToRecords(context),
+                  ),
                 ],
               ),
 
@@ -54,9 +69,7 @@ class HomeDrawer extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(bottom: 10.0),
-            child: const Text(
-              "Developed by Abdullah",
-            ),
+            child: const Text("Developed by Abdullah"),
           ),
         ],
       ),

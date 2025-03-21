@@ -15,7 +15,7 @@ class CheckRegisterSen extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const Login()),
+              MaterialPageRoute(builder: (context) => Login()),
             );
           },
         ),

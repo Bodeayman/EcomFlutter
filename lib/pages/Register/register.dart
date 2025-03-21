@@ -47,7 +47,7 @@ class _RegisterState extends State<Register> {
                     hintMessage: "Password",
                   ),
                   const SizedBox(height: 33),
-                  CustomValidButton(formKey: _formKey),
+                  CustomValidButton(formKey: _formKey, buttonText: "Register"),
                   const SizedBox(height: 24),
                   CheckRegisterSen(),
                 ],

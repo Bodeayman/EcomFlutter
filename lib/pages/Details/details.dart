@@ -68,7 +68,7 @@ class _DetailsState extends State<Details> {
                   Container(
                     padding: const EdgeInsets.only(right: 20),
                     child: Text(
-                      "${value.total_Price}\$",
+                      "${value.totalPrice}\$",
                       style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),

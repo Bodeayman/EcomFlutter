@@ -3,8 +3,13 @@ import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomValidButton extends StatelessWidget {
-  const CustomValidButton({super.key, required this.formKey});
+  const CustomValidButton({
+    super.key,
+    required this.formKey,
+    required this.buttonText,
+  });
   final GlobalKey<FormState> formKey;
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +31,8 @@ class CustomValidButton extends StatelessWidget {
           ),
         ),
       ),
-      child: const Text(
-        "Register",
+      child: Text(
+        buttonText,
         style: TextStyle(fontSize: 19, color: Colors.white),
       ),
     );
