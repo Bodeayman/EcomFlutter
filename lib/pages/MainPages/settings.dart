@@ -1,3 +1,4 @@
+import 'package:ecomflutter/pages/MainPages/Widgets/settings_list_tile.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +12,29 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
-        child: Column(children: [SizedBox(height: 10), SwitchTile()]),
+        child: Column(
+          children: [
+            SizedBox(height: 10),
+            SwitchTile(),
+            SizedBox(height: 10),
+            SettingsListTile(
+              subtitle: "Change your payment method from here",
+              title: "Payment Methods",
+              icon: Icon(Icons.credit_card, color: Colors.amber),
+              onTap: () {},
+            ),
+
+            SizedBox(height: 10),
+            SettingsListTile(
+              subtitle: "Edit your profile , password ,username",
+              title: "Edit profile",
+              icon: Icon(Icons.person, color: Colors.amber),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
