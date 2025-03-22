@@ -17,38 +17,53 @@ class _CheckoutState extends State<Checkout> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(height: 20),
-            const Text(
-              "Checkout Page",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            // Container(height: 20),
+            // const Text(
+            //   "Checkout Page",
+            //   style: TextStyle(
+            //     color: Colors.black,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            //   textAlign: TextAlign.center,
+            // ),
             Container(height: 20),
             SingleChildScrollView(
               child: Consumer<Cart>(
                 builder: (context, value, child) {
                   return Column(
                     children:
-                        value.selectedElements.map((item) {
+                        value.selectedElements.entries.map((item) {
+                          final product = item.key;
+                          final quantity = item.value;
+
                           return Container(
                             padding: const EdgeInsets.all(10),
                             child: ListTile(
                               style: ListTileStyle.drawer,
                               tileColor: Colors.grey[200],
-                              title: Text(item.name),
+                              title: Text(
+                                "${product.name} (x$quantity)",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ), // Shows item name + count
                               trailing: Image.network(
-                                item.url,
+                                product.url,
                                 fit: BoxFit.cover,
                               ),
-                              subtitle: Text("${item.price}\$"),
-                              leading: IconButton(
-                                icon: const Icon(Icons.remove),
-                                onPressed: () {
-                                  value.removeElementFromCart(item);
-                                },
+                              subtitle: Text("${product.price}\$"),
+                              leading: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.remove),
+                                    onPressed: () {
+                                      value.removeElementFromCart(product);
+                                    },
+                                  ),
+                                  const SizedBox(width: 10),
+                                ],
                               ),
                               contentPadding: const EdgeInsets.all(20),
                             ),
@@ -60,9 +75,9 @@ class _CheckoutState extends State<Checkout> {
             ),
             Consumer<Cart>(
               builder: (context, value, child) {
-                return ElevatedButton(
-                  onPressed: () {
-                    if (value.selectedElements.isNotEmpty) {
+                if (value.selectedElements.isNotEmpty) {
+                  return ElevatedButton(
+                    onPressed: () {
                       showDialog(
                         context: context,
                         builder: (context) {
@@ -87,13 +102,7 @@ class _CheckoutState extends State<Checkout> {
                                     children: [
                                       InkWell(
                                         onTap: () {
-                                          while (value
-                                              .selectedElements
-                                              .isNotEmpty) {
-                                            value.removeElementFromCart(
-                                              value.selectedElements.first,
-                                            );
-                                          }
+                                          value.clearCart();
                                           Navigator.of(context).pop();
 
                                           ScaffoldMessenger.of(
@@ -132,18 +141,16 @@ class _CheckoutState extends State<Checkout> {
                           );
                         },
                       );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("No elements found")),
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(backgroundColor: btnPink),
-                  child: const Text(
-                    "Buy",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                );
+                    },
+                    style: ElevatedButton.styleFrom(backgroundColor: btnPink),
+                    child: const Text(
+                      "Buy",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  );
+                } else {
+                  return Center(child: Text("No elements in the cart"));
+                }
               },
             ),
           ],

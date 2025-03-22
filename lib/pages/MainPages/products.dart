@@ -58,8 +58,7 @@ class _ProductsPageState extends State<ProductsPage> {
               ),
 
               title: const Text(""),
-              // To make the button on the end , or the right meaning , the trailing is in the end , then you should add some Title in the middle
-              leading: Text("${itemList[index].price}"),
+              leading: Text("${itemList[index].price}\$"),
             ),
             child: Stack(
               children: [

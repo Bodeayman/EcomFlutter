@@ -135,23 +135,21 @@ class _DetailsState extends State<Details> {
               child: Text(
                 widget.item.description,
                 style: const TextStyle(fontSize: 21),
-                maxLines: show_text ? 1 : null,
-                overflow: TextOverflow.fade,
                 //Fade is for the overflow , and the fade is to hide part of this shit
                 //maxLines is great
               ),
             ),
             //Color is in the container which will give the opp. to give color to the text
-            TextButton(
-              onPressed: () {
-                //maxLines : null -> as maxLines not writtin
-                setState(() {
-                  show_text = !show_text;
-                });
-              },
-              child:
-                  show_text ? const Text("Show More") : const Text("Show less"),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     //maxLines : null -> as maxLines not writtin
+            //     setState(() {
+            //       show_text = !show_text;
+            //     });
+            //   },
+            //   child:
+            //       show_text ? const Text("Show More") : const Text("Show less"),
+            // ),
           ],
         ),
       ),

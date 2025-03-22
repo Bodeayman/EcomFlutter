@@ -80,6 +80,7 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.only(right: 20),
                     child: Text(
                       "${value.totalPrice}\$",
+                      overflow: TextOverflow.clip,
                       style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                   ),
