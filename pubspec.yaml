@@ -33,6 +33,8 @@ dependencies:
   hive : any
   hive_flutter : any
   cupertino_icons: ^1.0.8
+  flutter_stripe : any
+  dio : any
 
 dev_dependencies:
   flutter_test:
