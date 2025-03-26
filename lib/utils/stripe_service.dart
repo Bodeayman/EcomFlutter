@@ -2,6 +2,7 @@ import 'package:ecomflutter/model/payment_intent_input_model.dart';
 import 'package:ecomflutter/model/payment_intent_model/payment_intent_model.dart';
 import 'package:ecomflutter/utils/api_key.dart';
 import 'package:ecomflutter/utils/api_service.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 class StripeService {
   final ApiService apiService = ApiService();
@@ -19,6 +20,27 @@ class StripeService {
     // Takes the response from the api as json and convert it to the model so you can use it
 
     return tempPaymentIntentModel;
+  }
+
+  Future initPaymentSheet({required String clientSec}) async {
+    Stripe.instance.initPaymentSheet(
+      paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: clientSec,
+        merchantDisplayName: "JimTan",
+      ),
+    );
+  }
+
+  Future displayPaymentSheet() async {
+    Stripe.instance.presentPaymentSheet();
+  }
+
+  Future makePayment({required PaymentIntentInputModel InputModel}) async {
+    PaymentIntentModel paymentIntentModel = await createPaymentIntent(
+      InputModel,
+    );
+    initPaymentSheet(clientSec: paymentIntentModel.clientSecret!);
+    await displayPaymentSheet();
   }
 }
 
