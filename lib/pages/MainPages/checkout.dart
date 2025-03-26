@@ -1,7 +1,12 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/cubit/stripe_payment_cubit.dart';
+import 'package:ecomflutter/model/payment_intent_input_model.dart';
+import 'package:ecomflutter/model/repo/checkout_repo_impl.dart';
+import 'package:ecomflutter/pages/PaymentScreens/payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({super.key});
@@ -81,62 +86,92 @@ class _CheckoutState extends State<Checkout> {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialog(
-                            child: Container(
-                              width: 300,
-                              height: 200,
-                              padding: const EdgeInsets.all(16),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    'Payment Method',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Row(
-                                    children: [
-                                      InkWell(
-                                        onTap: () {
-                                          value.clearCart();
-                                          Navigator.of(context).pop();
-
-                                          ScaffoldMessenger.of(
-                                            context,
-                                          ).showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                "Purchase Successful",
-                                              ),
-                                            ),
-                                          );
-                                          value.totalPrice = 0;
-                                        },
-                                        child: SizedBox(
-                                          height: 50,
-                                          width: 100,
-                                          child: Image.asset(
-                                            "assets/img/stripe.png",
-                                            fit: BoxFit.contain,
+                          return BlocProvider(
+                            create:
+                                (context) =>
+                                    StripePaymentCubit(CheckoutRepoImpl()),
+                            child: Builder(
+                              builder: (newContext) {
+                                return Dialog(
+                                  child: Container(
+                                    width: 300,
+                                    height: 200,
+                                    padding: const EdgeInsets.all(16),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          'Payment Method',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 50, width: 100),
-                                    ],
+                                        const SizedBox(height: 20),
+                                        Row(
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                value.clearCart();
+                                                Navigator.of(newContext).pop();
+                                                // BlocProvider.of<
+                                                //   StripePaymentCubit
+                                                // >(context).makePayment(
+                                                //   paymentIntentmodel:
+                                                //       PaymentIntentInputModel(
+                                                //         amount: "100",
+                                                //         currency: "USD",
+                                                //       ),
+                                                // );
+
+                                                ScaffoldMessenger.of(
+                                                  context,
+                                                ).showSnackBar(
+                                                  const SnackBar(
+                                                    content: Text(
+                                                      "Purchase Successful",
+                                                    ),
+                                                  ),
+                                                );
+                                                value.totalPrice = 0;
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder:
+                                                        (context) =>
+                                                            PaymentView(),
+                                                  ),
+                                                );
+                                              },
+                                              child: SizedBox(
+                                                height: 50,
+                                                width: 100,
+                                                child: Image.asset(
+                                                  "assets/img/stripe.png",
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 50,
+                                              width: 100,
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(height: 20),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: const Text('Close'),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  const SizedBox(height: 20),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text('Close'),
-                                  ),
-                                ],
-                              ),
+                                );
+                              },
                             ),
                           );
                         },

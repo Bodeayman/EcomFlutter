@@ -1,12 +1,14 @@
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
+import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  Stripe.publishableKey = publishableKey;
   runApp(const MyApp());
 }
 
