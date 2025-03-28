@@ -3,12 +3,12 @@ import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  Stripe.publishableKey = publishableKey;
+  // Stripe.publishableKey = publishableKey;
   runApp(const MyApp());
 }
 
@@ -34,16 +34,16 @@ class MyApp extends StatelessWidget {
 //Create stripe here
 //init payment sheet
 // More parameters make more encapsulation
-Future<void> initPaymentSheet() async {
-  try {
-    await Stripe.instance.initPaymentSheet(
-      paymentSheetParameters: SetupPaymentSheetParameters(
-        paymentIntentClientSecret: 'your_client_secret_here',
-        merchantDisplayName: 'JimTan Store',
-        style: ThemeMode.system,
-      ),
-    );
-  } catch (e) {
-    throw Exception('Failed to initialize payment sheet: $e');
-  }
-}
+// Future<void> initPaymentSheet() async {
+//   try {
+//     await Stripe.instance.initPaymentSheet(
+//       paymentSheetParameters: SetupPaymentSheetParameters(
+//         paymentIntentClientSecret: 'your_client_secret_here',
+//         merchantDisplayName: 'JimTan Store',
+//         style: ThemeMode.system,
+//       ),
+//     );
+//   } catch (e) {
+//     throw Exception('Failed to initialize payment sheet: $e');
+//   }
+// }
