@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const HomeDrawer(),
-      appBar: MainAppBar(),
+      appBar: MainAppBar(leftArrow: false),
       body: PageView(
         controller: _pageController,
         onPageChanged: (index) {

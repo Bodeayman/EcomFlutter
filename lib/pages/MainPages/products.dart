@@ -1,95 +1,141 @@
+import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/Details/details.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
-class ProductsPage extends StatefulWidget {
+class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});
 
   @override
-  State<ProductsPage> createState() => _ProductsPageState();
-}
-
-class _ProductsPageState extends State<ProductsPage> {
-  @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Every element in the axis
-        childAspectRatio: 3 / 2, //
-        crossAxisSpacing: 10, // spacing in the columns;
-        mainAxisSpacing: 10, // spacing in the rows
-      ),
-      //This is a constant widget , which doesn't require changing
-      itemCount:
-          itemList.length, // This is the number of times the loop will happen
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          //is detecting the clicking
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Details(item: itemList[index]),
-              ),
-            );
-            //For this item, we should go for another page
-          },
-          child: GridTile(
-            footer: GridTileBar(
-              //This is for the products, is will be legit
-              backgroundColor: const Color.fromARGB(66, 73, 127, 110),
+    return Padding(
+      padding: const EdgeInsets.all(10.0), // Added some padding around the grid
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 5, // Balanced layout
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+        ),
+        itemCount: itemList.length,
+        itemBuilder: (BuildContext context, int index) {
+          final item = itemList[index];
 
-              trailing: Consumer<Cart>(
-                builder: (context, value, child) {
-                  return IconButton(
-                    icon: const Icon(Icons.plus_one),
-                    onPressed: () {
-                      value.addElementToCart(itemList[index]);
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(
-                        const Color.fromARGB(99, 79, 62, 62),
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Details(item: item)),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 5,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Product Image with Hero Animation
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(12),
+                      ),
+                      child: Hero(
+                        tag: "product_${item.id}",
+                        child: Image.network(
+                          item.url,
+                          fit: BoxFit.contain,
+                          width: double.infinity,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Shimmer.fromColors(
+                              baseColor: Colors.grey[300]!,
+                              highlightColor: Colors.white,
+                              child: Container(color: Colors.grey[300]),
+                            );
+                          },
+                          errorBuilder:
+                              (context, error, stackTrace) => const Center(
+                                child: Icon(Icons.error, color: Colors.red),
+                              ),
+                        ),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
 
-              title: const Text(""),
-              leading: Text("${itemList[index].price}\$"),
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                  top: -3,
-                  bottom: -9,
-                  left: 0,
-                  right: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(55),
-                    child: Image.network(
-                      itemList[index].url,
-                      scale: 1,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        }
-                        return Center(child: CircularProgressIndicator());
-                      },
-                      errorBuilder:
-                          (context, error, stackTrace) => Center(
-                            child: Icon(Icons.error, color: Colors.red),
+                  // Product Details
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          "${item.price} \$",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.green[700],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
+
+                  // Add to Cart Button
+                  Consumer<Cart>(
+                    builder: (context, cart, child) {
+                      bool isInCart = cart.isInCart(item);
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4.0,
+                        ),
+                        child: ElevatedButton.icon(
+                          icon: Icon(
+                            isInCart ? Icons.check : Icons.add_shopping_cart,
+                          ),
+                          label: Text(isInCart ? "Added" : "Add to Cart"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: isInCart ? btnPink : appbarSec,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          onPressed: () {
+                            cart.addElementToCart(item);
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

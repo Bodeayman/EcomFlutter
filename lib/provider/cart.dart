@@ -24,6 +24,10 @@ class Cart extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool isInCart(Item item) {
+    return selectedElements.containsKey(item);
+  }
+
   void clearCart() {
     selectedElements.clear();
     notifyListeners();

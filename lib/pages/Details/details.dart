@@ -17,7 +17,7 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(),
+      appBar: MainAppBar(leftArrow: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(

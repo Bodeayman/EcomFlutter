@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const MainAppBar({super.key});
+  const MainAppBar({super.key, required this.leftArrow});
+  final bool leftArrow;
 
   @override
   State<MainAppBar> createState() => _MainAppBarState();
@@ -19,12 +20,16 @@ class _MainAppBarState extends State<MainAppBar> {
     return AppBar(
       title: const Text("JimTan"),
       backgroundColor: appbarSec,
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
+
+      leading:
+          widget.leftArrow
+              ? IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+              : null,
       actions: [
         Consumer<Cart>(
           builder: (context, value, child) {

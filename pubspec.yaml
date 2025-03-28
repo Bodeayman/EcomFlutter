@@ -36,6 +36,7 @@ dependencies:
   flutter_stripe : any
   dio : any
   dartz : any
+  shimmer : any
 
 dev_dependencies:
   flutter_test:
