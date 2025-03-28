@@ -69,7 +69,20 @@ class _ProductsPageState extends State<ProductsPage> {
                   right: 0,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(55),
-                    child: Image.network(itemList[index].url, scale: 1),
+                    child: Image.network(
+                      itemList[index].url,
+                      scale: 1,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) {
+                          return child;
+                        }
+                        return Center(child: CircularProgressIndicator());
+                      },
+                      errorBuilder:
+                          (context, error, stackTrace) => Center(
+                            child: Icon(Icons.error, color: Colors.red),
+                          ),
+                    ),
                   ),
                 ),
               ],

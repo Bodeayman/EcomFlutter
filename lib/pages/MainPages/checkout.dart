@@ -112,6 +112,9 @@ class _CheckoutState extends State<Checkout> {
                                         ),
                                         const SizedBox(height: 20),
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+
                                           children: [
                                             InkWell(
                                               onTap: () {
@@ -146,11 +149,30 @@ class _CheckoutState extends State<Checkout> {
                                                 );
                                               },
                                               child: SizedBox(
-                                                height: 50,
-                                                width: 100,
-                                                child: Image.asset(
-                                                  "assets/img/stripe.png",
-                                                  fit: BoxFit.contain,
+                                                height: 59,
+                                                width: 59,
+                                                child: Container(
+                                                  width:
+                                                      100, // Adjust size as needed
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          30,
+                                                        ), // Make sure this value is reasonable
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          30,
+                                                        ),
+                                                    child: Image.asset(
+                                                      "assets/img/stripe.png",
+                                                      fit:
+                                                          BoxFit
+                                                              .cover, // Ensures it fills the rounded shape
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ),

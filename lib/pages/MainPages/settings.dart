@@ -33,6 +33,14 @@ class _SettingsState extends State<Settings> {
               icon: Icon(Icons.person, color: Colors.amber),
               onTap: () {},
             ),
+            SizedBox(height: 10),
+
+            SettingsListTile(
+              subtitle: "Switch between dark and white",
+              title: "Change Theme",
+              icon: Icon(Icons.nightlight_round_sharp, color: Colors.amber),
+              onTap: () {},
+            ),
           ],
         ),
       ),

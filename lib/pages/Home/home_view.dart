@@ -65,6 +65,13 @@ class _HomeState extends State<Home> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: btnPink,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5,
+                              blurStyle: BlurStyle.normal,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
                         child: Text(
                           "${value.selectedElements.length}",

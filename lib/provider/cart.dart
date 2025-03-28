@@ -8,7 +8,8 @@ class Cart extends ChangeNotifier {
 
   void addElementToCart(Item product) {
     selectedElements[product] = (selectedElements[product] ?? 0) + 1;
-    totalPrice += (convertNumber(product.price));
+    totalPrice += (product.price);
+    totalPrice = convertNumber(totalPrice);
     notifyListeners();
   }
 
@@ -30,6 +31,6 @@ class Cart extends ChangeNotifier {
 }
 
 double convertNumber(double value) {
-  value = double.parse(value.toStringAsFixed(2));
+  value = double.parse(value.toStringAsFixed(3));
   return value;
 }

@@ -49,6 +49,13 @@ class _DetailsState extends State<Details> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: btnPink,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5,
+                              blurStyle: BlurStyle.normal,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
                         ),
                         child: Text(
                           "${value.selectedElements.length}",
@@ -77,7 +84,17 @@ class _DetailsState extends State<Details> {
         child: Column(
           children: [
             const SizedBox(height: 11),
-            Image.network(widget.item.url, scale: 2),
+            Image.network(
+              widget.item.url,
+              scale: 2,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+              errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+            ),
             Text(
               "Price : ${widget.item.price}\$",
               style: TextStyle(fontSize: 20),
