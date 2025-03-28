@@ -16,6 +16,7 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
+  double totalPriceCart = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,12 +140,19 @@ class _CheckoutState extends State<Checkout> {
                                                     ),
                                                   ),
                                                 );
+                                                totalPriceCart =
+                                                    value.totalPrice;
+
                                                 value.totalPrice = 0;
                                                 Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                     builder:
-                                                        (context) =>
-                                                            PaymentView(),
+                                                        (
+                                                          context,
+                                                        ) => PaymentView(
+                                                          totalPrice:
+                                                              totalPriceCart,
+                                                        ),
                                                   ),
                                                 );
                                               },
@@ -152,14 +160,13 @@ class _CheckoutState extends State<Checkout> {
                                                 height: 59,
                                                 width: 59,
                                                 child: Container(
-                                                  width:
-                                                      100, // Adjust size as needed
+                                                  width: 100,
                                                   height: 100,
                                                   decoration: BoxDecoration(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                           30,
-                                                        ), // Make sure this value is reasonable
+                                                        ),
                                                   ),
                                                   child: ClipRRect(
                                                     borderRadius:
