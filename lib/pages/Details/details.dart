@@ -1,23 +1,18 @@
-import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/pages/Home/home_view.dart';
-import 'package:ecomflutter/model/item.dart';
 import 'package:provider/provider.dart';
+import 'package:ecomflutter/provider/cart.dart';
+import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/model/item.dart';
 
-//Pass the values of the object to the details page
-// if you have var inside the stateful widget the parent , then you will need a widget var to access the details
-// ignore: must_be_immutable
 class Details extends StatefulWidget {
-  Details({super.key, required this.item});
-  Item item;
+  final Item item;
+  const Details({super.key, required this.item});
+
   @override
   State<Details> createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
-  bool show_text = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,40 +76,52 @@ class _DetailsState extends State<Details> {
         ],
       ),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 11),
-            Image.network(
-              widget.item.url,
-              scale: 2,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(child: CircularProgressIndicator());
-              },
-              errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
-            ),
-            Text(
-              "Price : ${widget.item.price}\$",
-              style: TextStyle(fontSize: 20),
+            Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.network(
+                  widget.item.url,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                  errorBuilder:
+                      (context, error, stackTrace) =>
+                          const Icon(Icons.error, size: 50, color: Colors.red),
+                ),
+              ),
             ),
             const SizedBox(height: 16),
+            Text(
+              "${widget.item.price} \$",
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  // The big row
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Text(
                         "Sale 50%",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -124,82 +131,59 @@ class _DetailsState extends State<Details> {
                         Icon(Icons.star, color: Colors.yellow),
                         Icon(Icons.star, color: Colors.yellow),
                         Icon(Icons.star, color: Colors.yellow),
-                        Icon(Icons.star, color: Colors.yellow),
+                        Icon(Icons.star, color: Colors.grey),
                       ],
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.place, color: Colors.yellow),
-                    Text(widget.item.location),
+                    const Icon(Icons.place, color: Colors.redAccent),
+                    const SizedBox(width: 5),
+                    Text(
+                      widget.item.location,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            const SizedBox(
-              width: double.infinity,
-              child: Text(
-                "Details",
-                style: TextStyle(fontSize: 20),
-                textAlign: TextAlign.center,
-                //Doesn't work alone in the star
-              ),
+            const Text(
+              "Details",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Container(
-              padding: const EdgeInsets.all(5),
-              child: Text(
-                widget.item.description,
-                style: const TextStyle(fontSize: 21),
-                //Fade is for the overflow , and the fade is to hide part of this shit
-                //maxLines is great
-              ),
+            const Divider(),
+            Text(
+              widget.item.description,
+              style: const TextStyle(fontSize: 16, height: 1.5),
             ),
-            //Color is in the container which will give the opp. to give color to the text
-            // TextButton(
-            //   onPressed: () {
-            //     //maxLines : null -> as maxLines not writtin
-            //     setState(() {
-            //       show_text = !show_text;
-            //     });
-            //   },
-            //   child:
-            //       show_text ? const Text("Show More") : const Text("Show less"),
-            // ),
+            const SizedBox(height: 20),
+            Consumer<Cart>(
+              builder: (context, value, child) {
+                return ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: btnPink,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    minimumSize: const Size(double.infinity, 50),
+                  ),
+                  onPressed: () => value.addElementToCart(widget.item),
+                  child: const Text(
+                    "Add to Cart",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.shopping_cart), label: "Cart"),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.settings), label: "Settings"),
-      //   ],
-      //   currentIndex: 0,
-      //   onTap: (val) {
-      //     if (val == 0) {
-      //       Navigator.pushReplacement(
-      //           context, MaterialPageRoute(builder: (context) => const Home()));
-      //     } else if (val == 1) {
-      //       Navigator.pushReplacement(
-      //         context,
-      //         MaterialPageRoute(
-      //           builder: (context) => const Checkout(),
-      //         ),
-      //       );
-      //     } else if (val == 2) {
-      //       Navigator.pushReplacement(
-      //         context,
-      //         MaterialPageRoute(
-      //           builder: (context) => const Settings(),
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
     );
   }
 }
