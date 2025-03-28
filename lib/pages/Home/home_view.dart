@@ -1,4 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/shared/appbar.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';
 import 'package:ecomflutter/pages/MainPages/checkout.dart';
 import 'package:ecomflutter/pages/MainPages/products.dart';
@@ -34,69 +35,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const HomeDrawer(),
-      appBar: AppBar(
-        title: const Text("JimTan"),
-        backgroundColor: appbarSec,
-        actions: [
-          Consumer<Cart>(
-            builder: (context, value, child) {
-              return Row(
-                children: [
-                  Stack(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            current_index = 1;
-                          });
-                          _pageController.animateToPage(
-                            1,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                          // This is the responsible for the movement of the page
-                          // Why I would I use chatgpt a lot
-                        },
-                        padding: const EdgeInsets.only(right: 8, top: 15),
-                        icon: const Icon(Icons.shopping_cart, size: 30),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: btnPink,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 5,
-                              blurStyle: BlurStyle.normal,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Text(
-                          "${value.selectedElements.length}",
-                          style: const TextStyle(
-                            fontSize: 13,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Text(
-                      "${value.totalPrice}\$",
-                      overflow: TextOverflow.clip,
-                      style: const TextStyle(fontSize: 15, color: Colors.white),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
-      ),
+      appBar: MainAppBar(),
       body: PageView(
         controller: _pageController,
         onPageChanged: (index) {
