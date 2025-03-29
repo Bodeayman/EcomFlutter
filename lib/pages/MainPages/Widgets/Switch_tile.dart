@@ -25,10 +25,10 @@ class _SwitchTileState extends State<SwitchTile> {
         });
       },
       activeColor: Colors.white,
-      activeTrackColor: Colors.yellow[700],
-      inactiveThumbColor: Colors.yellow[800],
-      inactiveTrackColor: Colors.yellow[300],
-      secondary: Icon(Icons.notification_add, color: Colors.yellow[700]),
+      activeTrackColor: Colors.purple[700],
+      inactiveThumbColor: Colors.purple[800],
+      inactiveTrackColor: Colors.purple[300],
+      secondary: Icon(Icons.notification_add, color: appbarSec),
     );
   }
 }

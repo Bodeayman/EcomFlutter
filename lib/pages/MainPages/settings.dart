@@ -1,3 +1,4 @@
+import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/settings_list_tile.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class _SettingsState extends State<Settings> {
             SettingsListTile(
               subtitle: "Change your payment method from here",
               title: "Payment Methods",
-              icon: Icon(Icons.credit_card, color: Colors.amber),
+              icon: Icon(Icons.credit_card, color: appbarSec),
               onTap: () {},
             ),
 
@@ -30,7 +31,7 @@ class _SettingsState extends State<Settings> {
             SettingsListTile(
               subtitle: "Edit your profile , password ,username",
               title: "Edit profile",
-              icon: Icon(Icons.person, color: Colors.amber),
+              icon: Icon(Icons.person, color: appbarSec),
               onTap: () {},
             ),
             SizedBox(height: 10),
@@ -38,7 +39,7 @@ class _SettingsState extends State<Settings> {
             SettingsListTile(
               subtitle: "Switch between dark and white",
               title: "Change Theme",
-              icon: Icon(Icons.nightlight_round_sharp, color: Colors.amber),
+              icon: Icon(Icons.nightlight_round_sharp, color: appbarSec),
               onTap: () {},
             ),
           ],

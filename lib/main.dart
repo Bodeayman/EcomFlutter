@@ -1,14 +1,19 @@
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
-import 'package:ecomflutter/utils/api_key.dart';
+// import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   // Stripe.publishableKey = publishableKey;
+  await Hive.initFlutter();
+
+  await Hive.openBox('myCart');
   runApp(const MyApp());
 }
 
