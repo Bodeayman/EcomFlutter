@@ -1,4 +1,6 @@
 import 'package:ecomflutter/model/item.dart';
+import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
+import 'package:ecomflutter/pages/OnBoarding/logo_view.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
 // import 'package:ecomflutter/utils/api_key.dart';
@@ -28,8 +30,8 @@ class MyApp extends StatelessWidget {
         return Cart();
       },
       child: MaterialApp(
-        theme: ThemeData(textTheme: GoogleFonts.interTextTheme()),
-        home: Register(),
+        theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme()),
+        home: LogoView(),
         debugShowCheckedModeBanner: false,
       ),
     );

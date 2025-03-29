@@ -8,11 +8,9 @@ class SignInText extends StatelessWidget {
     return SizedBox(
       height: 35,
       width: 99,
-      child: Align(
-        child: Text(
-          "Sign in",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-        ),
+      child: Text(
+        "Sign in",
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
       ),
     );
   }

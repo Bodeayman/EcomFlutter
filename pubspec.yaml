@@ -36,6 +36,7 @@ dependencies:
   dio : any
   dartz : any
   shimmer : any
+  font_awesome_flutter : any
 
 dev_dependencies:
   flutter_test:
