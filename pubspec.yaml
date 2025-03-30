@@ -37,6 +37,7 @@ dependencies:
   dartz : any
   shimmer : any
   font_awesome_flutter : any
+  go_router : any
 
 dev_dependencies:
   flutter_test:

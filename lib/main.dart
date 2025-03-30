@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
+import "routers.dart";
 
 void main() async {
   // Stripe.publishableKey = publishableKey;
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
       create: (context) {
         return Cart();
       },
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: router,
         theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme()),
-        home: LogoView(),
         debugShowCheckedModeBanner: false,
       ),
     );

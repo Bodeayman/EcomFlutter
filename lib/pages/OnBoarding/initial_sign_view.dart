@@ -7,6 +7,7 @@ import 'package:ecomflutter/pages/OnBoarding/Widgets/sign_in_group_buttons.dart'
 import 'package:ecomflutter/pages/OnBoarding/Widgets/sign_in_text.dart';
 import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class InitialSignView extends StatefulWidget {
   const InitialSignView({super.key});
@@ -48,9 +49,7 @@ class _InitialSignViewState extends State<InitialSignView> {
                   textColor: Colors.white,
                   callbackFunction: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.of(
-                        context,
-                      ).push(MaterialPageRoute(builder: (context) => Home()));
+                      context.go("/");
                     }
                   },
                 ),
