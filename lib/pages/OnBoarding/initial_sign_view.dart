@@ -6,6 +6,7 @@ import 'package:ecomflutter/pages/OnBoarding/Widgets/login_text_field.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/sign_in_group_buttons.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/sign_in_text.dart';
 import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
+import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -19,6 +20,22 @@ class InitialSignView extends StatefulWidget {
 class _InitialSignViewState extends State<InitialSignView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailEditingController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _checkOnBoarding();
+  }
+
+  Future<void> _checkOnBoarding() async {
+    bool onBoard = await onBoarding();
+    if (onBoard) {
+      if (mounted) {
+        context.pushReplacement('/');
+      }
+    } else {
+      setOnBoarding(true);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -38,6 +38,7 @@ dependencies:
   shimmer : any
   font_awesome_flutter : any
   go_router : any
+  shared_preferences : any
 
 dev_dependencies:
   flutter_test:
