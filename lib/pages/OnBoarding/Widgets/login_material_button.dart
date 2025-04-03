@@ -19,41 +19,43 @@ class CustomeElevatedButton extends StatelessWidget {
   final VoidCallback? callbackFunction;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 344,
-      height: 49,
-      child: ElevatedButton(
-        onPressed: callbackFunction,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(100),
+      child: SizedBox(
+        width: 344,
+        height: 49,
+        child: InkWell(
+          onTap: callbackFunction,
 
-        style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor,
-          elevation: 0.0,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 20,
-              child:
-                  (prefixIcon != null)
-                      ? Icon(prefixIcon, size: 25, color: iconColor)
-                      : null,
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  maxLines: 1,
+          child: Container(
+            decoration: BoxDecoration(color: buttonColor),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: (prefixIcon != null) ? 20 : 0,
+                  child:
+                      (prefixIcon != null)
+                          ? Icon(prefixIcon, size: 25, color: iconColor)
+                          : null,
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      maxLines: 1,
 
-                  hintText,
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.bold,
+                      hintText,
+                      style: TextStyle(
+                        color: textColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

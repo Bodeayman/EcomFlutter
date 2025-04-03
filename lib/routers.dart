@@ -2,6 +2,7 @@ import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/Records/record_view.dart';
+import 'package:ecomflutter/pages/Search/search_view.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -13,6 +14,7 @@ final GoRouter router = GoRouter(
       path: "/initialE",
       builder: (context, state) => CreateNewAccountView(),
     ),
+    GoRoute(path: "/search", builder: (context, state) => SearchView()),
   ],
   initialLocation: "/",
 );

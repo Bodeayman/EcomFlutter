@@ -1,8 +1,7 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/profile_details_tile.dart';
-import 'package:ecomflutter/pages/MainPages/Widgets/settings_list_tile.dart';
-import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
+import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -47,27 +46,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 scrollDirection: Axis.vertical,
                 itemCount: settingsOptions.length,
                 itemBuilder: (context, index) {
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(kSettingsTile),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 4),
-                      decoration: BoxDecoration(color: kTextForm),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 8.0,
-                          horizontal: 4,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(settingsOptions[index]),
-                            IconButton(
-                              icon: Image.asset("assets/arrowright2.png"),
-                              onPressed: () {},
-                            ),
-                          ],
-                        ),
-                      ),
+                  return OptionListTile(
+                    title: settingsOptions[index],
+                    trailing: IconButton(
+                      icon: Image.asset("assets/arrowright2.png"),
+                      onPressed: () {},
                     ),
                   );
                 },

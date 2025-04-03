@@ -32,6 +32,7 @@ class OrdersPage extends StatelessWidget {
                   width: 195,
                   child: CustomeElevatedButton(
                     buttonColor: appbarSec,
+
                     hintText: "Explore Categories",
                     textColor: Colors.white,
                   ),
