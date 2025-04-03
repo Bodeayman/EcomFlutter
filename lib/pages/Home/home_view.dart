@@ -1,4 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/pages/MainPages/notifications.dart';
 import 'package:ecomflutter/shared/appbar.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';
 import 'package:ecomflutter/pages/MainPages/checkout.dart';
@@ -43,7 +44,12 @@ class _HomeState extends State<Home> {
             current_index = index;
           });
         },
-        children: const [ProductsPage(), Checkout(), Settings()],
+        children: const [
+          ProductsPage(),
+          NotificationsPage(),
+          Checkout(),
+          Settings(),
+        ],
       ),
 
       bottomNavigationBar: Container(

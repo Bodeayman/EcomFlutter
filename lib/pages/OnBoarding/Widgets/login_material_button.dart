@@ -43,6 +43,8 @@ class CustomeElevatedButton extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
+                  maxLines: 1,
+
                   hintText,
                   style: TextStyle(
                     color: textColor,
