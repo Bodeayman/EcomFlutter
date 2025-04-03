@@ -3,8 +3,8 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsPage extends StatelessWidget {
-  const NotificationsPage({super.key});
+class OrdersPage extends StatelessWidget {
+  const OrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class NotificationsPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                Image.asset("assets/bell 1.png"),
+                Image.asset("assets/order_cart_image.png"),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 24),
                   child: Text(
-                    "No Notifications yet",
+                    "No Orders yet",
                     style: TextStyle(
                       fontSize: kNoTextSize,
                       fontWeight: FontWeight.bold,

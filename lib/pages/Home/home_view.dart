@@ -1,5 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/MainPages/notifications.dart';
+import 'package:ecomflutter/pages/MainPages/orders.dart';
 import 'package:ecomflutter/shared/appbar.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';
 import 'package:ecomflutter/pages/MainPages/checkout.dart';
@@ -47,74 +48,60 @@ class _HomeState extends State<Home> {
         children: const [
           ProductsPage(),
           NotificationsPage(),
-          Checkout(),
-          Settings(),
+          OrdersPage(),
+          ProfilePage(),
         ],
       ),
 
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(12), // Adds spacing around the bar
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20), // Rounded corners
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1), // Subtle shadow
-              blurRadius: 10,
-              spreadRadius: 2,
-            ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Material(
-              color: Colors.white, // or your desired background color
-              elevation: 0, // Zero elevation to remove any shadow
-              child: BottomNavigationBar(
-                selectedItemColor: appbarSec,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10),
+          child: Material(
+            color: Colors.white, // or your desired background color
+            elevation: 0, // Zero elevation to remove any shadow
+            child: BottomNavigationBar(
+              selectedItemColor: appbarSec,
 
-                unselectedItemColor: Colors.grey.shade600, //
-                showUnselectedLabels: false, // Show labels for all items
-                type: BottomNavigationBarType.fixed, // Prevents shifting
-                selectedFontSize: 0, // Larger text
-                elevation: 0, // No shadow here
-                unselectedFontSize: 12, // Slightly smaller unselected text
-                currentIndex: current_index,
-                onTap: (index) {
-                  setState(() {
-                    current_index = index;
-                  });
-                  _pageController.animateToPage(
-                    index,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                },
+              unselectedItemColor: Colors.grey.shade600, //
+              showUnselectedLabels: false, // Show labels for all items
+              type: BottomNavigationBarType.fixed, // Prevents shifting
+              selectedFontSize: 0, // Larger text
+              elevation: 0, // No shadow here
+              unselectedFontSize: 12, // Slightly smaller unselected text
+              currentIndex: current_index,
+              onTap: (index) {
+                setState(() {
+                  current_index = index;
+                });
+                _pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
 
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Image.asset("assets/homePageButton.png"),
-                    label: "*",
+              items: [
+                BottomNavigationBarItem(
+                  icon: Image.asset("assets/homePageButton.png"),
+                  label: "*",
+                ),
+                BottomNavigationBarItem(
+                  icon: Image.asset("assets/notificationsButton.png"),
+                  label: "*",
+                ),
+                BottomNavigationBarItem(
+                  icon: Image.asset("assets/ordersButton.png"),
+                  label: "*",
+                ),
+                BottomNavigationBarItem(
+                  icon: Image.asset(
+                    "assets/profileButton.png",
+                    color: Colors.grey,
                   ),
-                  BottomNavigationBarItem(
-                    icon: Image.asset("assets/notificationsButton.png"),
-                    label: "*",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Image.asset("assets/ordersButton.png"),
-                    label: "*",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Image.asset(
-                      "assets/profileButton.png",
-                      color: Colors.grey,
-                    ),
-                    label: "*",
-                  ),
-                ],
-              ),
+                  label: "*",
+                ),
+              ],
             ),
           ),
         ),

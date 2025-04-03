@@ -6,14 +6,14 @@ import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _SettingsState extends State<Settings> {
+class _ProfilePageState extends State<ProfilePage> {
   List<String> settingsOptions = [
     "Address",
     "Wishlist",
