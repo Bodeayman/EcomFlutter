@@ -19,33 +19,40 @@ class CustomeElevatedButton extends StatelessWidget {
   final VoidCallback? callbackFunction;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: callbackFunction,
+    return SizedBox(
+      width: 344,
+      height: 49,
+      child: ElevatedButton(
+        onPressed: callbackFunction,
 
-      style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor,
-        elevation: 0.0,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: 20,
-            child:
-                (prefixIcon != null)
-                    ? Icon(prefixIcon, size: 25, color: iconColor)
-                    : null,
-          ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                hintText,
-                style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: buttonColor,
+          elevation: 0.0,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 20,
+              child:
+                  (prefixIcon != null)
+                      ? Icon(prefixIcon, size: 25, color: iconColor)
+                      : null,
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  hintText,
+                  style: TextStyle(
+                    color: textColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

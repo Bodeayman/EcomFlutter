@@ -61,6 +61,4 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/img/background.jpg
-    - assets/img/my_img.jpg
-    - assets/img/stripe.png
+    - assets/

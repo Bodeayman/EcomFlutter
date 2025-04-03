@@ -51,7 +51,16 @@ class _InitialSignViewState extends State<InitialSignView> {
               key: _formKey,
               child: SizedBox(
                 height: 56,
-                child: LoginTextField(controller: _emailEditingController),
+                child: LoginTextField(
+                  controller: _emailEditingController,
+                  hintText: "Email Address",
+                  validatorFunction: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return "Please enter your email";
+                    }
+                    return null;
+                  },
+                ),
               ),
             ),
             Padding(
