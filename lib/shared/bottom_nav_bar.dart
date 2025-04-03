@@ -54,17 +54,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
               curve: Curves.easeInOut,
             );
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 28), // Bigger icon
+              icon: Image.asset("assets/homePageButton.png"),
+
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart, size: 28),
+              icon: Image.asset("assets/notificationsButton.png"),
+
               label: "Cart",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings, size: 28),
+              icon: Image.asset("assets/ordersButton.png"),
+
+              label: "Cart",
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset("assets/profileButton.png"),
               label: "Settings",
             ),
           ],

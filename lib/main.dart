@@ -30,10 +30,12 @@ class MyApp extends StatelessWidget {
       create: (context) {
         return Cart();
       },
-      child: MaterialApp.router(
-        routerConfig: router,
-        theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme()),
-        debugShowCheckedModeBanner: false,
+      child: SafeArea(
+        child: MaterialApp.router(
+          routerConfig: router,
+          theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme()),
+          debugShowCheckedModeBanner: false,
+        ),
       ),
     );
   }
