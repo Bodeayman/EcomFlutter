@@ -61,47 +61,54 @@ class _HomeState extends State<Home> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Material(
-            color: Colors.white, // or your desired background color
-            elevation: 0, // Zero elevation to remove any shadow
-            child: BottomNavigationBar(
-              selectedItemColor: appbarSec, // Selected item color
-              unselectedItemColor:
-                  Colors.grey.shade600, // Unselected item color
-              showUnselectedLabels: true, // Show labels for all items
-              type: BottomNavigationBarType.fixed, // Prevents shifting
-              selectedFontSize: 14, // Larger text
-              elevation: 0, // No shadow here
-              unselectedFontSize: 12, // Slightly smaller unselected text
-              currentIndex: current_index,
-              onTap: (index) {
-                setState(() {
-                  current_index = index;
-                });
-                _pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Image.asset("assets/homePageButton.png"),
-                  label: "Home",
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset("assets/notificationsButton.png"),
-                  label: "Cart",
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset("assets/ordersButton.png"),
-                  label: "Orders",
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset("assets/profileButton.png"),
-                  label: "Settings",
-                ),
-              ],
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Material(
+              color: Colors.white, // or your desired background color
+              elevation: 0, // Zero elevation to remove any shadow
+              child: BottomNavigationBar(
+                selectedItemColor: appbarSec,
+
+                unselectedItemColor: Colors.grey.shade600, //
+                showUnselectedLabels: false, // Show labels for all items
+                type: BottomNavigationBarType.fixed, // Prevents shifting
+                selectedFontSize: 0, // Larger text
+                elevation: 0, // No shadow here
+                unselectedFontSize: 12, // Slightly smaller unselected text
+                currentIndex: current_index,
+                onTap: (index) {
+                  setState(() {
+                    current_index = index;
+                  });
+                  _pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Image.asset("assets/homePageButton.png"),
+                    label: "*",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset("assets/notificationsButton.png"),
+                    label: "*",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset("assets/ordersButton.png"),
+                    label: "*",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      "assets/profileButton.png",
+                      color: Colors.grey,
+                    ),
+                    label: "*",
+                  ),
+                ],
+              ),
             ),
           ),
         ),

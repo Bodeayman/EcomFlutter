@@ -14,5 +14,5 @@ final GoRouter router = GoRouter(
       builder: (context, state) => CreateNewAccountView(),
     ),
   ],
-  initialLocation: "/initialE",
+  initialLocation: "/",
 );

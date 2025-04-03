@@ -1,7 +1,10 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/pages/MainPages/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/settings_list_tile.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/switch_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -11,36 +14,76 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  List<String> settingsOptions = [
+    "Address",
+    "Wishlist",
+    "Payment",
+    "Help",
+    "Support",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SizedBox(
+        width: double.infinity,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 10),
-            SwitchTile(),
-            SizedBox(height: 10),
-            SettingsListTile(
-              subtitle: "Change your payment method from here",
-              title: "Payment Methods",
-              icon: Icon(Icons.credit_card, color: appbarSec),
-              onTap: () {},
+            const SizedBox(height: 89),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: SizedBox(
+                height: 80,
+                width: 80,
+                child: Image.asset("assets/img/stripe.png"),
+              ),
             ),
-
-            SizedBox(height: 10),
-            SettingsListTile(
-              subtitle: "Edit your profile , password ,username",
-              title: "Edit profile",
-              icon: Icon(Icons.person, color: appbarSec),
-              onTap: () {},
+            const SizedBox(height: 20),
+            ProfileDetailsTile(),
+            SizedBox(
+              height: 400,
+              width: 342,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: settingsOptions.length,
+                itemBuilder: (context, index) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(kSettingsTile),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 4),
+                      decoration: BoxDecoration(color: kTextForm),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 8.0,
+                          horizontal: 4,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(settingsOptions[index]),
+                            IconButton(
+                              icon: Image.asset("assets/arrowright2.png"),
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
-            SizedBox(height: 10),
-
-            SettingsListTile(
-              subtitle: "Switch between dark and white",
-              title: "Change Theme",
-              icon: Icon(Icons.nightlight_round_sharp, color: appbarSec),
-              onTap: () {},
+            TextButton(
+              child: Text(
+                "Sign Out",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                (context).pushReplacement('/initial');
+              },
             ),
           ],
         ),
