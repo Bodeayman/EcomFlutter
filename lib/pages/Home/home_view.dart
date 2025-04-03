@@ -1,15 +1,12 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/MainPages/notifications.dart';
 import 'package:ecomflutter/pages/MainPages/orders.dart';
-import 'package:ecomflutter/shared/appbar.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';
-import 'package:ecomflutter/pages/MainPages/checkout.dart';
 import 'package:ecomflutter/pages/MainPages/products.dart';
 import 'package:ecomflutter/pages/MainPages/profilePage.dart';
-import 'package:ecomflutter/provider/cart.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -26,31 +23,39 @@ class _HomeState extends State<Home> {
   int productNeeded = 0;
   int totalPrice = 0;
   int current_index = 0;
-  late PageController _pageController = PageController();
+  late final PageController _pageController = PageController();
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: current_index);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const HomeDrawer(),
-      body: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            current_index = index;
-          });
-        },
-        children: const [
-          ProductsPage(),
-          NotificationsPage(),
-          OrdersPage(),
-          ProfilePage(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: PageView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              current_index = index;
+            });
+          },
+          children: const [
+            ProductsPage(),
+            NotificationsPage(),
+            OrdersPage(),
+            ProfilePage(),
+          ],
+        ),
       ),
 
       bottomNavigationBar: Theme(
@@ -88,21 +93,42 @@ class _HomeState extends State<Home> {
 
                 items: [
                   BottomNavigationBarItem(
-                    icon: Image.asset("assets/homePageButton.png"),
+                    icon: Image.asset(
+                      "assets/homePageButton.png",
+                      color:
+                          (current_index == 0)
+                              ? Colors.purple
+                              : Colors.grey.shade600,
+                    ),
                     label: "*",
                   ),
                   BottomNavigationBarItem(
-                    icon: Image.asset("assets/notificationsButton.png"),
+                    icon: Image.asset(
+                      "assets/notificationsButton.png",
+                      color:
+                          (current_index == 1)
+                              ? Colors.purple
+                              : Colors.grey.shade600,
+                    ),
                     label: "*",
                   ),
                   BottomNavigationBarItem(
-                    icon: Image.asset("assets/ordersButton.png"),
+                    icon: Image.asset(
+                      "assets/ordersButton.png",
+                      color:
+                          (current_index == 2)
+                              ? Colors.purple
+                              : Colors.grey.shade600,
+                    ),
                     label: "*",
                   ),
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       "assets/profileButton.png",
-                      color: Colors.grey,
+                      color:
+                          (current_index == 3)
+                              ? Colors.purple
+                              : Colors.grey.shade600,
                     ),
                     label: "*",
                   ),

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       child: SafeArea(
         child: MaterialApp.router(
           routerConfig: router,
-          theme: ThemeData(textTheme: GoogleFonts.manropeTextTheme()),
+          theme: ThemeData(fontFamily: "Circularstd"),
           debugShowCheckedModeBanner: false,
         ),
       ),

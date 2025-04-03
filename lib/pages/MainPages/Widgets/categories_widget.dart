@@ -16,18 +16,21 @@ class CategoriesWidget extends StatelessWidget {
       height: 80,
       child: ListView.builder(
         itemBuilder: (context, i) {
-          return Column(
-            children: [
-              SizedBox(
-                height: kCatImageSize,
-                width: kCatImageSize,
-                child: Image.asset(categories[i][0]),
-              ),
-              Text(
-                categories[i][1],
-                style: TextStyle(fontSize: kNormalFontSize),
-              ),
-            ],
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: kCatImageSize,
+                  width: kCatImageSize,
+                  child: Image.asset(categories[i][0]),
+                ),
+                Text(
+                  categories[i][1],
+                  style: TextStyle(fontSize: kNormalFontSize),
+                ),
+              ],
+            ),
           );
         },
         itemCount: categories.length,

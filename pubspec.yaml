@@ -63,3 +63,7 @@ flutter:
   assets:
     - assets/
     - assets/img/
+  fonts:
+    - family: CircularStd
+      fonts:
+        - asset: assets/fonts/circular-std-medium-500.ttf

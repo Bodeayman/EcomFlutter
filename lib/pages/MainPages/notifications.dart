@@ -2,6 +2,7 @@ import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
@@ -34,6 +35,9 @@ class NotificationsPage extends StatelessWidget {
                     buttonColor: appbarSec,
                     hintText: "Explore Categories",
                     textColor: Colors.white,
+                    callbackFunction: () {
+                      context.push('/search');
+                    },
                   ),
                 ),
               ],

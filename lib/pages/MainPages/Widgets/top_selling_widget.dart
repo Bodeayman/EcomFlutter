@@ -25,12 +25,15 @@ class TopSellingWidget extends StatelessWidget {
                 width: 159,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Details(item: item),
-                      ),
-                    );
+                    try {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Details(item: item),
+                        ),
+                      );
+                    } catch (err) {
+                      debugPrint(err.toString());
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(

@@ -3,6 +3,7 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/Details/details.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/categories_widget.dart';
+import 'package:ecomflutter/pages/MainPages/Widgets/custom_main_page_app_bar.dart';
 import 'package:ecomflutter/pages/Search/Widgets/custom_search_field.dart';
 import 'package:ecomflutter/pages/MainPages/Widgets/top_selling_widget.dart';
 import 'package:ecomflutter/provider/cart.dart';
@@ -23,35 +24,7 @@ class ProductsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: SizedBox(
-                    height: 40,
-                    width: 40,
-                    child: Image.asset("assets/img/stripe.png"),
-                  ),
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Container(
-                    decoration: BoxDecoration(color: kTextForm),
-                    child: Text("Men"),
-                  ),
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Container(
-                    decoration: BoxDecoration(color: appbarSec),
-                    height: 40,
-                    width: 40,
-                    child: Image.asset("assets/bag2.png"),
-                  ),
-                ),
-              ],
-            ),
+            CustomMainPageAppBar(),
             const SizedBox(height: 40),
 
             InkWell(
@@ -61,19 +34,21 @@ class ProductsPage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: SizedBox(
-                  height: 80,
+                  height: 40,
                   width: double.infinity,
                   child: Container(
                     decoration: BoxDecoration(color: kTextForm),
                     child: SizedBox(
-                      width: 100,
+                      width: 150,
 
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
+                              const SizedBox(width: 20),
                               Image.asset("assets/searchnormal1.png"),
+                              const SizedBox(width: 20),
+
                               Text("Search"),
                             ],
                           ),
@@ -89,7 +64,7 @@ class ProductsPage extends StatelessWidget {
                 "Categories",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              trailing: Text("See All"),
+              trailing: Text("See All", style: TextStyle(fontSize: 16)),
             ),
             CategoriesWidget(),
             ListTile(
@@ -97,7 +72,7 @@ class ProductsPage extends StatelessWidget {
                 "Top Selling",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              trailing: Text("See All"),
+              trailing: Text("See All", style: TextStyle(fontSize: 16)),
             ),
             TopSellingWidget(),
             ListTile(
@@ -107,7 +82,6 @@ class ProductsPage extends StatelessWidget {
               ),
               trailing: Text("See All"),
             ),
-            TopSellingWidget(),
           ],
         ),
       ),

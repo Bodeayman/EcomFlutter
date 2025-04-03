@@ -2,6 +2,7 @@ import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
@@ -32,7 +33,9 @@ class OrdersPage extends StatelessWidget {
                   width: 195,
                   child: CustomeElevatedButton(
                     buttonColor: appbarSec,
-
+                    callbackFunction: () {
+                      context.push('/search');
+                    },
                     hintText: "Explore Categories",
                     textColor: Colors.white,
                   ),
