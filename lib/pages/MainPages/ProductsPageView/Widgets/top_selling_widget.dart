@@ -15,6 +15,7 @@ class TopSellingWidget extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
+          physics: BouncingScrollPhysics(),
           itemCount: itemList.length,
           itemBuilder: (BuildContext context, int index) {
             final item = itemList[index];
@@ -92,12 +93,10 @@ class TopSellingWidget extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const SizedBox(height: 4),
                             Text(
                               item.name,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
+                              style: const TextStyle(fontSize: 16),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -106,7 +105,7 @@ class TopSellingWidget extends StatelessWidget {
                               "${item.price} \$",
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.green[700],
+                                color: Colors.black,
                               ),
                             ),
                           ],

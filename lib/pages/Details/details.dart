@@ -87,25 +87,80 @@ class _DetailsState extends State<Details> {
               ],
             ),
             const SizedBox(height: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(kExtremeRaduis),
-              child: OptionListTile(
-                title: "Size",
-                trailing: Image.asset("assets/arrowdown2.png"),
+            OptionListTile(
+              tileBorder: kExtremeRaduis,
+
+              title: "Size",
+              trailing: SizedBox(
+                width: 50,
+                child: Row(
+                  children: [
+                    Text("S", style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(width: 20),
+                    Image.asset("assets/arrowdown2.png"),
+                  ],
+                ),
               ),
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(kExtremeRaduis),
-              child: OptionListTile(
-                title: "Color",
-                trailing: Image.asset("assets/arrowdown2.png"),
+            OptionListTile(
+              tileBorder: kExtremeRaduis,
+
+              title: "Color",
+              trailing: SizedBox(
+                width: 60,
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(kExtremeRaduis),
+                      child: Container(
+                        color: Colors.amber,
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Image.asset("assets/arrowdown2.png"),
+                  ],
+                ),
               ),
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(kExtremeRaduis),
-              child: OptionListTile(
-                title: "Quantity",
-                trailing: Image.asset("assets/arrowdown2.png"),
+            OptionListTile(
+              tileBorder: kExtremeRaduis,
+              title: "Quantity",
+              trailing: SizedBox(
+                width: 100,
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(kExtremeRaduis),
+                      child: Container(
+                        decoration: BoxDecoration(color: appbarSec),
+                        height: 40,
+                        width: 40,
+                        child: Image.asset("assets/add.png"),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+
+                    Text(
+                      "1",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(kExtremeRaduis),
+                      child: Container(
+                        decoration: BoxDecoration(color: appbarSec),
+                        height: 40,
+                        width: 40,
+                        child: Image.asset("assets/minus.png"),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 16),
@@ -119,9 +174,13 @@ class _DetailsState extends State<Details> {
               ),
             ),
             const Divider(),
+            const SizedBox(height: 10),
             Text("Shipping", style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 5),
+
             Text(
               "This product is available to replace or to return, and you can get the full refund",
+              style: TextStyle(color: Color(0xff272727), fontSize: 12),
             ),
             const SizedBox(height: 20),
             Consumer<Cart>(

@@ -65,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               onPressed: () {
-                (context).pushReplacement('/initial');
+                (context).pushReplacement('/initialE');
               },
             ),
           ],
