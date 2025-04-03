@@ -118,6 +118,11 @@ class _DetailsState extends State<Details> {
                 color: Color(0xff272727),
               ),
             ),
+            const Divider(),
+            Text("Shipping", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(
+              "This product is available to replace or to return, and you can get the full refund",
+            ),
             const SizedBox(height: 20),
             Consumer<Cart>(
               builder: (context, value, child) {

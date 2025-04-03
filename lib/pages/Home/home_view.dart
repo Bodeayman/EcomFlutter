@@ -1,10 +1,10 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/model/item.dart';
-import 'package:ecomflutter/pages/MainPages/notifications.dart';
-import 'package:ecomflutter/pages/MainPages/orders.dart';
+import 'package:ecomflutter/pages/MainPages/NotificationsPageView/notifications.dart';
+import 'package:ecomflutter/pages/MainPages/OrdersViewPage/orders.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';
-import 'package:ecomflutter/pages/MainPages/products.dart';
-import 'package:ecomflutter/pages/MainPages/profilePage.dart';
+import 'package:ecomflutter/pages/MainPages/ProductsPageView/products.dart';
+import 'package:ecomflutter/pages/MainPages/ProfilePageView/profilePage.dart';
 
 import 'package:flutter/material.dart';
 

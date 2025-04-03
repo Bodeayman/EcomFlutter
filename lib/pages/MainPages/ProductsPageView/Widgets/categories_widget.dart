@@ -14,10 +14,11 @@ class CategoriesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
+      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         itemBuilder: (context, i) {
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 8.0),
+            margin: EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
               children: [
                 SizedBox(

@@ -15,6 +15,8 @@ class CustomSearchField extends StatelessWidget {
           decoration: BoxDecoration(color: kTextForm),
           child: TextField(
             decoration: InputDecoration(
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
               hintText: "Search",
               fillColor: Colors.grey,
               prefixIcon: Image.asset("assets/searchnormal1.png"),

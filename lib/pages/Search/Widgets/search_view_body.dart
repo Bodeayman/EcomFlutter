@@ -14,25 +14,36 @@ class SearchViewBody extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomSearchField(),
-        Text("Shop by Categories"),
-        SizedBox(
-          width: kPageViewWidth,
-          height: 352,
-          child: ListView.builder(
-            itemBuilder: (context, i) {
-              return OptionListTile(
-                leading: Image.asset(categories[i][0]),
-                title: categories[i][1],
-              );
-            },
-            itemCount: categories.length,
-            scrollDirection: Axis.vertical,
-          ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 40),
+            CustomSearchField(),
+            const SizedBox(height: 10),
+
+            Text("Shop by Categories"),
+            const SizedBox(height: 10),
+
+            SizedBox(
+              width: kPageViewWidth,
+              height: 352,
+              child: ListView.builder(
+                itemBuilder: (context, i) {
+                  return OptionListTile(
+                    leading: Image.asset(categories[i][0]),
+                    title: categories[i][1],
+                  );
+                },
+                itemCount: categories.length,
+                scrollDirection: Axis.vertical,
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
