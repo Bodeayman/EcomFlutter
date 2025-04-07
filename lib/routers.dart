@@ -1,4 +1,6 @@
+import 'package:ecomflutter/pages/Checkout/SuccessPageView/success_view.dart';
 import 'package:ecomflutter/pages/Home/home_view.dart';
+import 'package:ecomflutter/pages/Checkout/CheckoutPageView/checkout.dart';
 import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/Records/record_view.dart';
@@ -15,6 +17,8 @@ final GoRouter router = GoRouter(
       builder: (context, state) => CreateNewAccountView(),
     ),
     GoRoute(path: "/search", builder: (context, state) => SearchView()),
+    GoRoute(path: "/cart", builder: (context, state) => Checkout()),
+    GoRoute(path: "/purSuccess", builder: (context, state) => SuccessView()),
   ],
   initialLocation: "/",
 );

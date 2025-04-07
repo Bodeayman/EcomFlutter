@@ -205,7 +205,12 @@ class _DetailsState extends State<Details> {
               builder: (context, value, child) {
                 return CustomeElevatedButton(
                   buttonColor: appbarSec,
-                  callbackFunction: () => value.addElementToCart(widget.item),
+                  callbackFunction: () {
+                    setState(() {
+                      quantity = 0;
+                    });
+                    value.addElementToCart(widget.item);
+                  },
                   hintText: "Add to Cart",
 
                   textColor: Colors.white,

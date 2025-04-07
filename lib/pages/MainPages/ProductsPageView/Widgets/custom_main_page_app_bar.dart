@@ -1,5 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomMainPageAppBar extends StatelessWidget {
   const CustomMainPageAppBar({super.key});
@@ -36,13 +37,16 @@ class CustomMainPageAppBar extends StatelessWidget {
             ),
           ),
         ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Container(
-            decoration: BoxDecoration(color: appbarSec),
-            height: 40,
-            width: 40,
-            child: Image.asset("assets/bag2.png"),
+        IconButton(
+          onPressed: () => context.push("/cart"),
+          icon: ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: Container(
+              decoration: BoxDecoration(color: appbarSec),
+              height: 40,
+              width: 40,
+              child: Image.asset("assets/bag2.png"),
+            ),
           ),
         ),
       ],
