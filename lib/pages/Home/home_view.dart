@@ -1,5 +1,4 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/MainPages/NotificationsPageView/notifications.dart';
 import 'package:ecomflutter/pages/MainPages/OrdersViewPage/orders.dart';
 import 'package:ecomflutter/shared/home_drawer.dart';

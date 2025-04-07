@@ -1,6 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
-import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:flutter/material.dart';
 
 class LogoView extends StatefulWidget {

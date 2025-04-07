@@ -1,12 +1,8 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/cubit/stripe_payment_cubit.dart';
-import 'package:ecomflutter/model/payment_intent_input_model.dart';
-import 'package:ecomflutter/model/repo/checkout_repo_impl.dart';
 import 'package:ecomflutter/pages/PaymentScreens/payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Checkout extends StatefulWidget {
   const Checkout({super.key});

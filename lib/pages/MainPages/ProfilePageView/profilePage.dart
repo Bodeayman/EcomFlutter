@@ -1,5 +1,3 @@
-import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';

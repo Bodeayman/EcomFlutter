@@ -1,6 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
-import 'package:ecomflutter/pages/Home/home_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_text_field.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/sign_in_group_buttons.dart';
