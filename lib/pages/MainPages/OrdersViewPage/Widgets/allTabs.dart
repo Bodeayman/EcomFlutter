@@ -1,4 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class AllTabsWidget extends StatefulWidget {
@@ -25,41 +26,35 @@ class _AllTabsWidgetState extends State<AllTabsWidget> {
       scrollDirection: Axis.horizontal,
       itemCount: tabs.length,
       itemBuilder: (context, index) {
-        return Row(
-          children: [
-            const SizedBox(width: 10),
-            InkWell(
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 6.5),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(kExtremeRaduis),
+            child: MaterialButton(
+              elevation: 0,
               hoverColor: Colors.transparent,
               focusColor: Colors.transparent,
-              onTap: () {
+              onPressed: () {
                 setState(() {
                   selectedIndex = index;
                 });
               },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: selectedIndex == index ? appbarSec : Colors.white,
-                  borderRadius: BorderRadius.circular(20),
+              color: selectedIndex == index ? appbarSec : kTextForm,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 4.0,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 15,
-                  ),
-                  child: Text(
-                    tabs[index],
-                    style: TextStyle(
-                      color:
-                          selectedIndex == index
-                              ? Colors.white
-                              : const Color(0xff7C7C80),
-                      fontSize: 17,
-                    ),
+                child: Text(
+                  tabs[index],
+                  style: TextStyle(
+                    color: selectedIndex == index ? Colors.white : Colors.black,
+                    fontSize: 17,
                   ),
                 ),
               ),
             ),
-          ],
+          ),
         );
       },
     );

@@ -9,9 +9,10 @@ class OrdersFoundViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 15),
-        Text("Orders"),
-        SizedBox(height: 80, child: AllTabsWidget()),
+        const SizedBox(height: 40),
+        Text("Orders", style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 40),
+        SizedBox(height: 30, child: AllTabsWidget()),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

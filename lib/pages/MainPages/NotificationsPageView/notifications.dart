@@ -13,11 +13,6 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
-          Random().nextBool()
-              ? NotificationNotfoundBodyView()
-              : NotificationFoundBodyView(),
-    );
+    return Scaffold(body: NotificationFoundBodyView());
   }
 }

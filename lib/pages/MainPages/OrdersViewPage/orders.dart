@@ -13,12 +13,7 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
-          Random().nextBool()
-              ? OrdersNotFoundViewBody()
-              : OrdersFoundViewBody(),
-    );
+    return Scaffold(body: OrdersFoundViewBody());
   }
 }
 

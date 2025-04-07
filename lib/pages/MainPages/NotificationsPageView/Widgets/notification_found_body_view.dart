@@ -12,9 +12,9 @@ class NotificationFoundBodyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 15),
+        const SizedBox(height: 40),
 
-        Text("Notifications"),
+        Text("Notifications", style: TextStyle(fontWeight: FontWeight.bold)),
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
