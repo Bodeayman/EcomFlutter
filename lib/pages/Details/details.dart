@@ -18,6 +18,7 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  int quantity = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,12 +93,14 @@ class _DetailsState extends State<Details> {
 
               title: "Size",
               trailing: SizedBox(
-                width: 50,
+                width: 60,
                 child: Row(
                   children: [
                     Text("S", style: TextStyle(fontWeight: FontWeight.bold)),
-                    const SizedBox(width: 20),
-                    Image.asset("assets/arrowdown2.png"),
+                    IconButton(
+                      icon: Image.asset("assets/arrowdown2.png"),
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),
@@ -114,12 +117,14 @@ class _DetailsState extends State<Details> {
                       borderRadius: BorderRadius.circular(kExtremeRaduis),
                       child: Container(
                         color: Colors.amber,
-                        width: 20,
-                        height: 20,
+                        width: 10,
+                        height: 10,
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    Image.asset("assets/arrowdown2.png"),
+                    IconButton(
+                      icon: Image.asset("assets/arrowdown2.png"),
+                      onPressed: () {},
+                    ),
                   ],
                 ),
               ),
@@ -133,17 +138,24 @@ class _DetailsState extends State<Details> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: Container(
-                        decoration: BoxDecoration(color: appbarSec),
-                        height: 40,
-                        width: 40,
-                        child: Image.asset("assets/add.png"),
+                      child: SizedBox(
+                        height: 35,
+                        width: 35,
+                        child: MaterialButton(
+                          color: appbarSec,
+                          onPressed: () {
+                            setState(() {
+                              quantity++;
+                            });
+                          },
+                          child: Image.asset("assets/add.png"),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 5),
 
                     Text(
-                      "1",
+                      "$quantity",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
@@ -152,11 +164,18 @@ class _DetailsState extends State<Details> {
                     const SizedBox(width: 5),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: Container(
-                        decoration: BoxDecoration(color: appbarSec),
-                        height: 40,
-                        width: 40,
-                        child: Image.asset("assets/minus.png"),
+                      child: SizedBox(
+                        height: 35,
+                        width: 35,
+                        child: MaterialButton(
+                          color: appbarSec,
+                          onPressed: () {
+                            setState(() {
+                              if (quantity > 0) quantity--;
+                            });
+                          },
+                          child: Image.asset("assets/minus.png"),
+                        ),
                       ),
                     ),
                   ],
