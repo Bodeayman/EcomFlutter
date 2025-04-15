@@ -3,11 +3,9 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/checkout_price.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/enter_coupon_widget.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
-import 'package:ecomflutter/pages/PaymentScreens/payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 class Checkout extends StatefulWidget {
@@ -77,7 +75,6 @@ class _CheckoutState extends State<Checkout> {
                   children:
                       value.selectedElements.entries.map((item) {
                         final product = item.key;
-                        final quantity = item.value;
 
                         return Container(
                           padding: const EdgeInsets.all(10),
