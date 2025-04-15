@@ -1,10 +1,13 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/checkout_price.dart';
+import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/enter_coupon_widget.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/pages/PaymentScreens/payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 class Checkout extends StatefulWidget {
@@ -27,6 +30,7 @@ class _CheckoutState extends State<Checkout> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         height: 40,
@@ -47,8 +51,23 @@ class _CheckoutState extends State<Checkout> {
                       ),
                       Expanded(
                         child: Text(
-                          "Checkout",
+                          "Cart",
                           style: TextStyle(fontSize: 20, color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: value.clearCart,
+                        child: Text(
+                          "Remove all",
+                          style: TextStyle(color: Colors.black, fontSize: 16),
                         ),
                       ),
                     ],
@@ -81,10 +100,11 @@ class _CheckoutState extends State<Checkout> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "${product.price * item.value}\$",
+                                  "\$${product.price * item.value}",
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 12,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 /////////////////
@@ -95,11 +115,13 @@ class _CheckoutState extends State<Checkout> {
                                       borderRadius: BorderRadius.circular(
                                         kExtremeRaduis,
                                       ),
-                                      child: SizedBox(
-                                        height: 35,
-                                        width: 35,
-                                        child: MaterialButton(
+                                      child: Container(
+                                        height: 24,
+                                        width: 24,
+                                        decoration: BoxDecoration(
                                           color: appbarSec,
+                                        ),
+                                        child: RawMaterialButton(
                                           onPressed: () {
                                             value.addElementToCart(product);
                                           },
@@ -107,15 +129,18 @@ class _CheckoutState extends State<Checkout> {
                                         ),
                                       ),
                                     ),
+                                    const SizedBox(width: 8),
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(
                                         kExtremeRaduis,
                                       ),
-                                      child: SizedBox(
-                                        height: 35,
-                                        width: 35,
-                                        child: MaterialButton(
+                                      child: Container(
+                                        height: 24,
+                                        width: 24,
+                                        decoration: BoxDecoration(
                                           color: appbarSec,
+                                        ),
+                                        child: RawMaterialButton(
                                           onPressed: () {
                                             value.removeElementFromCart(
                                               product,
@@ -136,9 +161,12 @@ class _CheckoutState extends State<Checkout> {
                         );
                       }).toList(),
                 ),
+                CheckoutPriceList(),
+                EnterCouponWidget(),
+
+                const SizedBox(height: 50),
                 SizedBox(
                   height: 52,
-                  width: 195,
                   child: CustomeElevatedButton(
                     buttonColor: appbarSec,
                     hintText: "Checkout",

@@ -137,11 +137,11 @@ class _DetailsState extends State<Details> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: SizedBox(
+                      child: Container(
                         height: 35,
                         width: 35,
-                        child: MaterialButton(
-                          color: appbarSec,
+                        decoration: BoxDecoration(color: appbarSec),
+                        child: RawMaterialButton(
                           onPressed: () {
                             setState(() {
                               quantity++;
@@ -163,14 +163,14 @@ class _DetailsState extends State<Details> {
                     const SizedBox(width: 5),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: SizedBox(
+                      child: Container(
                         height: 35,
                         width: 35,
-                        child: MaterialButton(
-                          color: appbarSec,
+                        decoration: BoxDecoration(color: appbarSec),
+                        child: RawMaterialButton(
                           onPressed: () {
                             setState(() {
-                              if (quantity > 0) quantity--;
+                              quantity--;
                             });
                           },
                           child: Image.asset("assets/minus.png"),
