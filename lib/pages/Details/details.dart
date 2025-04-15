@@ -206,10 +206,12 @@ class _DetailsState extends State<Details> {
                 return CustomeElevatedButton(
                   buttonColor: appbarSec,
                   callbackFunction: () {
+                    for (int i = 0; i < quantity; i++) {
+                      value.addElementToCart(widget.item);
+                    }
                     setState(() {
                       quantity = 0;
                     });
-                    value.addElementToCart(widget.item);
                   },
                   hintText: "Add to Cart",
 

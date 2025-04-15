@@ -1,8 +1,9 @@
+import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutPriceList extends StatelessWidget {
   const CheckoutPriceList({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +20,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  '\$1000',
+                  "\$${context.read<Cart>().totalPrice}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -32,7 +33,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  '\$1000',
+                  "\$${context.read<Cart>().totalPrice * 0.2}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -45,7 +46,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  '\$1000',
+                  "\$${context.read<Cart>().totalPrice * 0.1}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -58,7 +59,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  '\$1000',
+                  "\$${context.read<Cart>().totalPrice * 1.3}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],

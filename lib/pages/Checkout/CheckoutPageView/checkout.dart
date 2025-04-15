@@ -23,159 +23,177 @@ class _CheckoutState extends State<Checkout> {
       body: Consumer<Cart>(
         builder: (context, value, child) {
           if (value.selectedElements.isNotEmpty) {
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: InkWell(
-                          onTap: () => {context.pop()},
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: kTextForm,
-                              borderRadius: BorderRadius.circular(100),
+            return Padding(
+              padding: EdgeInsets.all(8),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: InkWell(
+                                onTap: () => {context.pop()},
+                                child: Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                    color: kTextForm,
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+
+                                  child: Image.asset("assets/arrowleft2.png"),
+                                ),
+                              ),
                             ),
-
-                            child: Image.asset("assets/arrowleft2.png"),
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Cart",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: value.clearCart,
-                        child: Text(
-                          "Remove all",
-                          style: TextStyle(color: Colors.black, fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  children:
-                      value.selectedElements.entries.map((item) {
-                        final product = item.key;
-
-                        return Container(
-                          padding: const EdgeInsets.all(10),
-                          child: ListTile(
-                            style: ListTileStyle.drawer,
-                            tileColor: Colors.grey[200],
-                            title: Text(
-                              product.name,
-                              style: const TextStyle(
-                                fontSize: 15,
+                          Expanded(
+                            flex: 10,
+                            child: Text(
+                              "Cart",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            subtitle: Text("Size-M Color-L"),
-                            leading: Image.network(
-                              product.url,
-                              fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: value.clearCart,
+                            child: Text(
+                              "Remove all",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
                             ),
-                            trailing: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "\$${product.price * item.value}",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children:
+                          value.selectedElements.entries.map((item) {
+                            final product = item.key;
+
+                            return Container(
+                              padding: const EdgeInsets.all(10),
+                              child: ListTile(
+                                style: ListTileStyle.drawer,
+                                tileColor: Colors.grey[200],
+                                title: Text(
+                                  product.name,
+                                  style: const TextStyle(
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                /////////////////
-                                Row(
-                                  mainAxisSize: MainAxisSize.min,
+                                subtitle: Text("Size-M Color-L"),
+                                leading: Image.network(
+                                  product.url,
+                                  fit: BoxFit.cover,
+                                ),
+                                trailing: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        kExtremeRaduis,
-                                      ),
-                                      child: Container(
-                                        height: 24,
-                                        width: 24,
-                                        decoration: BoxDecoration(
-                                          color: appbarSec,
-                                        ),
-                                        child: RawMaterialButton(
-                                          onPressed: () {
-                                            value.addElementToCart(product);
-                                          },
-                                          child: Image.asset("assets/add.png"),
-                                        ),
+                                    Text(
+                                      "\$${product.price * item.value}",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    const SizedBox(width: 8),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        kExtremeRaduis,
-                                      ),
-                                      child: Container(
-                                        height: 24,
-                                        width: 24,
-                                        decoration: BoxDecoration(
-                                          color: appbarSec,
-                                        ),
-                                        child: RawMaterialButton(
-                                          onPressed: () {
-                                            value.removeElementFromCart(
-                                              product,
-                                            );
-                                          },
-                                          child: Image.asset(
-                                            "assets/minus.png",
+                                    /////////////////
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            kExtremeRaduis,
+                                          ),
+                                          child: Container(
+                                            height: 24,
+                                            width: 24,
+                                            decoration: BoxDecoration(
+                                              color: appbarSec,
+                                            ),
+                                            child: RawMaterialButton(
+                                              onPressed: () {
+                                                value.addElementToCart(product);
+                                              },
+                                              child: Image.asset(
+                                                "assets/add.png",
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        const SizedBox(width: 8),
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            kExtremeRaduis,
+                                          ),
+                                          child: Container(
+                                            height: 24,
+                                            width: 24,
+                                            decoration: BoxDecoration(
+                                              color: appbarSec,
+                                            ),
+                                            child: RawMaterialButton(
+                                              onPressed: () {
+                                                value.removeElementFromCart(
+                                                  product,
+                                                );
+                                              },
+                                              child: Image.asset(
+                                                "assets/minus.png",
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                            contentPadding: const EdgeInsets.all(20),
-                          ),
-                        );
-                      }).toList(),
-                ),
-                CheckoutPriceList(),
-                EnterCouponWidget(),
+                                contentPadding: const EdgeInsets.all(20),
+                              ),
+                            );
+                          }).toList(),
+                    ),
+                    CheckoutPriceList(),
+                    EnterCouponWidget(),
 
-                const SizedBox(height: 50),
-                SizedBox(
-                  height: 52,
-                  child: CustomeElevatedButton(
-                    buttonColor: appbarSec,
-                    hintText: "Checkout",
-                    textColor: Colors.white,
-                    callbackFunction: () {
-                      value.clearCart();
+                    const SizedBox(height: 50),
+                    SizedBox(
+                      height: 52,
+                      child: CustomeElevatedButton(
+                        buttonColor: appbarSec,
+                        hintText: "Checkout",
+                        textColor: Colors.white,
+                        callbackFunction: () {
+                          value.clearCart();
 
-                      context.pushReplacement("/purSuccess");
-                    },
-                  ),
+                          context.pushReplacement("/purSuccess");
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             );
           } else {
             return Center(
