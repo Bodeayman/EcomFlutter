@@ -1,16 +1,13 @@
-# ecomflutter
-
-A new Flutter project.
+# EcomFlutter
+I don't have a name for the project, really
+Still it's one of the improtant projects for me.
 
 ## Getting Started
+The app doesn't have all the features yet, just a test version.
 
-This project is a starting point for a Flutter application.
+## Downloading the app
+Inside the release folder you will find the APKs, download the V2 it's the latest one.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Backend
+Really I don't know, I considered using Node.js, but sucks anyway, I don't know,
+maybe I will Look for using firebase.
