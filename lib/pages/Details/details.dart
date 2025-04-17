@@ -1,5 +1,6 @@
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/cubit/cart_cubit.dart';
+import 'package:ecomflutter/pages/Details/Widgets/details_view_functions.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -124,7 +125,7 @@ class _DetailsState extends State<Details> {
                     ),
                     IconButton(
                       icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () {},
+                      onPressed: () => showColors(context),
                     ),
                   ],
                 ),
