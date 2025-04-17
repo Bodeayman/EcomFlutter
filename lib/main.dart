@@ -1,3 +1,4 @@
+import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/cubit/main_products_cubit.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
@@ -27,18 +28,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MainProductsCubit(),
-      child: ChangeNotifierProvider(
-        create: (context) {
-          return Cart();
-        },
-        child: SafeArea(
-          child: MaterialApp.router(
-            routerConfig: router,
-            theme: ThemeData(fontFamily: "Circularstd"),
-            debugShowCheckedModeBanner: false,
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<CartCubit>(create: (context) => CartCubit()),
+        BlocProvider<MainProductsCubit>(
+          create: (context) => MainProductsCubit(),
+        ),
+      ],
+      child: SafeArea(
+        child: MaterialApp.router(
+          routerConfig: router,
+          theme: ThemeData(fontFamily: "Circularstd"),
+          debugShowCheckedModeBanner: false,
         ),
       ),
     );

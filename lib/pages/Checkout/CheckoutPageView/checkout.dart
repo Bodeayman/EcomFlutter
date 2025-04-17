@@ -1,10 +1,12 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/checkout_price.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/enter_coupon_widget.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -20,9 +22,9 @@ class _CheckoutState extends State<Checkout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<Cart>(
-        builder: (context, value, child) {
-          if (value.selectedElements.isNotEmpty) {
+      body: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          if (state.selectedItems.isNotEmpty) {
             return Padding(
               padding: EdgeInsets.all(8),
               child: SingleChildScrollView(
@@ -72,7 +74,7 @@ class _CheckoutState extends State<Checkout> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                            onPressed: value.clearCart,
+                            onPressed: context.read<CartCubit>().clearCart,
                             child: Text(
                               "Remove all",
                               style: TextStyle(
@@ -86,7 +88,7 @@ class _CheckoutState extends State<Checkout> {
                     ),
                     Column(
                       children:
-                          value.selectedElements.entries.map((item) {
+                          state.selectedItems.entries.map((item) {
                             final product = item.key;
 
                             return Container(
@@ -134,7 +136,9 @@ class _CheckoutState extends State<Checkout> {
                                             ),
                                             child: RawMaterialButton(
                                               onPressed: () {
-                                                value.addElementToCart(product);
+                                                context
+                                                    .read<CartCubit>()
+                                                    .addItem(product);
                                               },
                                               child: Image.asset(
                                                 "assets/add.png",
@@ -155,9 +159,9 @@ class _CheckoutState extends State<Checkout> {
                                             ),
                                             child: RawMaterialButton(
                                               onPressed: () {
-                                                value.removeElementFromCart(
-                                                  product,
-                                                );
+                                                context
+                                                    .read<CartCubit>()
+                                                    .removeItem(product);
                                               },
                                               child: Image.asset(
                                                 "assets/minus.png",
@@ -185,8 +189,7 @@ class _CheckoutState extends State<Checkout> {
                         hintText: "Checkout",
                         textColor: Colors.white,
                         callbackFunction: () {
-                          value.clearCart();
-
+                          context.read<CartCubit>().clearCart();
                           context.pushReplacement("/purSuccess");
                         },
                       ),

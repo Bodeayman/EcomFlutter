@@ -1,7 +1,9 @@
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:ecomflutter/provider/cart.dart';
@@ -169,9 +171,11 @@ class _DetailsState extends State<Details> {
                         decoration: BoxDecoration(color: appbarSec),
                         child: RawMaterialButton(
                           onPressed: () {
-                            setState(() {
-                              quantity--;
-                            });
+                            if (quantity > 0) {
+                              setState(() {
+                                quantity--;
+                              });
+                            }
                           },
                           child: Image.asset("assets/minus.png"),
                         ),
@@ -201,13 +205,14 @@ class _DetailsState extends State<Details> {
               style: TextStyle(color: Color(0xff272727), fontSize: 12),
             ),
             const SizedBox(height: 20),
-            Consumer<Cart>(
-              builder: (context, value, child) {
+            BlocBuilder<CartCubit, CartState>(
+              builder: (context, state) {
                 return CustomeElevatedButton(
                   buttonColor: appbarSec,
                   callbackFunction: () {
+                    debugPrint("Added to the cart with quantity $quantity");
                     for (int i = 0; i < quantity; i++) {
-                      value.addElementToCart(widget.item);
+                      context.read<CartCubit>().addItem(widget.item);
                     }
                     setState(() {
                       quantity = 0;

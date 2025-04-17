@@ -1,6 +1,20 @@
 part of 'cart_cubit.dart';
 
 @immutable
-sealed class CartState {}
+class CartState {
+  final Map<Item, int> selectedItems;
+  final double totalPrice;
 
-final class CartInitial extends CartState {}
+  const CartState({required this.selectedItems, required this.totalPrice});
+
+  CartState copyWith({Map<Item, int>? selectedItems, double? totalPrice}) {
+    return CartState(
+      selectedItems: selectedItems ?? this.selectedItems,
+      totalPrice: totalPrice ?? this.totalPrice,
+    );
+  }
+}
+
+class CartInitial extends CartState {
+  CartInitial() : super(selectedItems: {}, totalPrice: 0);
+}

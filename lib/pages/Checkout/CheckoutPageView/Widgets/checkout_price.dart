@@ -1,3 +1,4 @@
+import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  "\$${context.read<Cart>().totalPrice}",
+                  "\$${context.read<CartCubit>().state.totalPrice}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -33,7 +34,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  "\$${context.read<Cart>().totalPrice * 0.2}",
+                  "\$${context.read<CartCubit>().state.totalPrice * 0.2}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -46,7 +47,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  "\$${context.read<Cart>().totalPrice * 0.1}",
+                  "\$${context.read<CartCubit>().state.totalPrice * 0.1}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
@@ -59,7 +60,7 @@ class CheckoutPriceList extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
                 Text(
-                  "\$${context.read<Cart>().totalPrice * 1.3}",
+                  "\$${context.read<CartCubit>().state.totalPrice * 1.3}",
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
