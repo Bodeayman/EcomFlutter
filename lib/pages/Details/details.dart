@@ -189,6 +189,7 @@ class _DetailsState extends State<Details> {
 
             Text(
               widget.item.description,
+
               style: const TextStyle(
                 fontSize: 12,
                 height: 1.5,
@@ -207,20 +208,22 @@ class _DetailsState extends State<Details> {
             const SizedBox(height: 20),
             BlocBuilder<CartCubit, CartState>(
               builder: (context, state) {
-                return CustomeElevatedButton(
-                  buttonColor: appbarSec,
-                  callbackFunction: () {
-                    debugPrint("Added to the cart with quantity $quantity");
-                    for (int i = 0; i < quantity; i++) {
-                      context.read<CartCubit>().addItem(widget.item);
-                    }
-                    setState(() {
-                      quantity = 0;
-                    });
-                  },
-                  hintText: "Add to Cart",
+                return Center(
+                  child: CustomeElevatedButton(
+                    buttonColor: appbarSec,
+                    callbackFunction: () {
+                      debugPrint("Added to the cart with quantity $quantity");
+                      for (int i = 0; i < quantity; i++) {
+                        context.read<CartCubit>().addItem(widget.item);
+                      }
+                      setState(() {
+                        quantity = 0;
+                      });
+                    },
+                    hintText: "Add to Cart",
 
-                  textColor: Colors.white,
+                    textColor: Colors.white,
+                  ),
                 );
               },
             ),

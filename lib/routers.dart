@@ -5,6 +5,7 @@ import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/Records/record_view.dart';
 import 'package:ecomflutter/pages/Search/search_view.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
@@ -18,7 +19,18 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: "/search", builder: (context, state) => SearchView()),
     GoRoute(path: "/cart", builder: (context, state) => Checkout()),
-    GoRoute(path: "/purSuccess", builder: (context, state) => SuccessView()),
+    GoRoute(
+      path: "/purSuccess",
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: SuccessView(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        );
+      },
+    ),
   ],
   initialLocation: "/",
 );
