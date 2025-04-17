@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    addItemsToList("https://fakestoreapi.com/products");
     return ChangeNotifierProvider(
       create: (context) {
         return Cart();

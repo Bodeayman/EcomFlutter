@@ -21,9 +21,9 @@ class Item {
   });
 }
 
-List<Item> itemList = [];
+Future<List<Item>> addItemsToList(String url) async {
+  List<Item> itemList = [];
 
-Future<void> addItemsToList(String url) async {
   try {
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
@@ -45,7 +45,9 @@ Future<void> addItemsToList(String url) async {
         }
       }
     }
+    debugPrint("The data is fetched successfully");
   } catch (e) {
     debugPrint(e.toString());
   }
+  return itemList;
 }
