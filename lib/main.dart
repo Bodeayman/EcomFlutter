@@ -1,3 +1,4 @@
+import 'package:ecomflutter/cubit/main_products_cubit.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/logo_view.dart';
@@ -5,6 +6,7 @@ import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
 // import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -25,15 +27,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        return Cart();
-      },
-      child: SafeArea(
-        child: MaterialApp.router(
-          routerConfig: router,
-          theme: ThemeData(fontFamily: "Circularstd"),
-          debugShowCheckedModeBanner: false,
+    return BlocProvider(
+      create: (context) => MainProductsCubit(),
+      child: ChangeNotifierProvider(
+        create: (context) {
+          return Cart();
+        },
+        child: SafeArea(
+          child: MaterialApp.router(
+            routerConfig: router,
+            theme: ThemeData(fontFamily: "Circularstd"),
+            debugShowCheckedModeBanner: false,
+          ),
         ),
       ),
     );
