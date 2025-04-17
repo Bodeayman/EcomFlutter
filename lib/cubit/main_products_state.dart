@@ -8,7 +8,7 @@ final class MainProductsInitial extends MainProductsState {}
 final class MainProductsLoading extends MainProductsState {}
 
 final class MainProductsSuccess extends MainProductsState {
-  final dynamic data;
+  final List<Item> data;
   MainProductsSuccess(this.data);
 }
 
