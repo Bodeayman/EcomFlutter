@@ -178,10 +178,12 @@ class _CheckoutState extends State<Checkout> {
                             );
                           }).toList(),
                     ),
+                    const SizedBox(height: 100),
+
                     CheckoutPriceList(),
                     EnterCouponWidget(),
 
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 25),
                     SizedBox(
                       height: 52,
                       child: CustomeElevatedButton(

@@ -40,7 +40,14 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void applyDiscount() {
-    emit(state.copyWith(totalPrice: state.totalPrice - state.totalPrice / 10));
+    if (!state.appliedCoupon) {
+      emit(
+        state.copyWith(
+          totalPrice: state.totalPrice - state.totalPrice / 10,
+          appliedCoupon: true,
+        ),
+      );
+    }
   }
 
   /// Checks if an item is in the cart
@@ -50,6 +57,8 @@ class CartCubit extends Cubit<CartState> {
 
   /// Clears the entire cart
   void clearCart() {
-    emit(state.copyWith(selectedItems: {}, totalPrice: 0));
+    emit(
+      state.copyWith(selectedItems: {}, totalPrice: 0, appliedCoupon: false),
+    );
   }
 }
