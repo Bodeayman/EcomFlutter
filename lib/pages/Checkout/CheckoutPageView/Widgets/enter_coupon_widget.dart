@@ -1,9 +1,18 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class EnterCouponWidget extends StatelessWidget {
+class EnterCouponWidget extends StatefulWidget {
   const EnterCouponWidget({super.key});
+
+  @override
+  State<EnterCouponWidget> createState() => _EnterCouponWidgetState();
+}
+
+class _EnterCouponWidgetState extends State<EnterCouponWidget> {
+  final TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +24,7 @@ class EnterCouponWidget extends StatelessWidget {
         decoration: BoxDecoration(color: Colors.grey[300]),
 
         child: TextField(
+          controller: textController,
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             prefixIcon: SizedBox(
@@ -32,7 +42,16 @@ class EnterCouponWidget extends StatelessWidget {
                 width: 35,
                 decoration: BoxDecoration(color: appbarSec),
                 child: RawMaterialButton(
-                  onPressed: () {},
+                  onPressed:
+                      () => {
+                        if (textController.text == "12345")
+                          {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Discount applied 10%")),
+                            ),
+                            context.read<CartCubit>().applyDiscount(),
+                          },
+                      },
                   child: Image.asset(
                     "assets/arrowright2.png",
                     color: Colors.white,

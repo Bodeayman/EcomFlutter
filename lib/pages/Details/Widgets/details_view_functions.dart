@@ -11,19 +11,60 @@ void showColors(BuildContext context) {
       return Container(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            const SizedBox(height: 10),
+            Stack(
               children: [
-                Text(
-                  "Color",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                Center(
+                  child: Text(
+                    "Colors",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                  ),
                 ),
-                SizedBox(
-                  height: kIconSize,
-                  width: kIconSize,
-                  child: IconButton(
-                    onPressed: context.pop,
-                    icon: Icon(Icons.close),
+                Positioned(
+                  right: 50,
+                  child: SizedBox(
+                    height: kIconSize,
+                    width: kIconSize,
+                    child: IconButton(
+                      onPressed: context.pop,
+                      icon: Icon(Icons.close),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+void showSizes(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (context) {
+      return Container(
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            Stack(
+              children: [
+                Center(
+                  child: Text(
+                    "Sizes",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                  ),
+                ),
+                Positioned(
+                  right: 50,
+                  child: SizedBox(
+                    height: kIconSize,
+                    width: kIconSize,
+                    child: IconButton(
+                      onPressed: context.pop,
+                      icon: Icon(Icons.close),
+                    ),
                   ),
                 ),
               ],

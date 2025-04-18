@@ -1,5 +1,6 @@
 import 'package:ecomflutter/pages/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -63,6 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               onPressed: () {
+                setOnBoarding(false);
                 (context).pushReplacement('/initialE');
               },
             ),

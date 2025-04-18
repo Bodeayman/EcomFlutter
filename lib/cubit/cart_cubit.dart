@@ -39,6 +39,10 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
+  void applyDiscount() {
+    emit(state.copyWith(totalPrice: state.totalPrice - state.totalPrice / 10));
+  }
+
   /// Checks if an item is in the cart
   bool isInCart(Item product) {
     return state.selectedItems.containsKey(product);

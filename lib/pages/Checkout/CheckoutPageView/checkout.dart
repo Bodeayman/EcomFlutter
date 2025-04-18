@@ -31,40 +31,40 @@ class _CheckoutState extends State<Checkout> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            flex: 1,
-                            child: SizedBox(
-                              height: 40,
-                              width: 40,
-                              child: InkWell(
-                                onTap: () => {context.pop()},
-                                child: Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    color: kTextForm,
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
+                          SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: InkWell(
+                              onTap: () => {context.pop()},
+                              child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  color: kTextForm,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
 
-                                  child: Image.asset("assets/arrowleft2.png"),
+                                child: Image.asset("assets/arrowleft2.png"),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                "Cart",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
-                          Expanded(
-                            flex: 10,
-                            child: Text(
-                              "Cart",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          SizedBox(width: 40, height: 40),
                         ],
                       ),
                     ),

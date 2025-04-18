@@ -101,7 +101,7 @@ class _DetailsState extends State<Details> {
                     Text("S", style: TextStyle(fontWeight: FontWeight.bold)),
                     IconButton(
                       icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () {},
+                      onPressed: () => showSizes(context),
                     ),
                   ],
                 ),
