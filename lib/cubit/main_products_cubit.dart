@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ecomflutter/constants/endpoints.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:meta/meta.dart';
 
@@ -10,9 +11,7 @@ class MainProductsCubit extends Cubit<MainProductsState> {
   }
   void loadItems() async {
     emit(MainProductsLoading());
-    List<Item> items = await addItemsToList(
-      "https://fakestoreapi.com/products",
-    );
+    List<Item> items = await addItemsToList("${baseUrl}products");
     if (items.isEmpty) {
       emit(MainProductsFailure("A problem happened, Check your connection"));
     } else {

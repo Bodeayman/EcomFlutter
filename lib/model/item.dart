@@ -9,6 +9,7 @@ class Item {
   double price;
   String location;
   String name;
+  bool refund;
 
   Item({
     required this.id,
@@ -17,6 +18,7 @@ class Item {
     required this.price,
     required this.location,
     required this.name,
+    required this.refund,
   });
 }
 
@@ -33,13 +35,24 @@ Future<List<Item>> addItemsToList(String url) async {
         for (var itemData in responseBody) {
           Item newItem = Item(
             id: itemData["id"] ?? 0,
-            url: itemData['image'] ?? '',
-            description: itemData['description'] ?? '',
+            url:
+                itemData["image_url"] ??
+                'https://www.dummyimg.in/placeholder?width=600&height=400',
+            description: itemData['descr'] ?? '',
             price: itemData['price']?.toDouble() ?? 0.0,
             location: "Ali Baba",
-            name: itemData['title'] ?? '',
+            name: itemData['name'] ?? '',
+            refund: itemData["refund"] ?? true,
           );
-
+          //  {
+          //       "id": 2,
+          //       "name": "Iphone",
+          //       "price": 1000,
+          //       "descr": "You will feel the luxury when you hold it",
+          //       "image_url": "",
+          //       "refund": false,
+          //       "quantity": 100
+          //     }
           itemList.add(newItem);
         }
       }

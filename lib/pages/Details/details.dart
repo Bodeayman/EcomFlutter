@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/cubit/cart_cubit.dart';
+import 'package:ecomflutter/model/rating.dart';
 import 'package:ecomflutter/pages/Details/Widgets/details_view_functions.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:ecomflutter/provider/cart.dart';
 import 'package:ecomflutter/constants/colors.dart';
@@ -20,6 +24,25 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  Future<Rating> fetchRating() async {
+    final response = await http.get(
+      Uri.parse('http://localhost:5000/api/rating/${widget.item.id}'),
+    );
+    List<dynamic> data = jsonDecode(response.body);
+    debugPrint(data.toString());
+    if (response.statusCode == 200) {
+      return Rating(
+        data[0]["id"],
+        data[0]["rating"],
+        data[0]["comment"],
+        data[0]["userId"],
+        data[0]["productId"],
+      );
+    } else {
+      throw Exception('Failed to load users');
+    }
+  }
+
   int quantity = 0;
   @override
   Widget build(BuildContext context) {
@@ -197,13 +220,37 @@ class _DetailsState extends State<Details> {
                 color: Color(0xff272727),
               ),
             ),
+            FutureBuilder(
+              future: fetchRating(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (snapshot.hasData) {
+                  final rating = snapshot.data!;
+                  if (snapshot.data == null) {
+                    return Text("No rating found");
+                  }
+                  return Column(
+                    children: [
+                      Text("The userId is ${rating.userId}"),
+                      Text(rating.comment),
+                    ],
+                  );
+                }
+                return Center(child: Text('No data found.'));
+              },
+            ),
             const Divider(),
             const SizedBox(height: 10),
             Text("Shipping", style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 5),
 
             Text(
-              "This product is available to replace or to return, and you can get the full refund",
+              (widget.item.refund)
+                  ? "This product is available to replace or to return, and you can get the full refund"
+                  : "This product is not available to replace or refund.",
               style: TextStyle(color: Color(0xff272727), fontSize: 12),
             ),
             const SizedBox(height: 20),
