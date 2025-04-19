@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/model/rating.dart';
+import 'package:ecomflutter/model/repoRating/getallrating.dart';
 import 'package:ecomflutter/pages/Details/Widgets/details_view_functions.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
@@ -24,25 +25,6 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
-  Future<Rating> fetchRating() async {
-    final response = await http.get(
-      Uri.parse('http://localhost:5000/api/rating/${widget.item.id}'),
-    );
-    List<dynamic> data = jsonDecode(response.body);
-    debugPrint(data.toString());
-    if (response.statusCode == 200) {
-      return Rating(
-        data[0]["id"],
-        data[0]["rating"],
-        data[0]["comment"],
-        data[0]["userId"],
-        data[0]["productId"],
-      );
-    } else {
-      throw Exception('Failed to load users');
-    }
-  }
-
   int quantity = 0;
   @override
   Widget build(BuildContext context) {
@@ -220,8 +202,11 @@ class _DetailsState extends State<Details> {
                 color: Color(0xff272727),
               ),
             ),
+            Text("Rating", style: TextStyle(fontWeight: FontWeight.bold)),
+            const SizedBox(height: 10),
+
             FutureBuilder(
-              future: fetchRating(),
+              future: fetchRating(widget.item),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: CircularProgressIndicator());
@@ -229,14 +214,30 @@ class _DetailsState extends State<Details> {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (snapshot.hasData) {
                   final rating = snapshot.data!;
-                  if (snapshot.data == null) {
+                  if (rating.isEmpty) {
                     return Text("No rating found");
                   }
-                  return Column(
-                    children: [
-                      Text("The userId is ${rating.userId}"),
-                      Text(rating.comment),
-                    ],
+                  return SizedBox(
+                    width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: rating.length,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              rating[index].userName,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(rating[index].comment),
+                            const SizedBox(height: 10),
+                          ],
+                        );
+                      },
+                    ),
                   );
                 }
                 return Center(child: Text('No data found.'));

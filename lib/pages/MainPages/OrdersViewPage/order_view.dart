@@ -52,7 +52,7 @@ class OrderView extends StatelessWidget {
                 SizedBox(width: 40, height: 40),
               ],
             ),
-            OrderStatus(),
+            OrderStatus(order: order),
             const SizedBox(height: 50),
             SizedBox(
               width: double.infinity,
@@ -73,7 +73,6 @@ class OrderView extends StatelessWidget {
               height: 72,
               child: Expanded(
                 child: OptionListTile(
-                  title: "${order.items.length} items",
                   leading: Icon(Icons.receipt),
                   trailing: TextButton(
                     child: Text("View all"),

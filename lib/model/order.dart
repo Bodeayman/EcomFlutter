@@ -1,7 +1,10 @@
+import 'package:ecomflutter/model/item.dart';
+
 class Order {
   int id;
-  double price;
-  List<String> items;
+  // double price;
+  // List<Item> items;
   String location;
-  Order(this.id, this.price, this.items, this.location);
+  String date;
+  Order(this.id, this.location, this.date);
 }
