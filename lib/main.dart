@@ -6,6 +6,7 @@ import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/logo_view.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
+import 'package:ecomflutter/utils/api_key.dart';
 import 'package:ecomflutter/utils/theme_data.dart';
 // import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
@@ -15,12 +16,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import "routers.dart";
 
 void main() async {
   // Stripe.publishableKey = publishableKey;
   await Hive.initFlutter();
-
+  await Supabase.initialize(url: serverUrl, anonKey: supabaseAnon);
   await Hive.openBox('myCart');
   runApp(BlocProvider(create: (_) => ThemeCubit(), child: const MyApp()));
 }

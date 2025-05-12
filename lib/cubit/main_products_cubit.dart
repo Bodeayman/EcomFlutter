@@ -10,9 +10,7 @@ class MainProductsCubit extends Cubit<MainProductsState> {
   }
   void loadItems() async {
     emit(MainProductsLoading());
-    List<Item> items = await addItemsToList(
-      "https://fakestoreapi.com/products",
-    );
+    List<Item> items = await addItemsToList();
     if (items.isEmpty) {
       emit(MainProductsFailure("A problem happened, Check your connection"));
     } else {

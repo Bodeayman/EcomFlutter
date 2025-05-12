@@ -1,6 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Item {
   int id;
@@ -20,33 +19,37 @@ class Item {
   });
 }
 
-Future<List<Item>> addItemsToList(String url) async {
+Future<List<Item>> addItemsToList() async {
   List<Item> itemList = [];
 
   try {
-    final response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      dynamic responseBody = jsonDecode(response.body);
+    // Fetch all records from the 'Products' table
+    final response = await Supabase.instance.client
+        .from('Products')
+        .select()
+        .then((response) {
+          for (var itemData in response) {
+            Item newItem = Item(
+              id: itemData["id"] ?? 0,
+              url: itemData['url'] ?? '',
+              description: itemData['description'] ?? '',
+              price: (itemData['price'] as num?)?.toDouble() ?? 0.0,
+              location: itemData['location'] ?? 'Ali Baba',
+              name: itemData['name'] ?? '',
+            );
+            itemList.add(newItem);
+          }
+          debugPrint("The data is fetched successfully");
+          return itemList;
+        })
+        .catchError((error) {
+          debugPrint("Error fetching data: $error");
+          return itemList;
+        });
 
-      // Since the response is a list of items, no need to access 'items' field
-      if (responseBody is List) {
-        for (var itemData in responseBody) {
-          Item newItem = Item(
-            id: itemData["id"] ?? 0,
-            url: itemData['image'] ?? '',
-            description: itemData['description'] ?? '',
-            price: itemData['price']?.toDouble() ?? 0.0,
-            location: "Ali Baba",
-            name: itemData['title'] ?? '',
-          );
-
-          itemList.add(newItem);
-        }
-      }
-    }
-    debugPrint("The data is fetched successfully");
+    return response;
   } catch (e) {
-    debugPrint(e.toString());
+    debugPrint("Exception: $e");
+    return itemList;
   }
-  return itemList;
 }

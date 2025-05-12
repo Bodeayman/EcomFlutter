@@ -39,6 +39,7 @@ dependencies:
   font_awesome_flutter : any
   go_router : any
   shared_preferences : any
+  supabase_flutter: ^2.9.0
 
 dev_dependencies:
   flutter_test:
