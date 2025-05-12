@@ -1,10 +1,12 @@
 import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/cubit/main_products_cubit.dart';
+import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/model/item.dart';
 import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
 import 'package:ecomflutter/pages/OnBoarding/logo_view.dart';
 import 'package:ecomflutter/pages/Register/register.dart';
 import 'package:ecomflutter/provider/cart.dart';
+import 'package:ecomflutter/utils/theme_data.dart';
 // import 'package:ecomflutter/utils/api_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +22,7 @@ void main() async {
   await Hive.initFlutter();
 
   await Hive.openBox('myCart');
-  runApp(const MyApp());
+  runApp(BlocProvider(create: (_) => ThemeCubit(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,20 +30,27 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<CartCubit>(create: (context) => CartCubit()),
-        BlocProvider<MainProductsCubit>(
-          create: (context) => MainProductsCubit(),
-        ),
-      ],
-      child: SafeArea(
-        child: MaterialApp.router(
-          routerConfig: router,
-          theme: ThemeData(fontFamily: "Circularstd"),
-          debugShowCheckedModeBanner: false,
-        ),
-      ),
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, themeMode) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<CartCubit>(create: (context) => CartCubit()),
+            BlocProvider<MainProductsCubit>(
+              create: (context) => MainProductsCubit(),
+            ),
+          ],
+
+          child: SafeArea(
+            child: MaterialApp.router(
+              themeMode: themeMode,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              routerConfig: router,
+              debugShowCheckedModeBanner: false,
+            ),
+          ),
+        );
+      },
     );
   }
 }
