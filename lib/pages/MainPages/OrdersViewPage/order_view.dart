@@ -69,15 +69,17 @@ class OrderView extends StatelessWidget {
             const SizedBox(height: 10),
 
             SizedBox(
-              width: 342,
+              width: double.infinity,
               height: 72,
               child: Expanded(
-                child: OptionListTile(
-                  title: "${order.items.length} items",
-                  leading: Icon(Icons.receipt),
-                  trailing: TextButton(
-                    child: Text("View all"),
-                    onPressed: () {},
+                child: Center(
+                  child: OptionListTile(
+                    title: "${order.items.length} items",
+                    leading: Icon(Icons.receipt),
+                    trailing: TextButton(
+                      child: Text("View all"),
+                      onPressed: () {},
+                    ),
                   ),
                 ),
               ),
@@ -98,9 +100,11 @@ class OrderView extends StatelessWidget {
             const SizedBox(height: 10),
 
             SizedBox(
-              width: 342,
+              width: double.infinity,
               height: 72,
-              child: Expanded(child: OptionListTile(title: order.location)),
+              child: Expanded(
+                child: Center(child: OptionListTile(title: order.location)),
+              ),
             ),
           ],
         ),

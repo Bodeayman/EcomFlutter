@@ -9,6 +9,7 @@ class CategoriesWidget extends StatelessWidget {
     ["assets/Ellipse 3.png", "Shoes"],
     ["assets/Ellipse 4.png", "Bags"],
     ["assets/Ellipse 5.png", "Accessories"],
+    ["assets/Ellipse 5.png", "Unknown"],
   ];
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,10 @@ class CategoriesWidget extends StatelessWidget {
                 SizedBox(
                   height: kCatImageSize,
                   width: kCatImageSize,
-                  child: Image.asset(categories[i][0]),
+                  child:
+                      (categories[i][1] != "Unknown")
+                          ? Image.asset(categories[i][0])
+                          : Icon(Icons.device_unknown),
                 ),
                 Text(
                   categories[i][1],

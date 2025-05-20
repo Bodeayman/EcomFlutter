@@ -8,6 +8,7 @@ class Item {
   double price;
   String location;
   String name;
+  String cat;
 
   Item({
     required this.id,
@@ -16,6 +17,7 @@ class Item {
     required this.price,
     required this.location,
     required this.name,
+    required this.cat,
   });
 }
 
@@ -36,6 +38,7 @@ Future<List<Item>> addItemsToList() async {
               price: (itemData['price'] as num?)?.toDouble() ?? 0.0,
               location: itemData['location'] ?? 'Ali Baba',
               name: itemData['name'] ?? '',
+              cat: itemData['cat'] ?? '',
             );
             itemList.add(newItem);
           }
