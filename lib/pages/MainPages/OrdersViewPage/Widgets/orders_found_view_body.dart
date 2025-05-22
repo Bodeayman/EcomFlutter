@@ -20,27 +20,25 @@ class OrdersFoundViewBody extends StatelessWidget {
         Text("Orders", style: TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 40),
         SizedBox(height: 30, child: AllTabsWidget()),
+        const SizedBox(height: 50),
         Expanded(
           child: Center(
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: OptionListTile(
-                    leading: Icon(Icons.receipt),
-                    title: "Order #${orders[index].id}",
-                    subtitle: "${orders[index].items.length} Items",
-                    trailing: IconButton(
-                      icon: Image.asset("assets/arrowright2.png"),
-                      onPressed:
-                          () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder:
-                                  (context) => OrderView(order: orders[index]),
-                            ),
+                return OptionListTile(
+                  leading: Icon(Icons.receipt),
+                  title: "Order #${orders[index].id}",
+                  subtitle: "${orders[index].items.length} Items",
+                  trailing: IconButton(
+                    icon: Image.asset("assets/arrowright2.png"),
+                    onPressed:
+                        () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder:
+                                (context) => OrderView(order: orders[index]),
                           ),
-                    ),
+                        ),
                   ),
                 );
               },

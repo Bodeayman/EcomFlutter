@@ -3,6 +3,7 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/checkout_price.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/enter_coupon_widget.dart';
+import 'package:ecomflutter/pages/Checkout/CheckoutPageView/cart.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomflutter/provider/cart.dart';
@@ -190,10 +191,12 @@ class _CheckoutState extends State<Checkout> {
                         buttonColor: appbarSec,
                         hintText: "Checkout",
                         textColor: Colors.white,
-                        callbackFunction: () {
-                          context.read<CartCubit>().clearCart();
-                          context.pushReplacement("/purSuccess");
-                        },
+                        callbackFunction:
+                            () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => CartPage(),
+                              ),
+                            ),
                       ),
                     ),
                   ],
