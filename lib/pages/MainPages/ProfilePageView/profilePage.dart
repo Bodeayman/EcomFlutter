@@ -63,6 +63,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   final isDark = themeMode == ThemeMode.dark;
 
                   return Switch(
+                    thumbIcon: WidgetStateProperty.resolveWith((states) {
+                      (themeMode == ThemeMode.dark)
+                          ? Icons.nightlife
+                          : Icons.sunny;
+                      return null;
+                    }),
                     value: isDark,
                     onChanged: (value) {
                       context.read<ThemeCubit>().toggleTheme(value);

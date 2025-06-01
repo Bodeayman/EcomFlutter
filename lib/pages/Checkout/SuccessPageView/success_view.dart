@@ -54,7 +54,7 @@ class SuccessView extends StatelessWidget {
                       hintText: "See Orders Details",
                       textColor: Colors.white,
                       callbackFunction: () {
-                        context.pushReplacement('/');
+                        context.pushReplacement('/orders');
                       },
                     ),
                   ),

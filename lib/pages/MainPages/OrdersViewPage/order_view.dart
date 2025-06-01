@@ -1,5 +1,5 @@
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/model/order.dart';
+import 'package:ecomflutter/model/data/order.dart';
 import 'package:ecomflutter/pages/MainPages/OrdersViewPage/Widgets/order_status.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -19,21 +19,19 @@ class OrderView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  height: 40,
-                  width: 40,
-                  child: InkWell(
-                    onTap: () => {context.pop()},
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: kTextForm,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-
-                      child: Image.asset("assets/arrowleft2.png"),
+                RawMaterialButton(
+                  onPressed: () => {context.pop()},
+                  constraints: BoxConstraints.tightFor(width: 50, height: 50),
+                  shape: CircleBorder(),
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: kTextForm,
+                      borderRadius: BorderRadius.circular(100),
                     ),
+
+                    child: Image.asset("assets/arrowleft2.png"),
                   ),
                 ),
 

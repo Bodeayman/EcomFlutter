@@ -1,5 +1,5 @@
 import 'package:ecomflutter/cubit/cart_cubit.dart';
-import 'package:ecomflutter/provider/cart.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -76,6 +76,7 @@ class ProductsPage extends StatelessWidget {
               ),
               trailing: Text("See All"),
             ),
+            NewItemsWidget(),
           ],
         ),
       ),

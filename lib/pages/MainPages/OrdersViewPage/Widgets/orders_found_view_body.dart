@@ -1,4 +1,4 @@
-import 'package:ecomflutter/model/order.dart';
+import 'package:ecomflutter/model/data/order.dart';
 import 'package:ecomflutter/pages/MainPages/OrdersViewPage/Widgets/allTabs.dart';
 import 'package:ecomflutter/pages/MainPages/OrdersViewPage/order_view.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';

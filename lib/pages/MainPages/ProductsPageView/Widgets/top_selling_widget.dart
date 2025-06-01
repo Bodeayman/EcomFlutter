@@ -1,5 +1,5 @@
 import 'package:ecomflutter/cubit/main_products_cubit.dart';
-import 'package:ecomflutter/model/item.dart';
+import 'package:ecomflutter/model/data/item.dart';
 import 'package:ecomflutter/pages/Details/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

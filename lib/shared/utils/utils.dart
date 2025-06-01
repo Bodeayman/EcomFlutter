@@ -24,13 +24,13 @@ void Logout(BuildContext context) {
 void GoToSettings(BuildContext context) {
   Navigator.of(
     context,
-  ).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+  ).pushReplacement(MaterialPageRoute(builder: (context) => Home(current: 0)));
 }
 
 void GoToProducts(BuildContext context) {
   Navigator.of(
     context,
-  ).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+  ).pushReplacement(MaterialPageRoute(builder: (context) => Home(current: 0)));
 }
 
 void GoToHelp(BuildContext context) {

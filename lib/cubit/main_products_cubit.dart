@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecomflutter/model/item.dart';
+import 'package:ecomflutter/model/data/item.dart';
+import 'package:ecomflutter/model/repo/home_repo_impl.dart';
 import 'package:meta/meta.dart';
 
 part 'main_products_state.dart';

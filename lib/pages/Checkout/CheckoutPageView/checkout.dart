@@ -2,24 +2,15 @@ import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/cubit/cart_cubit.dart';
 import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/checkout_price.dart';
-import 'package:ecomflutter/pages/Checkout/CheckoutPageView/Widgets/enter_coupon_widget.dart';
-import 'package:ecomflutter/pages/Checkout/CheckoutPageView/cart.dart';
 import 'package:ecomflutter/pages/OnBoarding/Widgets/login_material_button.dart';
+import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:ecomflutter/provider/cart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
-class Checkout extends StatefulWidget {
-  const Checkout({super.key});
-
-  @override
-  State<Checkout> createState() => _CheckoutState();
-}
-
-class _CheckoutState extends State<Checkout> {
-  double totalPriceCart = 0;
+class CheckoutPage extends StatelessWidget {
+  const CheckoutPage({super.key, required this.totalPrice});
+  final double totalPrice;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,27 +27,28 @@ class _CheckoutState extends State<Checkout> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            height: 40,
-                            width: 40,
-                            child: InkWell(
-                              onTap: () => {context.pop()},
-                              child: Container(
-                                height: 40,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  color: kTextForm,
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-
-                                child: Image.asset("assets/arrowleft2.png"),
+                          RawMaterialButton(
+                            onPressed: () => {context.pop()},
+                            constraints: BoxConstraints.tightFor(
+                              width: 50,
+                              height: 50,
+                            ),
+                            shape: CircleBorder(),
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                color: kTextForm,
+                                borderRadius: BorderRadius.circular(100),
                               ),
+
+                              child: Image.asset("assets/arrowleft2.png"),
                             ),
                           ),
                           Expanded(
                             child: Center(
                               child: Text(
-                                "Cart",
+                                "Checkout",
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black,
@@ -69,134 +61,30 @@ class _CheckoutState extends State<Checkout> {
                         ],
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: context.read<CartCubit>().clearCart,
-                            child: Text(
-                              "Remove all",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                    OptionListTile(
+                      title: "Add payment method",
+                      subtitle: "Payment methods",
                     ),
-                    Column(
-                      children:
-                          state.selectedItems.entries.map((item) {
-                            final product = item.key;
+                    OptionListTile(
+                      title: "Add Shipping method",
+                      subtitle: "Shipping Methods",
+                    ),
 
-                            return Container(
-                              padding: const EdgeInsets.all(10),
-                              child: ListTile(
-                                style: ListTileStyle.drawer,
-                                tileColor: Colors.grey[200],
-                                title: Text(
-                                  product.name,
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                subtitle: Text("Size-M Color-L"),
-                                leading: Image.network(
-                                  product.url,
-                                  fit: BoxFit.cover,
-                                ),
-                                trailing: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "\$${product.price * item.value}",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    /////////////////
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            kExtremeRaduis,
-                                          ),
-                                          child: Container(
-                                            height: 24,
-                                            width: 24,
-                                            decoration: BoxDecoration(
-                                              color: appbarSec,
-                                            ),
-                                            child: RawMaterialButton(
-                                              onPressed: () {
-                                                context
-                                                    .read<CartCubit>()
-                                                    .addItem(product);
-                                              },
-                                              child: Image.asset(
-                                                "assets/add.png",
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(width: 8),
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                            kExtremeRaduis,
-                                          ),
-                                          child: Container(
-                                            height: 24,
-                                            width: 24,
-                                            decoration: BoxDecoration(
-                                              color: appbarSec,
-                                            ),
-                                            child: RawMaterialButton(
-                                              onPressed: () {
-                                                context
-                                                    .read<CartCubit>()
-                                                    .removeItem(product);
-                                              },
-                                              child: Image.asset(
-                                                "assets/minus.png",
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                contentPadding: const EdgeInsets.all(20),
-                              ),
-                            );
-                          }).toList(),
-                    ),
                     const SizedBox(height: 100),
 
                     CheckoutPriceList(),
-                    EnterCouponWidget(),
 
                     const SizedBox(height: 25),
                     SizedBox(
                       height: 52,
                       child: CustomeElevatedButton(
                         buttonColor: appbarSec,
-                        hintText: "Checkout",
+                        hintText: "Place Order",
                         textColor: Colors.white,
-                        callbackFunction:
-                            () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => CartPage(),
-                              ),
-                            ),
+                        callbackFunction: () {
+                          context.read<CartCubit>().clearCart();
+                          context.pushReplacement("/purSuccess");
+                        },
                       ),
                     ),
                   ],
@@ -246,15 +134,9 @@ class _CheckoutState extends State<Checkout> {
   }
 }
 
-
 /*
-   Consumer<Cart>(
-              builder: (context, value, child) {
-                if (value.selectedElements.isNotEmpty) {
-
-                } else {
-                 
-                }
-              },
-            ),
+ callbackFunction: () {
+                          context.read<CartCubit>().clearCart();
+                          context.pushReplacement("/purSuccess");
+                        },
  */

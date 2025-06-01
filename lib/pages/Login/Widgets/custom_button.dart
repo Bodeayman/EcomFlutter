@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const Home()),
+          MaterialPageRoute(builder: (context) => const Home(current: 0)),
         );
       },
       style: ButtonStyle(

@@ -4,11 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ColorListTile extends StatelessWidget {
-  const ColorListTile({super.key});
-
+  ColorListTile({
+    super.key,
+    required this.colorAddress,
+    required this.colorName,
+  });
+  String colorName;
+  Color colorAddress;
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(kExtremeRaduis),
+
       onTap: () => context.pop(),
 
       child: SizedBox(
@@ -22,7 +29,7 @@ class ColorListTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Orange",
+                  colorName,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -35,7 +42,7 @@ class ColorListTile extends StatelessWidget {
                       child: SizedBox(
                         height: 20,
                         width: 20,
-                        child: Container(color: Colors.orange),
+                        child: Container(color: colorAddress),
                       ),
                     ),
                     const SizedBox(width: 6),

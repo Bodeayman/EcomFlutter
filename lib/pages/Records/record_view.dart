@@ -14,7 +14,7 @@ class RecordView extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed:
               () => Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => Home()),
+                MaterialPageRoute(builder: (context) => Home(current: 0)),
               ),
         ),
       ),

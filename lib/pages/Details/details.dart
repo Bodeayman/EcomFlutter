@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:ecomflutter/provider/cart.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/model/item.dart';
+import 'package:ecomflutter/model/data/item.dart';
 
 class Details extends StatefulWidget {
   final Item item;
@@ -29,8 +28,10 @@ class _DetailsState extends State<Details> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            InkWell(
-              onTap: () => {context.pop()},
+            RawMaterialButton(
+              onPressed: () => {context.pop()},
+              constraints: BoxConstraints.tightFor(width: 50, height: 50),
+              shape: CircleBorder(),
               child: Container(
                 height: 40,
                 width: 40,
@@ -101,7 +102,7 @@ class _DetailsState extends State<Details> {
                     Text("S", style: TextStyle(fontWeight: FontWeight.bold)),
                     IconButton(
                       icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () => showSizes(context),
+                      onPressed: () => showSizes(context, widget.item.sizes),
                     ),
                   ],
                 ),
@@ -125,7 +126,7 @@ class _DetailsState extends State<Details> {
                     ),
                     IconButton(
                       icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () => showColors(context),
+                      onPressed: () => showColors(context, widget.item.colors),
                     ),
                   ],
                 ),

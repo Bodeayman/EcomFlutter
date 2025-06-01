@@ -71,8 +71,7 @@ class NewItemsWidget extends StatelessWidget {
                                         top: Radius.circular(12),
                                       ),
                                       child: Hero(
-                                        tag:
-                                            "product_${item.id + state.data.length}",
+                                        tag: "product_${item.id + 99999}",
                                         child: Image.network(
                                           item.url,
                                           fit: BoxFit.contain,

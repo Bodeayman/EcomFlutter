@@ -18,7 +18,7 @@ class CustomValidButton extends StatelessWidget {
         if (formKey.currentState!.validate()) {
           FocusScope.of(context).unfocus();
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const Home()),
+            MaterialPageRoute(builder: (context) => const Home(current: 0)),
           );
         }
       },
