@@ -18,8 +18,8 @@ class LoginTextField extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(kBorderSize),
         child: Container(
-          height: 56,
-          width: 342,
+          height: 70,
+          width: double.infinity,
           decoration: BoxDecoration(color: Color(0xffF4F4F4)),
           child: TextFormField(
             validator: validatorFunction,

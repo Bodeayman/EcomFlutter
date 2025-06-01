@@ -5,6 +5,7 @@ import 'package:ecomflutter/Features/OnBoarding/Widgets/login_text_field.dart';
 import 'package:ecomflutter/utils/shared_func.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CreateNewAccountView extends StatefulWidget {
   const CreateNewAccountView({super.key});
@@ -15,6 +16,10 @@ class CreateNewAccountView extends StatefulWidget {
 
 class _CreateNewAccountViewState extends State<CreateNewAccountView> {
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+
   final GlobalKey<FormState> _formKeyAccount = GlobalKey<FormState>();
 
   @override
@@ -56,12 +61,12 @@ class _CreateNewAccountViewState extends State<CreateNewAccountView> {
               ),
               const SizedBox(height: 35),
               LoginTextField(
-                controller: _emailController,
+                controller: _firstNameController,
                 hintText: "Firstname",
                 validatorFunction: normalValidatorFunction,
               ),
               LoginTextField(
-                controller: _emailController,
+                controller: _lastNameController,
                 hintText: "Lastname",
                 validatorFunction: normalValidatorFunction,
               ),
@@ -71,7 +76,7 @@ class _CreateNewAccountViewState extends State<CreateNewAccountView> {
                 validatorFunction: normalValidatorFunction,
               ),
               LoginTextField(
-                controller: _emailController,
+                controller: _passController,
                 hintText: "Password",
                 validatorFunction: normalValidatorFunction,
               ),
@@ -80,9 +85,27 @@ class _CreateNewAccountViewState extends State<CreateNewAccountView> {
                 prefixIcon: null,
                 hintText: "Continue",
                 textColor: Colors.white,
-                callbackFunction: () {
+                callbackFunction: () async {
                   if (_formKeyAccount.currentState!.validate()) {
-                    (context).go('/');
+                    try {
+                      final supabase = Supabase.instance.client;
+                      debugPrint("FirstName: ${_firstNameController.text}");
+                      debugPrint("LastName: ${_lastNameController.text}");
+                      debugPrint("Email: ${_emailController.text}");
+                      debugPrint("Password: ${_passController.text}");
+
+                      await supabase.from('Users').insert({
+                        'name':
+                            "${_firstNameController.text} ${_lastNameController.text}",
+                        'email': _emailController.text,
+                        'password': _passController.text,
+                      });
+                      (context).go('/home');
+                    } on Exception catch (e) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(e.toString())));
+                    }
                   }
                 },
               ),

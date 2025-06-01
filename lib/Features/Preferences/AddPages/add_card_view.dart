@@ -4,9 +4,9 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class AddressView extends StatelessWidget {
-  const AddressView({super.key, required this.pageName});
-  final String pageName;
+class AddCardView extends StatelessWidget {
+  const AddCardView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +34,7 @@ class AddressView extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      pageName,
+                      "Add Card",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -43,25 +43,7 @@ class AddressView extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(kExtremeRaduis),
-                    child: Container(
-                      color: kTextForm,
-                      child: IconButton(
-                        icon: Icon(Icons.add),
-                        onPressed:
-                            () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => AddAddressView(),
-                              ),
-                            ),
-                      ),
-                    ),
-                  ),
-                ),
+                SizedBox(width: 40, height: 40),
               ],
             ),
           ),

@@ -1,4 +1,6 @@
+import 'package:ecomflutter/Features/Preferences/AddPages/add_card_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,7 +43,25 @@ class PaymentSettingsView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 40, height: 40),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(kExtremeRaduis),
+                    child: Container(
+                      color: kTextForm,
+                      child: IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed:
+                            () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => AddCardView(),
+                              ),
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

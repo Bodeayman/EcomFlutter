@@ -38,13 +38,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       );
     },
-    (context) {
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => PaymentSettingsView(pageName: "Payment"),
-        ),
-      );
-    },
+    (context) => Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => PaymentSettingsView(pageName: "Payment"),
+      ),
+    ),
     (context) {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => HelpView(pageName: "Help")),

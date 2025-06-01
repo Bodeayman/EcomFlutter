@@ -8,6 +8,7 @@ import 'package:ecomflutter/Features/OnBoarding/create_new_account_view.dart';
 import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class InitialSignView extends StatefulWidget {
   const InitialSignView({super.key});
@@ -29,7 +30,7 @@ class _InitialSignViewState extends State<InitialSignView> {
     bool onBoard = await onBoarding();
     if (onBoard) {
       if (mounted) {
-        context.pushReplacement('/');
+        context.pushReplacement('/home');
       }
     } else {
       setOnBoarding(true);
@@ -50,7 +51,7 @@ class _InitialSignViewState extends State<InitialSignView> {
               Form(
                 key: _formKey,
                 child: SizedBox(
-                  height: 56,
+                  height: 70,
                   child: LoginTextField(
                     controller: _emailEditingController,
                     hintText: "Email Address",
@@ -73,9 +74,9 @@ class _InitialSignViewState extends State<InitialSignView> {
                     prefixIcon: null,
                     hintText: "Continue",
                     textColor: Colors.white,
-                    callbackFunction: () {
+                    callbackFunction: () async {
                       if (_formKey.currentState!.validate()) {
-                        context.go("/");
+                        context.go("/home");
                       }
                     },
                   ),

@@ -21,7 +21,7 @@ class CustomeElevatedButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(100),
       child: SizedBox(
-        width: 344,
+        width: double.infinity,
         height: 49,
         child: MaterialButton(
           onPressed: callbackFunction,

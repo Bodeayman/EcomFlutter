@@ -11,7 +11,9 @@ import 'package:go_router/go_router.dart';
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(path: "/records", builder: (context, state) => RecordView()),
-    GoRoute(path: "/", builder: (context, state) => Home(current: 0)),
+    GoRoute(path: "/", builder: (context, state) => InitialSignView()),
+    GoRoute(path: "/home", builder: (context, state) => Home(current: 0)),
+
     GoRoute(path: "/orders", builder: (context, state) => Home(current: 2)),
 
     GoRoute(path: "/initial", builder: (context, state) => InitialSignView()),
