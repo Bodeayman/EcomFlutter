@@ -97,92 +97,97 @@ class _CartPageState extends State<CartPage> {
                               state.selectedItems.entries.map((item) {
                                 final product = item.key;
 
-                                return Container(
-                                  margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                  color: Colors.grey[200],
-                                  padding: const EdgeInsets.all(10),
-                                  child: ListTile(
-                                    style: ListTileStyle.drawer,
-                                    title: Text(
-                                      product.name,
-                                      style: const TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                    kSettingsTile,
+                                  ),
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                    color: Colors.grey[200],
+                                    padding: const EdgeInsets.all(10),
+                                    child: ListTile(
+                                      style: ListTileStyle.drawer,
+                                      title: Text(
+                                        product.name,
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    subtitle: Text("Size-M Color-L"),
-                                    leading: Image.network(
-                                      product.url,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    trailing: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "\$${product.price * item.value}",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
+                                      subtitle: Text("Size-M Color-L"),
+                                      leading: Image.network(
+                                        product.url,
+                                        fit: BoxFit.cover,
+                                      ),
+                                      trailing: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "\$${product.price * item.value}",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        /////////////////
-                                        Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                    kExtremeRaduis,
+                                          /////////////////
+                                          Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                      kExtremeRaduis,
+                                                    ),
+                                                child: Container(
+                                                  height: 24,
+                                                  width: 24,
+                                                  decoration: BoxDecoration(
+                                                    color: appbarSec,
                                                   ),
-                                              child: Container(
-                                                height: 24,
-                                                width: 24,
-                                                decoration: BoxDecoration(
-                                                  color: appbarSec,
-                                                ),
-                                                child: RawMaterialButton(
-                                                  onPressed: () {
-                                                    context
-                                                        .read<CartCubit>()
-                                                        .addItem(product);
-                                                  },
-                                                  child: Image.asset(
-                                                    "assets/add.png",
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(width: 8),
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                    kExtremeRaduis,
-                                                  ),
-                                              child: Container(
-                                                height: 24,
-                                                width: 24,
-                                                decoration: BoxDecoration(
-                                                  color: appbarSec,
-                                                ),
-                                                child: RawMaterialButton(
-                                                  onPressed: () {
-                                                    context
-                                                        .read<CartCubit>()
-                                                        .removeItem(product);
-                                                  },
-                                                  child: Image.asset(
-                                                    "assets/minus.png",
+                                                  child: RawMaterialButton(
+                                                    onPressed: () {
+                                                      context
+                                                          .read<CartCubit>()
+                                                          .addItem(product);
+                                                    },
+                                                    child: Image.asset(
+                                                      "assets/add.png",
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              const SizedBox(width: 8),
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                      kExtremeRaduis,
+                                                    ),
+                                                child: Container(
+                                                  height: 24,
+                                                  width: 24,
+                                                  decoration: BoxDecoration(
+                                                    color: appbarSec,
+                                                  ),
+                                                  child: RawMaterialButton(
+                                                    onPressed: () {
+                                                      context
+                                                          .read<CartCubit>()
+                                                          .removeItem(product);
+                                                    },
+                                                    child: Image.asset(
+                                                      "assets/minus.png",
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      contentPadding: const EdgeInsets.all(20),
                                     ),
-                                    contentPadding: const EdgeInsets.all(20),
                                   ),
                                 );
                               }).toList(),
@@ -197,6 +202,7 @@ class _CartPageState extends State<CartPage> {
                     const SizedBox(height: 25),
                     SizedBox(
                       height: 52,
+                      width: double.infinity,
                       child: CustomeElevatedButton(
                         buttonColor: appbarSec,
                         hintText: "Checkout",

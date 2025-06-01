@@ -20,39 +20,40 @@ class _EnterCouponWidgetState extends State<EnterCouponWidget> {
       borderRadius: BorderRadius.circular(kSettingsTile),
       child: Container(
         height: 56,
-        width: 342,
+        width: double.infinity,
         decoration: BoxDecoration(color: Colors.grey[300]),
 
         child: TextField(
           controller: textController,
           keyboardType: TextInputType.number,
+
           decoration: InputDecoration(
             prefixIcon: SizedBox(
               width: 24,
               height: 24,
               child: Image.asset("assets/discountshape.png"),
             ),
-            contentPadding: EdgeInsets.symmetric(vertical: 16),
+            contentPadding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
             border: InputBorder.none,
             hintText: "Enter the coupon",
-            suffixIcon: ClipRRect(
-              borderRadius: BorderRadius.circular(kExtremeRaduis),
+            suffixIcon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
               child: Container(
-                height: 35,
-                width: 35,
-                decoration: BoxDecoration(color: appbarSec),
-                child: RawMaterialButton(
-                  onPressed:
-                      () => {
-                        if (textController.text == "12345")
-                          {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Discount applied 10%")),
-                            ),
-                            context.read<CartCubit>().applyDiscount(),
-                          },
-                      },
-                  child: Image.asset(
+                width: 40,
+                decoration: BoxDecoration(
+                  color: appbarSec,
+                  borderRadius: BorderRadius.circular(kExtremeRaduis),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    if (textController.text == "12345") {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Discount applied 10%")),
+                      );
+                      context.read<CartCubit>().applyDiscount();
+                    }
+                  },
+                  icon: Image.asset(
                     "assets/arrowright2.png",
                     color: Colors.white,
                   ),
