@@ -11,7 +11,7 @@ class ProfileDetailsTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(color: kTextForm),
         height: 90,
-        width: 342,
+        width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

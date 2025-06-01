@@ -12,7 +12,7 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 342,
+      width: double.infinity,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +60,7 @@ class ProductsPage extends StatelessWidget {
               ),
               trailing: Text("See All", style: TextStyle(fontSize: 16)),
             ),
-            CategoriesWidget(),
+            Center(child: CategoriesWidget()),
             ListTile(
               title: Text(
                 "Top Selling",

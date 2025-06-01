@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({super.key});
+
   final List<List<String>> categories = const [
     ["assets/Ellipse 1.png", "Hoodies"],
     ["assets/Ellipse 2.png", "Shorts"],
@@ -11,35 +12,37 @@ class CategoriesWidget extends StatelessWidget {
     ["assets/Ellipse 5.png", "Accessories"],
     ["assets/Ellipse 5.png", "Unknown"],
   ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
-      width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-        itemBuilder: (context, i) {
-          return Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: kCatImageSize,
-                  width: kCatImageSize,
-                  child:
-                      (categories[i][1] != "Unknown")
-                          ? Image.asset(categories[i][0])
-                          : Icon(Icons.device_unknown),
-                ),
-                Text(
-                  categories[i][1],
-                  style: TextStyle(fontSize: kNormalFontSize),
-                ),
-              ],
-            ),
-          );
-        },
-        itemCount: categories.length,
-        scrollDirection: Axis.horizontal,
+      height: 100, // slightly increased for better spacing
+      child: Center(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: categories.length,
+          itemBuilder: (context, i) {
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: 50,
+                    child:
+                        (categories[i][1] != "Unknown")
+                            ? Image.asset(categories[i][0])
+                            : const Icon(Icons.device_unknown),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(categories[i][1], style: const TextStyle(fontSize: 12)),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

@@ -43,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ProfileDetailsTile(),
               SizedBox(
                 height: 400,
-                width: 342,
+                width: double.infinity,
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: settingsOptions.length,
