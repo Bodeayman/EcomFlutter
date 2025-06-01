@@ -1,10 +1,10 @@
-import 'package:ecomflutter/pages/Checkout/SuccessPageView/success_view.dart';
-import 'package:ecomflutter/pages/Home/home_view.dart';
-import 'package:ecomflutter/pages/Checkout/CheckoutPageView/cart.dart';
-import 'package:ecomflutter/pages/OnBoarding/create_new_account_view.dart';
-import 'package:ecomflutter/pages/OnBoarding/initial_sign_view.dart';
-import 'package:ecomflutter/pages/Records/record_view.dart';
-import 'package:ecomflutter/pages/Search/search_view.dart';
+import 'package:ecomflutter/Features/Checkout/SuccessPageView/success_view.dart';
+import 'package:ecomflutter/Features/Home/home_view.dart';
+import 'package:ecomflutter/Features/Checkout/CheckoutPageView/cart.dart';
+import 'package:ecomflutter/Features/OnBoarding/create_new_account_view.dart';
+import 'package:ecomflutter/Features/OnBoarding/initial_sign_view.dart';
+import 'package:ecomflutter/Features/Records/record_view.dart';
+import 'package:ecomflutter/Features/Search/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
