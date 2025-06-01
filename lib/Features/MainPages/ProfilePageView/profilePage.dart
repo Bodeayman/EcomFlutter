@@ -1,3 +1,9 @@
+import 'package:ecomflutter/Features/PaymentScreens/payment_view.dart';
+import 'package:ecomflutter/Features/Preferences/address_view.dart';
+import 'package:ecomflutter/Features/Preferences/help_view.dart';
+import 'package:ecomflutter/Features/Preferences/payment_view.dart';
+import 'package:ecomflutter/Features/Preferences/support_view.dart';
+import 'package:ecomflutter/Features/Preferences/wishlist_view.dart';
 import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/Features/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
@@ -21,6 +27,38 @@ class _ProfilePageState extends State<ProfilePage> {
     "Help",
     "Support",
   ];
+  List<void Function(BuildContext)> functionsCallBack = [
+    (context) => Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => AddressView(pageName: "Address")),
+    ),
+    (context) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => WishlistView(pageName: "Wishlist"),
+        ),
+      );
+    },
+    (context) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => PaymentSettingsView(pageName: "Payment"),
+        ),
+      );
+    },
+    (context) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => HelpView(pageName: "Help")),
+      );
+    },
+    (context) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => SupportView(pageName: "Support"),
+        ),
+      );
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       title: settingsOptions[index],
                       trailing: IconButton(
                         icon: Image.asset("assets/arrowright2.png"),
-                        onPressed: () {},
+                        onPressed: () => functionsCallBack[index](context),
                       ),
                     );
                   },

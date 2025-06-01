@@ -215,7 +215,9 @@ class _DetailsState extends State<Details> {
                   child: CustomeElevatedButton(
                     buttonColor: appbarSec,
                     callbackFunction: () {
-                      debugPrint("Added to the cart with quantity $quantity");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Added to the Cart!")),
+                      );
                       for (int i = 0; i < quantity; i++) {
                         context.read<CartCubit>().addItem(widget.item);
                       }
