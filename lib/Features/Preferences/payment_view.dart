@@ -1,6 +1,7 @@
 import 'package:ecomflutter/Features/Preferences/AddPages/add_card_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -59,6 +60,67 @@ class PaymentSettingsView extends StatelessWidget {
                               ),
                             ),
                       ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Cards",
+
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+                SizedBox(
+                  height: 72,
+                  width: double.infinity,
+                  child: OptionListTile(
+                    title: "****4187",
+
+                    trailing: IconButton(
+                      icon: Image.asset("assets/arrowright2.png"),
+                      onPressed: () => {},
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 72,
+                  width: double.infinity,
+                  child: OptionListTile(
+                    title: "****4187",
+
+                    trailing: IconButton(
+                      icon: Image.asset("assets/arrowright2.png"),
+                      onPressed: () => {},
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Paypal",
+
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                  ),
+                ),
+                SizedBox(
+                  height: 72,
+                  width: double.infinity,
+                  child: OptionListTile(
+                    title: "abdulluh@gmail.com",
+
+                    trailing: IconButton(
+                      icon: Image.asset("assets/arrowright2.png"),
+                      onPressed: () => {},
                     ),
                   ),
                 ),

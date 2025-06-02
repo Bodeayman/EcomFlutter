@@ -213,6 +213,11 @@ class _DetailsState extends State<Details> {
               "213 Reviews",
               style: TextStyle(color: kTextInsideForm, fontSize: 12.0),
             ),
+            const SizedBox(height: 5),
+            Text(
+              "This thing is great is doing the thing that required too, and it provides all the options that you need to make",
+              style: TextStyle(color: kTextInsideForm, fontSize: 12.0),
+            ),
             const SizedBox(height: 10),
 
             BlocBuilder<CartCubit, CartState>(

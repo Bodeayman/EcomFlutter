@@ -1,6 +1,7 @@
 import 'package:ecomflutter/Features/Preferences/AddPages/add_address_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
+import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -59,6 +60,25 @@ class AddressView extends StatelessWidget {
                               ),
                             ),
                       ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 72,
+                  width: double.infinity,
+                  child: OptionListTile(
+                    title: "October Gardens,6th of October, Giza",
+
+                    trailing: TextButton(
+                      child: Text("Edit"),
+                      onPressed: () => {},
                     ),
                   ),
                 ),
