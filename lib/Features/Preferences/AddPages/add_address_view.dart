@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -42,8 +43,130 @@ class AddAddressView extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(width: 40, height: 40),
               ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(kSettingsTile),
+                          child: Container(
+                            height: 54,
+                            width: double.infinity,
+                            color: kTextForm,
+
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Street Address",
+                                hintStyle: TextStyle(color: kTextInsideForm),
+
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(kSettingsTile),
+                          child: Container(
+                            height: 54,
+                            color: kTextForm,
+
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "City",
+                                hintStyle: TextStyle(color: kTextInsideForm),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  kSettingsTile,
+                                ),
+                                child: Container(
+                                  height: 54,
+                                  color: kTextForm,
+
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "State",
+                                      hintStyle: TextStyle(
+                                        color: kTextInsideForm,
+                                      ),
+
+                                      contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 8.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  kSettingsTile,
+                                ),
+                                child: Container(
+                                  height: 54,
+                                  color: kTextForm,
+
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintStyle: TextStyle(
+                                        color: kTextInsideForm,
+                                      ),
+
+                                      hintText: "Zip Code",
+                                      contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 8.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+
+                  CustomeElevatedButton(
+                    callbackFunction: () => context.pop(),
+                    buttonColor: appbarSec,
+                    hintText: "Save",
+                    textColor: Colors.white,
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ],

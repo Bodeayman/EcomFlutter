@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/OnBoarding/Widgets/login_material_button.dart';
 import 'package:ecomflutter/Features/Preferences/AddPages/add_address_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
@@ -43,8 +44,131 @@ class AddCardView extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(width: 40, height: 40),
               ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(kSettingsTile),
+                          child: Container(
+                            height: 54,
+                            width: double.infinity,
+                            color: kTextForm,
+
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Card Number",
+                                hintStyle: TextStyle(color: kTextInsideForm),
+
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  kSettingsTile,
+                                ),
+                                child: Container(
+                                  height: 54,
+                                  color: kTextForm,
+
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "CCV",
+                                      hintStyle: TextStyle(
+                                        color: kTextInsideForm,
+                                      ),
+
+                                      contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 8.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                  kSettingsTile,
+                                ),
+                                child: Container(
+                                  height: 54,
+                                  color: kTextForm,
+
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintStyle: TextStyle(
+                                        color: kTextInsideForm,
+                                      ),
+
+                                      hintText: "Exp",
+                                      contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 8.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(kSettingsTile),
+                          child: Container(
+                            height: 54,
+                            color: kTextForm,
+
+                            child: TextField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Cardholder Name",
+                                hintStyle: TextStyle(color: kTextInsideForm),
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+
+                  CustomeElevatedButton(
+                    callbackFunction: () => context.pop(),
+                    buttonColor: appbarSec,
+                    hintText: "Save",
+                    textColor: Colors.white,
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ],

@@ -198,7 +198,6 @@ class _DetailsState extends State<Details> {
                 color: Color(0xff272727),
               ),
             ),
-            const Divider(),
             const SizedBox(height: 10),
             Text("Shipping", style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 5),
@@ -208,10 +207,12 @@ class _DetailsState extends State<Details> {
               style: TextStyle(color: Color(0xff272727), fontSize: 12),
             ),
             const SizedBox(height: 20),
-            const Divider(),
             Text("Reviews", style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 5),
-            const Text("The reviews isn't implemented yet"),
+            Text(
+              "213 Reviews",
+              style: TextStyle(color: kTextInsideForm, fontSize: 12.0),
+            ),
             const SizedBox(height: 10),
 
             BlocBuilder<CartCubit, CartState>(

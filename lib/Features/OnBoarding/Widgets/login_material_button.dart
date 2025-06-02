@@ -44,10 +44,7 @@ class CustomeElevatedButton extends StatelessWidget {
                     maxLines: 1,
 
                     hintText,
-                    style: TextStyle(
-                      color: textColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(color: textColor),
                   ),
                 ),
               ),
