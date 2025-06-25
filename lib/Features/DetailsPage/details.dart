@@ -1,5 +1,5 @@
 import 'package:ecomflutter/constants/sizes.dart';
-import 'package:ecomflutter/cubit/cart_cubit.dart';
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'package:ecomflutter/Features/DetailsPage/Widgets/details_view_functions.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/model/data/item.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class Details extends StatefulWidget {
   final Item item;
@@ -227,9 +229,20 @@ class _DetailsState extends State<Details> {
                   child: CustomeElevatedButton(
                     buttonColor: appbarSec,
                     callbackFunction: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Added to the Cart!")),
-                      );
+                      if (quantity == 0) {
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.info(
+                            message: "Please add items to the cart",
+                          ),
+                        );
+                      } else {
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.success(message: "Added to the cart"),
+                        );
+                      }
+
                       for (int i = 0; i < quantity; i++) {
                         context.read<CartCubit>().addItem(widget.item);
                       }

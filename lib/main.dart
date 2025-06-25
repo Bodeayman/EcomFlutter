@@ -1,5 +1,5 @@
-import 'package:ecomflutter/cubit/cart_cubit.dart';
-import 'package:ecomflutter/cubit/main_products_cubit.dart';
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/main_products_cubit.dart';
 import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/utils/api_key.dart';
 import 'package:ecomflutter/utils/theme_data.dart';

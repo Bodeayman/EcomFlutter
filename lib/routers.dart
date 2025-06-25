@@ -1,7 +1,7 @@
 import 'package:ecomflutter/Features/CategoriesPage/Presentation/Views/category_view.dart';
 import 'package:ecomflutter/Features/CheckoutPage/SuccessPageView/success_view.dart';
-import 'package:ecomflutter/Features/HomePage/home_view.dart';
-import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/cart.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/View/home_view.dart';
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/cart.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/create_new_account_view.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/initial_sign_view.dart';
 import 'package:ecomflutter/Features/RecordsPage/record_view.dart';

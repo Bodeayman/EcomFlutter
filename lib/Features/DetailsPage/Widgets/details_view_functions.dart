@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:ecomflutter/constants/sizes.dart';
-import 'package:ecomflutter/model/data/color.dart';
-import 'package:ecomflutter/model/data/size.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/color.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/size.dart';
 import 'package:ecomflutter/Features/DetailsPage/Widgets/color_list_tile.dart';
 import 'package:ecomflutter/Features/DetailsPage/Widgets/size_list_tile.dart';
 import 'package:flutter/material.dart';

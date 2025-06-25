@@ -1,3 +1,4 @@
+import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -22,11 +23,17 @@ class LoginTextField extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(color: Color(0xffF4F4F4)),
           child: TextFormField(
+            controller: controller,
             validator: validatorFunction,
-
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 20,
+              ),
+              hintStyle: TextStyle(color: kTextFieldHint),
               errorBorder: InputBorder.none,
               focusedBorder: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
               fillColor: Color(0xffF4F4F4),
               hintText: hintText,

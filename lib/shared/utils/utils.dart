@@ -1,4 +1,4 @@
-import 'package:ecomflutter/Features/HomePage/home_view.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/View/home_view.dart';
 import 'package:ecomflutter/Features/LoginPage/login.dart';
 import 'package:ecomflutter/Features/RecordsPage/record_view.dart';
 import 'package:flutter/material.dart';

@@ -29,115 +29,120 @@ class _CreateNewAccountViewState extends State<CreateNewAccountView> {
         key: _formKeyAccount,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    InkWell(
-                      onTap: () => context.pushReplacement("/initial"),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: kTextForm,
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-
-                        child: Image.asset("assets/arrowleft2.png"),
-                      ),
-                    ),
-                    Text(
-                      "Create Account",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: kTitleHeight,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 35),
-              LoginTextField(
-                controller: _firstNameController,
-                hintText: "Firstname",
-                validatorFunction: normalValidatorFunction,
-              ),
-              LoginTextField(
-                controller: _lastNameController,
-                hintText: "Lastname",
-                validatorFunction: normalValidatorFunction,
-              ),
-              LoginTextField(
-                controller: _emailController,
-                hintText: "Email address",
-                validatorFunction: normalValidatorFunction,
-              ),
-              LoginTextField(
-                controller: _passController,
-                hintText: "Password",
-                validatorFunction: normalValidatorFunction,
-              ),
-              CustomeElevatedButton(
-                buttonColor: appbarSec,
-                prefixIcon: null,
-                hintText: "Continue",
-                textColor: Colors.white,
-                callbackFunction: () async {
-                  if (_formKeyAccount.currentState!.validate()) {
-                    try {
-                      final supabase = Supabase.instance.client;
-                      debugPrint("FirstName: ${_firstNameController.text}");
-                      debugPrint("LastName: ${_lastNameController.text}");
-                      debugPrint("Email: ${_emailController.text}");
-                      debugPrint("Password: ${_passController.text}");
-
-                      await supabase.from('Users').insert({
-                        'name':
-                            "${_firstNameController.text} ${_lastNameController.text}",
-                        'email': _emailController.text,
-                        'password': _passController.text,
-                      });
-                      (context).go('/home');
-                    } on Exception catch (e) {
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(SnackBar(content: Text(e.toString())));
-                    }
-                  }
-                },
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    Text("Forgot password?", style: TextStyle(fontSize: 12)),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        splashFactory: NoSplash.splashFactory,
-                      ),
-                      child: Text(
-                        "Reset",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-
-                          fontSize: 12,
-                        ),
-                      ),
-                      onPressed:
-                          () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => CreateNewAccountView(),
-                            ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () => context.pushReplacement("/initial"),
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            color: kTextForm,
+                            borderRadius: BorderRadius.circular(100),
                           ),
-                    ),
-                  ],
+
+                          child: Image.asset("assets/arrowleft2.png"),
+                        ),
+                      ),
+                      Text(
+                        "Create Account",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: kTitleHeight,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 35),
+                LoginTextField(
+                  controller: _firstNameController,
+                  hintText: "Firstname",
+                  validatorFunction: normalValidatorFunction,
+                ),
+                LoginTextField(
+                  controller: _lastNameController,
+                  hintText: "Lastname",
+                  validatorFunction: normalValidatorFunction,
+                ),
+                LoginTextField(
+                  controller: _emailController,
+                  hintText: "Email address",
+                  validatorFunction: normalValidatorFunction,
+                ),
+                LoginTextField(
+                  controller: _passController,
+                  hintText: "Password",
+                  validatorFunction: normalValidatorFunction,
+                ),
+                const SizedBox(height: 40),
+                CustomeElevatedButton(
+                  buttonColor: appbarSec,
+                  prefixIcon: null,
+                  hintText: "Continue",
+                  textColor: Colors.white,
+                  callbackFunction: () async {
+                    if (_formKeyAccount.currentState!.validate()) {
+                      try {
+                        print("✅ Form is valid");
+
+                        final supabase = Supabase.instance.client;
+                        debugPrint("FirstName: ${_firstNameController.text}");
+                        debugPrint("LastName: ${_lastNameController.text}");
+                        debugPrint("Email: ${_emailController.text}");
+                        debugPrint("Password: ${_passController.text}");
+
+                        await supabase.from('Users').insert({
+                          'name':
+                              "${_firstNameController.text} ${_lastNameController.text}",
+                          'email': _emailController.text,
+                          'password': _passController.text,
+                        });
+                        (context).go('/home');
+                      } on Exception catch (e) {
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text(e.toString())));
+                      }
+                    }
+                  },
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      Text("Forgot password?", style: TextStyle(fontSize: 12)),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          splashFactory: NoSplash.splashFactory,
+                        ),
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+
+                            fontSize: 12,
+                          ),
+                        ),
+                        onPressed:
+                            () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => CreateNewAccountView(),
+                              ),
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

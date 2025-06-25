@@ -52,15 +52,40 @@ class _InitialSignViewState extends State<InitialSignView> {
                 key: _formKey,
                 child: SizedBox(
                   height: 70,
-                  child: LoginTextField(
-                    controller: _emailEditingController,
-                    hintText: "Email Address",
-                    validatorFunction: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return "Please enter your email";
-                      }
-                      return null;
-                    },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(kBorderSize),
+                      child: Container(
+                        height: 70,
+                        width: double.infinity,
+                        decoration: BoxDecoration(color: Color(0xffF4F4F4)),
+                        child: TextFormField(
+                          controller: _emailEditingController,
+                          validator: (value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return "Please enter your email";
+                            }
+                            return null;
+                          },
+
+                          decoration: InputDecoration(
+                            focusedErrorBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 0,
+                            ),
+
+                            hintStyle: TextStyle(color: kTextFieldHint),
+                            errorBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            fillColor: Color(0xffF4F4F4),
+                            hintText: "Email Address",
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),

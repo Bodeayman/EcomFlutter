@@ -1,6 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
-import 'package:ecomflutter/Features/MainPages/ProductsPageView/Widgets/categories_widget.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/Widgets/categories_widget.dart';
 import 'package:ecomflutter/Features/SearchPage/Widgets/categories_show.dart';
 import 'package:ecomflutter/Features/SearchPage/Widgets/custom_search_field.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
