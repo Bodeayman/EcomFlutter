@@ -1,3 +1,5 @@
+import 'package:ecomflutter/Features/SearchPage/Widgets/custom_search_field.dart';
+import 'package:ecomflutter/Features/SearchPage/search_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/Features/MainPages/ProductsPageView/Widgets/categories_widget.dart';
 import 'package:ecomflutter/Features/MainPages/ProductsPageView/Widgets/custom_main_page_app_bar.dart';
@@ -21,44 +23,21 @@ class ProductsPage extends StatelessWidget {
             CustomMainPageAppBar(),
             const SizedBox(height: 40),
 
-            InkWell(
-              onTap: () {
-                context.push('/search');
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: SizedBox(
-                  height: 40,
-                  width: double.infinity,
-                  child: Container(
-                    decoration: BoxDecoration(color: kTextForm),
-                    child: SizedBox(
-                      width: 150,
-
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              const SizedBox(width: 20),
-                              Image.asset("assets/searchnormal1.png"),
-                              const SizedBox(width: 20),
-
-                              Text("Search"),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            CustomSearchField(bigContext: context),
             ListTile(
               title: Text(
                 "Categories",
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              trailing: Text("See All", style: TextStyle(fontSize: 16)),
+              trailing: InkWell(
+                onTap:
+                    () => {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SearchView()),
+                      ),
+                    },
+                child: Text("See All", style: TextStyle(fontSize: 16)),
+              ),
             ),
             Center(child: CategoriesWidget()),
             ListTile(

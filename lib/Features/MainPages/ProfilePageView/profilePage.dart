@@ -1,9 +1,9 @@
 import 'package:ecomflutter/Features/PaymentScreens/payment_view.dart';
-import 'package:ecomflutter/Features/Preferences/address_view.dart';
-import 'package:ecomflutter/Features/Preferences/help_view.dart';
-import 'package:ecomflutter/Features/Preferences/payment_view.dart';
-import 'package:ecomflutter/Features/Preferences/support_view.dart';
-import 'package:ecomflutter/Features/Preferences/wishlist_view.dart';
+import 'package:ecomflutter/Features/PreferencesPage/address_view.dart';
+import 'package:ecomflutter/Features/PreferencesPage/help_view.dart';
+import 'package:ecomflutter/Features/PreferencesPage/payment_view.dart';
+import 'package:ecomflutter/Features/PreferencesPage/support_view.dart';
+import 'package:ecomflutter/Features/PreferencesPage/wishlist_view.dart';
 import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/Features/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';

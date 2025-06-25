@@ -20,7 +20,7 @@ class OptionListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 4),
-
+      height: 64,
       child: ListTile(
         shape: RoundedRectangleBorder(
           borderRadius:

@@ -1,6 +1,6 @@
-import 'package:ecomflutter/Features/Home/home_view.dart';
-import 'package:ecomflutter/Features/Login/login.dart';
-import 'package:ecomflutter/Features/Records/record_view.dart';
+import 'package:ecomflutter/Features/HomePage/home_view.dart';
+import 'package:ecomflutter/Features/LoginPage/login.dart';
+import 'package:ecomflutter/Features/RecordsPage/record_view.dart';
 import 'package:flutter/material.dart';
 
 void GoToRecords(BuildContext context) {

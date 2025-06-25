@@ -1,41 +1,42 @@
-import 'package:ecomflutter/cubit/main_products_cubit.dart';
-import 'package:ecomflutter/model/data/item.dart';
 import 'package:ecomflutter/Features/DetailsPage/details.dart';
+import 'package:ecomflutter/cubit/main_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:shimmer/shimmer.dart' show Shimmer;
 
-class TopSellingWidget extends StatelessWidget {
-  const TopSellingWidget({super.key});
+class CategoryProductGrid extends StatelessWidget {
+  const CategoryProductGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MainProductsCubit, MainProductsState>(
       builder: (context, state) {
         if (state is MainProductsLoading) {
-          return SizedBox(
-            height: 282,
-            child: Center(child: CircularProgressIndicator()),
-          );
+          return SizedBox(child: Center(child: CircularProgressIndicator()));
         } else if (state is MainProductsFailure) {
           return Center(child: Text(state.errMessage));
         } else if (state is MainProductsSuccess) {
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
-              height: 282,
-              child: ListView.builder(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15,
+                  childAspectRatio: 0.55,
+                ),
                 shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: state.data.length < 5 ? state.data.length : 5,
+                itemCount: state.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   final item = state.data[index];
 
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
                     child: SizedBox(
-                      width: 159,
+                      width: 161,
+                      height: 281,
                       child: GestureDetector(
                         onTap: () {
                           try {
@@ -65,7 +66,6 @@ class TopSellingWidget extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // Product Image with Hero Animation
                                   SizedBox(
                                     height: 220,
                                     child: ClipRRect(

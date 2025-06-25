@@ -1,6 +1,6 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
-import 'package:ecomflutter/Features/OnBoarding/Widgets/login_material_button.dart';
+import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

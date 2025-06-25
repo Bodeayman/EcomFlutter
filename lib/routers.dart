@@ -1,10 +1,11 @@
-import 'package:ecomflutter/Features/Checkout/SuccessPageView/success_view.dart';
-import 'package:ecomflutter/Features/Home/home_view.dart';
-import 'package:ecomflutter/Features/Checkout/CheckoutPageView/cart.dart';
-import 'package:ecomflutter/Features/OnBoarding/create_new_account_view.dart';
-import 'package:ecomflutter/Features/OnBoarding/initial_sign_view.dart';
-import 'package:ecomflutter/Features/Records/record_view.dart';
-import 'package:ecomflutter/Features/Search/search_view.dart';
+import 'package:ecomflutter/Features/CategoriesPage/Presentation/Views/category_view.dart';
+import 'package:ecomflutter/Features/CheckoutPage/SuccessPageView/success_view.dart';
+import 'package:ecomflutter/Features/HomePage/home_view.dart';
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/cart.dart';
+import 'package:ecomflutter/Features/OnBoardingPage/create_new_account_view.dart';
+import 'package:ecomflutter/Features/OnBoardingPage/initial_sign_view.dart';
+import 'package:ecomflutter/Features/RecordsPage/record_view.dart';
+import 'package:ecomflutter/Features/SearchPage/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,6 +23,14 @@ final GoRouter router = GoRouter(
       builder: (context, state) => CreateNewAccountView(),
     ),
     GoRoute(path: "/search", builder: (context, state) => SearchView()),
+    GoRoute(
+      path: '/categories/:name',
+      builder: (context, state) {
+        final String categoryName = state.pathParameters['name']!;
+        return CategoryView(categoryName: categoryName);
+      },
+    ),
+
     GoRoute(path: "/cart", builder: (context, state) => CartPage()),
     GoRoute(
       path: "/purSuccess",

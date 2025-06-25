@@ -1,5 +1,5 @@
 import 'package:ecomflutter/cubit/main_products_cubit.dart';
-import 'package:ecomflutter/Features/Details/details.dart';
+import 'package:ecomflutter/Features/DetailsPage/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
@@ -26,7 +26,8 @@ class NewItemsWidget extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
-                itemCount: state.data.length,
+                itemCount: state.data.length < 5 ? state.data.length : 5,
+
                 itemBuilder: (BuildContext context, int index) {
                   final item = state.data[index];
 
