@@ -1,11 +1,13 @@
 import 'package:ecomflutter/Features/DetailsPage/details.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/Manager/main_products_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart' show Shimmer;
 
 class CategoryProductGrid extends StatelessWidget {
-  const CategoryProductGrid({super.key});
+  const CategoryProductGrid({super.key, required this.categoryName});
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,8 @@ class CategoryProductGrid extends StatelessWidget {
         } else if (state is MainProductsFailure) {
           return Center(child: Text(state.errMessage));
         } else if (state is MainProductsSuccess) {
+          final List<Item> filtereddata =
+              state.data.where((item) => item.cat == categoryName).toList();
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(
@@ -28,16 +32,18 @@ class CategoryProductGrid extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: state.data.length,
+                itemCount: filtereddata.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final item = state.data[index];
-
+                  final Item item = filtereddata[index];
                   return Container(
                     margin: EdgeInsets.symmetric(horizontal: 5),
                     child: SizedBox(
                       width: 161,
                       height: 281,
-                      child: GestureDetector(
+                      child:
+                      //          if(item.cat == categoryName){
+                      // }
+                      GestureDetector(
                         onTap: () {
                           try {
                             Navigator.of(context).push(

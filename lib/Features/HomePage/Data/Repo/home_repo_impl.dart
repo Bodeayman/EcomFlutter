@@ -49,10 +49,12 @@ Future<Either<String, List<Item>>> addItemsToList() async {
                 allSizes
                     .where((size) => size.productId == itemData["id"])
                     .toList();
-
+            final imageUrl = Supabase.instance.client.storage
+                .from('products-photos')
+                .getPublicUrl(itemData['url']);
             Item newItem = Item(
               id: itemData["id"] ?? 0,
-              url: itemData['url'] ?? '',
+              url: imageUrl ?? itemData['url'],
               description: itemData['description'] ?? '',
               price: (itemData['price'] as num?)?.toDouble() ?? 0.0,
               location: itemData['location'] ?? 'Ali Baba',
