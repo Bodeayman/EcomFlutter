@@ -54,6 +54,12 @@ class _EnterCouponWidgetState extends State<EnterCouponWidget> {
                         CustomSnackBar.success(message: "Discount applied 10%"),
                       );
                       context.read<CartCubit>().applyDiscount();
+                    } else {
+                      showTopSnackBar(
+                        Overlay.of(context),
+                        CustomSnackBar.error(message: "This Coupon is invalid"),
+                      );
+                      context.read<CartCubit>().applyDiscount();
                     }
                   },
                   icon: Image.asset(

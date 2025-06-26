@@ -67,6 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 89),
+
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: SizedBox(
@@ -78,9 +79,10 @@ class _ProfilePageState extends State<ProfilePage> {
               const SizedBox(height: 20),
               ProfileDetailsTile(),
               SizedBox(
-                height: 400,
                 width: double.infinity,
                 child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemCount: settingsOptions.length,
                   itemBuilder: (context, index) {
@@ -98,16 +100,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 builder: (context, themeMode) {
                   final isDark = themeMode == ThemeMode.dark;
 
-                  return Switch(
-                    thumbIcon: WidgetStateProperty.resolveWith((states) {
-                      (themeMode == ThemeMode.dark)
-                          ? Icons.nightlife
-                          : Icons.sunny;
-                      return null;
-                    }),
-                    value: isDark,
-                    onChanged: (value) {
-                      context.read<ThemeCubit>().toggleTheme(value);
+                  return IconButton(
+                    icon: Icon(Icons.dark_mode),
+                    onPressed: () {
+                      context.read<ThemeCubit>().toggleTheme(!isDark);
                     },
                   );
                 },
