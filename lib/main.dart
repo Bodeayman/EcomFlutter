@@ -28,19 +28,7 @@ void main() async {
     ),
   );
 
-  runApp(const BootstrapApp());
-}
-
-class BootstrapApp extends StatelessWidget {
-  const BootstrapApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<ThemeCubit>(
-      create: (_) => ThemeCubit(),
-      child: const MyApp(),
-    );
-  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -48,22 +36,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeMode>(
-      builder: (context, themeMode) {
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (_) => CartCubit()),
-            BlocProvider(create: (_) => MainProductsCubit()),
-          ],
-          child: MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: themeMode,
-            routerConfig: router,
-          ),
-        );
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => CartCubit()),
+        BlocProvider(create: (_) => MainProductsCubit()),
+      ],
+      child: SafeArea(
+        child: MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          routerConfig: router,
+        ),
+      ),
     );
   }
 }

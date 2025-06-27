@@ -6,11 +6,14 @@ import 'package:ecomflutter/Features/PreferencesPage/support_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/wishlist_view.dart';
 import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
+import 'package:ecomflutter/routers.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/helpers/token_service.dart';
 import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -96,18 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   },
                 ),
               ),
-              BlocBuilder<ThemeCubit, ThemeMode>(
-                builder: (context, themeMode) {
-                  final isDark = themeMode == ThemeMode.dark;
 
-                  return IconButton(
-                    icon: Icon(Icons.dark_mode),
-                    onPressed: () {
-                      context.read<ThemeCubit>().toggleTheme(!isDark);
-                    },
-                  );
-                },
-              ),
               TextButton(
                 child: Text(
                   "Sign Out",
@@ -116,9 +108,22 @@ class _ProfilePageState extends State<ProfilePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                onPressed: () {
-                  setOnBoarding(false);
-                  (context).pushReplacement('/initialE');
+                onPressed: () async {
+                  try {
+                    // Tell Supabase to sign out the user on the server
+                    await Supabase.instance.client.auth.signOut();
+
+                    // Clear tokens + session info locally
+                    await clearSession();
+
+                    // Navigate to initial screen
+                    GoRouter.of(navigatorKey.currentContext!).go('/initial');
+
+                    debugPrint('User successfully logged out');
+                  } catch (e) {
+                    debugPrint('Logout failed: $e');
+                    // Optionally handle error
+                  }
                 },
               ),
             ],

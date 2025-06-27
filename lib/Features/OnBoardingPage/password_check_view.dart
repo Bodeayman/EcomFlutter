@@ -1,44 +1,26 @@
-import 'package:ecomflutter/Features/OnBoardingPage/password_check_view.dart';
-import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
-import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_text_field.dart';
-import 'package:ecomflutter/Features/OnBoardingPage/Widgets/sign_in_group_buttons.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/sign_in_text.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/create_new_account_view.dart';
+import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/utils/helpers/token_service.dart';
-import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
-class InitialSignView extends StatefulWidget {
-  const InitialSignView({super.key});
-
+class PasswordCheckView extends StatefulWidget {
+  const PasswordCheckView({super.key, required this.emailText});
+  final String emailText;
   @override
-  State<InitialSignView> createState() => _InitialSignViewState();
+  State<PasswordCheckView> createState() => _PasswordCheckViewState();
 }
 
-class _InitialSignViewState extends State<InitialSignView> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailEditingController = TextEditingController();
-  @override
-  void initState() {
-    super.initState();
-    _checkOnBoarding();
-  }
+class _PasswordCheckViewState extends State<PasswordCheckView> {
+  final GlobalKey<FormState> formKey = GlobalKey();
 
-  Future<void> _checkOnBoarding() async {
-    bool valid = await ensureValidSession();
-    if (valid) {
-      if (mounted) {
-        context.pushReplacement('/home');
-      }
-    }
-  }
-
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +33,7 @@ class _InitialSignViewState extends State<InitialSignView> {
               Align(alignment: Alignment.centerLeft, child: SignInText()),
               const SizedBox(height: 30),
               Form(
-                key: _formKey,
+                key: formKey,
                 child: SizedBox(
                   height: 70,
                   child: Padding(
@@ -63,10 +45,10 @@ class _InitialSignViewState extends State<InitialSignView> {
                         width: double.infinity,
                         decoration: BoxDecoration(color: Color(0xffF4F4F4)),
                         child: TextFormField(
-                          controller: _emailEditingController,
+                          controller: _passwordController,
                           validator: (value) {
                             if (value == null || value.trim().isEmpty) {
-                              return "Please enter your email";
+                              return "Please enter your password";
                             }
                             return null;
                           },
@@ -83,7 +65,7 @@ class _InitialSignViewState extends State<InitialSignView> {
                             focusedBorder: InputBorder.none,
                             enabledBorder: InputBorder.none,
                             fillColor: Color(0xffF4F4F4),
-                            hintText: "Email Address",
+                            hintText: "Password",
                           ),
                         ),
                       ),
@@ -102,48 +84,33 @@ class _InitialSignViewState extends State<InitialSignView> {
                     hintText: "Continue",
                     textColor: Colors.white,
                     callbackFunction: () async {
-                      if (_formKey.currentState!.validate()) {
-                        print(
-                          "Checking for email: ${_emailEditingController.text}",
-                        );
-
-                        showTopSnackBar(
-                          Overlay.of(context),
-                          CustomSnackBar.info(message: "Wait...."),
-                          displayDuration: Duration(seconds: 1),
-                        );
-                        try {
-                          final response =
-                              await Supabase.instance.client
-                                  .from('Users')
-                                  .select('email')
-                                  .eq('email', _emailEditingController.text)
-                                  .maybeSingle();
-                          if (response == null) {
-                            showTopSnackBar(
-                              Overlay.of(context),
-                              CustomSnackBar.error(
-                                message: "This email is not found",
-                              ),
-                            );
-                          } else {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => PasswordCheckView(
-                                      emailText: _emailEditingController.text,
-                                    ),
-                              ),
-                            );
-                          }
-                        } catch (e) {
+                      try {
+                        if (formKey.currentState!.validate()) {
+                          debugPrint(_passwordController.text);
                           showTopSnackBar(
                             Overlay.of(context),
-                            CustomSnackBar.error(
-                              message: "Connection Failed, Try again",
-                            ),
+                            CustomSnackBar.info(message: "Wait...."),
+                            displayDuration: Duration(seconds: 1),
                           );
+                          final response = await Supabase.instance.client.auth
+                              .signInWithPassword(
+                                email: widget.emailText,
+                                password: _passwordController.text,
+                              );
+
+                          final session = response.session;
+                          if (session != null) {
+                            await saveSession(session);
+                            context.go("/home");
+                          }
                         }
+                      } catch (e) {
+                        debugPrint(e.toString());
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.error(message: e.toString()),
+                          displayDuration: Duration(seconds: 1),
+                        );
                       }
                     },
                   ),
@@ -153,16 +120,13 @@ class _InitialSignViewState extends State<InitialSignView> {
                 alignment: Alignment.centerLeft,
                 child: Row(
                   children: [
-                    Text(
-                      "Don't have an account,",
-                      style: TextStyle(fontSize: 12),
-                    ),
+                    Text("Forgot password", style: TextStyle(fontSize: 12)),
                     TextButton(
                       style: TextButton.styleFrom(
                         splashFactory: NoSplash.splashFactory,
                       ),
                       child: Text(
-                        "Create one",
+                        "Reset",
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -170,18 +134,12 @@ class _InitialSignViewState extends State<InitialSignView> {
                           fontSize: 12,
                         ),
                       ),
-                      onPressed:
-                          () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => CreateNewAccountView(),
-                            ),
-                          ),
+                      onPressed: () {},
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 50),
-              SignInGroupButtons(),
             ],
           ),
         ),

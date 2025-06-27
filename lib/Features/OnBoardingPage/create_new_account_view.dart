@@ -6,6 +6,8 @@ import 'package:ecomflutter/utils/shared_func.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class CreateNewAccountView extends StatefulWidget {
   const CreateNewAccountView({super.key});
@@ -90,22 +92,39 @@ class _CreateNewAccountViewState extends State<CreateNewAccountView> {
                   callbackFunction: () async {
                     if (_formKeyAccount.currentState!.validate()) {
                       try {
-                        print("✅ Form is valid");
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.info(message: "Wait...."),
+                          displayDuration: Duration(seconds: 1),
+                        );
+                        final signUpResult = await Supabase.instance.client.auth
+                            .signUp(
+                              email: _emailController.text,
+                              password: _passController.text,
+                            );
 
-                        final supabase = Supabase.instance.client;
-                        debugPrint("FirstName: ${_firstNameController.text}");
-                        debugPrint("LastName: ${_lastNameController.text}");
-                        debugPrint("Email: ${_emailController.text}");
-                        debugPrint("Password: ${_passController.text}");
+                        final user = signUpResult.user;
 
-                        await supabase.from('Users').insert({
-                          'name':
-                              "${_firstNameController.text} ${_lastNameController.text}",
-                          'email': _emailController.text,
-                          'password': _passController.text,
-                        });
-                        (context).go('/home');
+                        if (user != null) {
+                          await Supabase.instance.client.from('Users').insert({
+                            'auth_id': user.id,
+                            'name':
+                                '${_firstNameController.text} ${_lastNameController.text}',
+                            'email': _emailController.text,
+                            "address": "Egypt",
+                          });
+                        }
+
+                        showTopSnackBar(
+                          Overlay.of(context),
+                          CustomSnackBar.success(
+                            message: "Your account has been created",
+                          ),
+                          displayDuration: Duration(seconds: 1),
+                        );
+                        context.pop();
                       } on Exception catch (e) {
+                        debugPrint(e.toString());
                         ScaffoldMessenger.of(
                           context,
                         ).showSnackBar(SnackBar(content: Text(e.toString())));

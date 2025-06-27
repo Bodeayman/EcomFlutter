@@ -14,12 +14,19 @@ class CategoryProductGrid extends StatelessWidget {
     return BlocBuilder<MainProductsCubit, MainProductsState>(
       builder: (context, state) {
         if (state is MainProductsLoading) {
-          return SizedBox(child: Center(child: CircularProgressIndicator()));
+          return Center(child: Center(child: CircularProgressIndicator()));
         } else if (state is MainProductsFailure) {
           return Center(child: Text(state.errMessage));
         } else if (state is MainProductsSuccess) {
           final List<Item> filtereddata =
               state.data.where((item) => item.cat == categoryName).toList();
+          if (filtereddata.isEmpty) {
+            return Center(
+              child: Center(
+                child: Text("No Products of that Category is found"),
+              ),
+            );
+          }
           return Padding(
             padding: const EdgeInsets.all(10.0),
             child: SizedBox(

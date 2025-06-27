@@ -41,6 +41,7 @@ dependencies:
   shared_preferences : any
   supabase_flutter: any
   app_links: ^3.0.1
+  flutter_secure_storage: ^9.0.0
 
 dev_dependencies:
   flutter_test:

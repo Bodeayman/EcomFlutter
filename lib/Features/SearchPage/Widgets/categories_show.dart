@@ -27,8 +27,8 @@ class CategoriesShow extends StatelessWidget {
         const SizedBox(height: 10),
         SizedBox(
           width: double.infinity,
-          height: 352,
           child: ListView.builder(
+            shrinkWrap: true,
             itemBuilder: (context, i) {
               return InkWell(
                 child: OptionListTile(

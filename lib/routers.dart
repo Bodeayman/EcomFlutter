@@ -9,7 +9,9 @@ import 'package:ecomflutter/Features/SearchPage/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
+  navigatorKey: navigatorKey,
   routes: [
     GoRoute(path: "/records", builder: (context, state) => RecordView()),
     GoRoute(path: "/", builder: (context, state) => InitialSignView()),
