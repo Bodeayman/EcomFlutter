@@ -16,6 +16,11 @@ class CustomSearchField extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(color: kTextForm),
           child: TextField(
+            onSubmitted: (value) {
+              Navigator.of(bigContext).push(
+                MaterialPageRoute(builder: (bigContext) => SearchNoResults()),
+              );
+            },
             controller: _controller,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
@@ -23,15 +28,7 @@ class CustomSearchField extends StatelessWidget {
               focusedBorder: InputBorder.none,
               hintText: "Search",
               fillColor: Colors.grey,
-              prefixIcon: InkWell(
-                onTap:
-                    () => Navigator.of(bigContext).push(
-                      MaterialPageRoute(
-                        builder: (bigContext) => SearchNoResults(),
-                      ),
-                    ),
-                child: Image.asset("assets/searchnormal1.png"),
-              ),
+              prefixIcon: Image.asset("assets/searchnormal1.png"),
             ),
           ),
         ),

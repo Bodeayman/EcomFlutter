@@ -1,12 +1,18 @@
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/payment_web_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_price.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/api_key.dart';
+import 'package:ecomflutter/utils/helpers/payment_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key, required this.totalPrice});
@@ -98,9 +104,68 @@ class CheckoutPage extends StatelessWidget {
                           buttonColor: appbarSec,
                           hintText: "Place Order",
                           textColor: Colors.white,
-                          callbackFunction: () {
-                            context.read<CartCubit>().clearCart();
-                            context.pushReplacement("/purSuccess");
+                          callbackFunction: () async {
+                            showTopSnackBar(
+                              Overlay.of(context),
+                              CustomSnackBar.info(message: "Wait...."),
+                            );
+                            try {
+                              String paymentToken =
+                                  await requestPaymentToken() ?? "";
+                              int orderId =
+                                  await createPaymobOrder(
+                                    amountCents:
+                                        context
+                                            .read<CartCubit>()
+                                            .state
+                                            .totalPrice
+                                            .toInt() *
+                                        100,
+                                    authToken: paymentToken,
+                                  ) ??
+                                  0;
+                              String paymentKey =
+                                  await requestPaymentKey(
+                                    amountCents:
+                                        context
+                                            .read<CartCubit>()
+                                            .state
+                                            .totalPrice
+                                            .toInt() *
+                                        100,
+                                    authToken: paymentToken,
+                                    integrationId: integrationIdPayment,
+                                    orderId: orderId,
+                                  ) ??
+                                  "";
+                              debugPrint(paymentKey);
+                              String paymentUrl =
+                                  'https://accept.paymob.com/api/acceptance/iframes/$IframeId?payment_token=$paymentKey';
+                              final result = await Navigator.of(
+                                context,
+                              ).push<bool>(
+                                MaterialPageRoute(
+                                  builder:
+                                      (_) => PaymentWebView(
+                                        paymentUrl: paymentUrl,
+                                      ),
+                                ),
+                              );
+
+                              if (result == true) {
+                                context.read<CartCubit>().clearCart();
+                                context.pushReplacement("/purSuccess");
+                              } else if (result == false) {
+                                showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.error(
+                                    message: "Error happened while paying",
+                                  ),
+                                );
+                              } else {}
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
                           },
                         ),
                       ),

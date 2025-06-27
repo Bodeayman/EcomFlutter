@@ -72,3 +72,15 @@ Future<bool> ensureValidSession() async {
 Future<void> clearSession() async {
   await secureStorage.deleteAll();
 }
+
+Future<void> storePaymentToken(String paymentToken) async {
+  await secureStorage.write(key: "payment_token", value: paymentToken);
+}
+
+Future<bool> checkValidationPaymentToken() async {
+  final paymentToken = await secureStorage.read(key: "payment_token");
+  if (paymentToken == null) {
+    return false;
+  }
+  return true;
+}

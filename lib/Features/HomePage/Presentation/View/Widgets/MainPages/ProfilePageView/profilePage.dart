@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -110,13 +112,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 onPressed: () async {
                   try {
-                    // Tell Supabase to sign out the user on the server
+                    showTopSnackBar(
+                      Overlay.of(context),
+                      CustomSnackBar.info(message: "Wait..."),
+                    );
                     await Supabase.instance.client.auth.signOut();
 
-                    // Clear tokens + session info locally
                     await clearSession();
 
-                    // Navigate to initial screen
                     GoRouter.of(navigatorKey.currentContext!).go('/initial');
 
                     debugPrint('User successfully logged out');
