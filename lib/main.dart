@@ -1,13 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
 import 'Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'Features/HomePage/Presentation/Manager/main_products_cubit.dart';
-import 'cubit/theme_cubit.dart';
 import 'utils/api_key.dart';
 import 'utils/theme_data.dart';
 import 'routers.dart';
@@ -17,7 +14,7 @@ void main() async {
 
   await Hive.initFlutter();
   await Hive.openBox('myCart');
-
+  setupServiceLocator(); // For registering the singleton
   await Supabase.initialize(
     url: serverUrl,
     anonKey: supabaseAnon,

@@ -23,7 +23,7 @@ class ProductsPage extends StatelessWidget {
             CustomMainPageAppBar(),
             const SizedBox(height: 40),
 
-            CustomSearchField(bigContext: context),
+            CustomSearchField(parentContext: context),
             ListTile(
               title: Text(
                 "Categories",

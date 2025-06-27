@@ -45,6 +45,7 @@ dependencies:
   url_launcher: any
   webview_flutter : any
   webview_flutter_android: any
+  get_it: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

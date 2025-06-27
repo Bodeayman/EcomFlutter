@@ -3,9 +3,9 @@ import 'package:ecomflutter/Features/SearchPage/Widgets/search_no_results.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchField extends StatelessWidget {
-  CustomSearchField({super.key, required this.bigContext});
+  CustomSearchField({super.key, required this.parentContext});
   final TextEditingController _controller = TextEditingController();
-  final BuildContext bigContext;
+  final BuildContext parentContext;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,8 +17,10 @@ class CustomSearchField extends StatelessWidget {
           decoration: BoxDecoration(color: kTextForm),
           child: TextField(
             onSubmitted: (value) {
-              Navigator.of(bigContext).push(
-                MaterialPageRoute(builder: (bigContext) => SearchNoResults()),
+              Navigator.of(parentContext).push(
+                MaterialPageRoute(
+                  builder: (parentContext) => SearchNoResults(),
+                ),
               );
             },
             controller: _controller,

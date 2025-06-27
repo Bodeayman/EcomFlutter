@@ -1,17 +1,13 @@
-import 'package:ecomflutter/Features/PaymentScreens/payment_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/address_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/help_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/payment_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/support_view.dart';
 import 'package:ecomflutter/Features/PreferencesPage/wishlist_view.dart';
-import 'package:ecomflutter/cubit/theme_cubit.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProfilePageView/Widgets/profile_details_tile.dart';
 import 'package:ecomflutter/routers.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:ecomflutter/utils/helpers/token_service.dart';
-import 'package:ecomflutter/utils/shared_pref_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';

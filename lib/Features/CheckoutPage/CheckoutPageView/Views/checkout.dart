@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/payment_web_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
@@ -7,6 +8,7 @@ import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_butto
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
 import 'package:ecomflutter/utils/api_key.dart';
 import 'package:ecomflutter/utils/helpers/payment_service.dart';
+import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -110,37 +112,14 @@ class CheckoutPage extends StatelessWidget {
                               CustomSnackBar.info(message: "Wait...."),
                             );
                             try {
-                              String paymentToken =
-                                  await requestPaymentToken() ?? "";
-                              int orderId =
-                                  await createPaymobOrder(
-                                    amountCents:
-                                        context
-                                            .read<CartCubit>()
-                                            .state
-                                            .totalPrice
-                                            .toInt() *
-                                        100,
-                                    authToken: paymentToken,
-                                  ) ??
-                                  0;
-                              String paymentKey =
-                                  await requestPaymentKey(
-                                    amountCents:
-                                        context
-                                            .read<CartCubit>()
-                                            .state
-                                            .totalPrice
-                                            .toInt() *
-                                        100,
-                                    authToken: paymentToken,
-                                    integrationId: integrationIdPayment,
-                                    orderId: orderId,
-                                  ) ??
-                                  "";
-                              debugPrint(paymentKey);
-                              String paymentUrl =
-                                  'https://accept.paymob.com/api/acceptance/iframes/$IframeId?payment_token=$paymentKey';
+                              String paymentUrl = await sl<PaymentRepo>()
+                                  .requestPayment(
+                                    context
+                                        .read<CartCubit>()
+                                        .state
+                                        .totalPrice
+                                        .toInt(),
+                                  );
                               final result = await Navigator.of(
                                 context,
                               ).push<bool>(
