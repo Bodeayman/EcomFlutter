@@ -1,5 +1,9 @@
+import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/payment_web_view.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Repo/notifications_repo.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/notifications_page_cubit.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
@@ -130,6 +134,16 @@ class CheckoutPage extends StatelessWidget {
 
                               if (result == true) {
                                 context.read<CartCubit>().clearCart();
+                                await sl<OrderRequestRepo>().addNewOrder();
+                                await sl<NotificationsRepo>()
+                                    .addNotificationForConfirmingOrder();
+                                context
+                                    .read<OrdersPageCubit>()
+                                    .fetchAllOrders();
+                                context
+                                    .read<NotificationsPageCubit>()
+                                    .fetchNotifications();
+                                // Fetch the data automatically
                                 context.pushReplacement("/purSuccess");
                               } else if (result == false) {
                                 showTopSnackBar(
