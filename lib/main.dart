@@ -1,3 +1,5 @@
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/notifications_page_cubit.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => CartCubit()),
         BlocProvider(create: (_) => MainProductsCubit()),
+        BlocProvider(create: (_) => NotificationsPageCubit()),
+        BlocProvider(create: (_) => OrdersPageCubit()),
       ],
       child: SafeArea(
         child: MaterialApp.router(

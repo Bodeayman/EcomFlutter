@@ -6,15 +6,12 @@ import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_price.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:ecomflutter/shared/utils/option_list_tile.dart';
-import 'package:ecomflutter/utils/api_key.dart';
-import 'package:ecomflutter/utils/helpers/payment_service.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CheckoutPage extends StatelessWidget {
   const CheckoutPage({super.key, required this.totalPrice});

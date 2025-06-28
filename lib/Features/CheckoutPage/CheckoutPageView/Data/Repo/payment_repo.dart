@@ -1,13 +1,9 @@
-import 'dart:convert';
-
 import 'package:ecomflutter/utils/api_key.dart';
 import 'package:ecomflutter/utils/api_service.dart';
 
 import 'package:ecomflutter/utils/helpers/token_service.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 
 class PaymentRepo {
   final HttpApiService _apiService = sl<HttpApiService>();
