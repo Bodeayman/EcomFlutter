@@ -1,12 +1,10 @@
 import 'package:ecomflutter/Features/SearchPage/Widgets/custom_search_field.dart';
 import 'package:ecomflutter/Features/SearchPage/search_view.dart';
-import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/Widgets/categories_widget.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/Widgets/custom_main_page_app_bar.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/Widgets/new_items_widget.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/Widgets/top_selling_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ProductsPage extends StatelessWidget {
   const ProductsPage({super.key});

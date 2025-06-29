@@ -7,7 +7,6 @@ import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPage
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/OrdersViewPage/orders.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/products.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProfilePageView/profilePage.dart';
-import 'package:ecomflutter/utils/usefulFunctions.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

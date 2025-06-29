@@ -1,5 +1,3 @@
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
-
 class OrderItem {
   final int itemId;
   final int quantity;

@@ -1,6 +1,5 @@
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/sign_in_text.dart';
-import 'package:ecomflutter/Features/OnBoardingPage/create_new_account_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/utils/helpers/token_service.dart';

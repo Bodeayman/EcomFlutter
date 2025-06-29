@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/orderItem.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:meta/meta.dart';
