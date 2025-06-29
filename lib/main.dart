@@ -1,3 +1,7 @@
+import 'package:ecomflutter/Features/HomePage/Data/Models/color.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/notificationModel.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/size.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/Manager/notifications_page_cubit.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
@@ -13,9 +17,15 @@ import 'routers.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Hive.close();
   await Hive.initFlutter();
-  await Hive.openBox('myCart');
+  Hive.registerAdapter(NotificationModelAdapter());
+  Hive.registerAdapter(ItemAdapter());
+  Hive.registerAdapter(CustomerColorAdapter());
+  Hive.registerAdapter(CustomerSizeAdapter());
+  await Hive.openBox<Item>('allProducts');
+  await Hive.openBox<NotificationModel>('allNotifications');
+
   setupServiceLocator(); // For registering the singleton
   await Supabase.initialize(
     url: serverUrl,

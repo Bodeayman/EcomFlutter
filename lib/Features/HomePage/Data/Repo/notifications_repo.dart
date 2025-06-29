@@ -1,5 +1,7 @@
 import 'package:ecomflutter/Features/HomePage/Data/Models/notificationModel.dart';
+import 'package:ecomflutter/utils/usefulFunctions.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class NotificationsRepo {
@@ -13,13 +15,27 @@ class NotificationsRepo {
         throw Exception("No user is logged in");
       }
 
+      final notificationsBox = Hive.box<NotificationModel>('allNotifications');
+      final connected = await isConnected();
+      if (!connected) {
+        final cachedItems = notificationsBox.values.toList();
+        if (cachedItems.isNotEmpty) {
+          debugPrint("Returned cached data from Hive");
+          return (cachedItems);
+        }
+      }
       final response = await _client
           .from('Notifications')
           .select()
           .eq('user_id', user.id);
-      return (response as List)
-          .map((item) => NotificationModel.fromMap(item))
-          .toList();
+
+      List<NotificationModel> notifications =
+          (response as List)
+              .map((item) => NotificationModel.fromMap(item))
+              .toList();
+      await notificationsBox.clear();
+      await notificationsBox.addAll(notifications);
+      return notifications;
     } catch (e) {
       debugPrint(e.toString());
       return [];

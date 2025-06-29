@@ -1,10 +1,18 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:ecomflutter/Features/HomePage/Presentation/Manager/main_products_cubit.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/NotificationsPageView/notifications.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/OrdersViewPage/orders.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/products.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProfilePageView/profilePage.dart';
+import 'package:ecomflutter/utils/usefulFunctions.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.current});
@@ -14,6 +22,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late StreamSubscription<ConnectivityResult> _connectionSubscription;
   int productNeeded = 0;
   int totalPrice = 0;
   int currentIndex = 0;
@@ -23,6 +32,23 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    _connectionSubscription = Connectivity().onConnectivityChanged.listen((
+      ConnectivityResult result,
+    ) {
+      final isOnline = result != ConnectivityResult.none;
+      if (isOnline) {
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.success(message: "The connection has came back"),
+        );
+        context.read<MainProductsCubit>().loadItems();
+      } else {
+        showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.info(message: "No Internect Connection"),
+        );
+      }
+    });
   }
 
   @override
@@ -63,17 +89,17 @@ class _HomeState extends State<Home> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10),
             child: Material(
-              color: Colors.white, // or your desired background color
-              elevation: 0, // Zero elevation to remove any shadow
+              color: Colors.white,
+              elevation: 0,
               child: BottomNavigationBar(
                 selectedItemColor: appbarSec,
 
                 unselectedItemColor: Colors.grey.shade600, //
-                showUnselectedLabels: false, // Show labels for all items
-                type: BottomNavigationBarType.fixed, // Prevents shifting
-                selectedFontSize: 0, // Larger text
-                elevation: 0, // No shadow here
-                unselectedFontSize: 12, // Slightly smaller unselected text
+                showUnselectedLabels: false,
+                type: BottomNavigationBarType.fixed,
+                selectedFontSize: 0,
+                elevation: 0,
+                unselectedFontSize: 12,
                 currentIndex: currentIndex,
                 onTap: (index) {
                   setState(() {

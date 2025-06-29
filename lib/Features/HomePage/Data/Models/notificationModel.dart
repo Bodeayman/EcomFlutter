@@ -1,6 +1,14 @@
+import 'package:hive/hive.dart';
+
+part 'notificationModel.g.dart';
+
+@HiveType(typeId: 3)
 class NotificationModel {
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String content;
+  @HiveField(2)
   final DateTime deliveryDate;
 
   NotificationModel({

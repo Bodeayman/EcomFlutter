@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/HomePage/Data/Repo/home_repo.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Repo/notifications_repo.dart';
@@ -12,4 +13,5 @@ void setupServiceLocator() {
   sl.registerLazySingleton<PaymentRepo>(() => PaymentRepo());
   sl.registerLazySingleton<OrderRequestRepo>(() => OrderRequestRepo());
   sl.registerLazySingleton<NotificationsRepo>(() => NotificationsRepo());
+  sl.registerLazySingleton<HomeRepo>(() => HomeRepo());
 }
