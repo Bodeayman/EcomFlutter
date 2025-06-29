@@ -1,9 +1,11 @@
+import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class OrderStatus extends StatelessWidget {
-  const OrderStatus({super.key});
+  const OrderStatus({super.key, required this.orderModel});
+  final OrderModel orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class OrderStatus extends StatelessWidget {
                   ],
                 ),
               ),
-              Text("May 22"),
+              Text(orderModel.deliveryDate.toIso8601String().split('T').first),
             ],
           ),
         ),
@@ -41,7 +43,26 @@ class OrderStatus extends StatelessWidget {
                   ],
                 ),
               ),
-              Text("May 22"),
+              Text(orderModel.shippedDate.toIso8601String().split('T').first),
+            ],
+          ),
+        ),
+
+        SizedBox(
+          height: 62,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                child: Row(
+                  children: [
+                    TickIcon(),
+                    const SizedBox(width: 10),
+                    Text("Order Shipped"),
+                  ],
+                ),
+              ),
+              Text(orderModel.orderShipped.toIso8601String().split('T').first),
             ],
           ),
         ),
@@ -59,25 +80,9 @@ class OrderStatus extends StatelessWidget {
                   ],
                 ),
               ),
-              Text("May 22"),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 62,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                child: Row(
-                  children: [
-                    TickIcon(),
-                    const SizedBox(width: 10),
-                    Text("Order Shipped"),
-                  ],
-                ),
+              Text(
+                orderModel.orderConfirmed.toIso8601String().split('T').first,
               ),
-              Text("May 22"),
             ],
           ),
         ),

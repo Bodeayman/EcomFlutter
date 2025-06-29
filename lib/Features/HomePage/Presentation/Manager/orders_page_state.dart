@@ -11,6 +11,6 @@ final class OrdersPageFailure extends OrdersPageState {
 }
 
 final class OrdersPageSuccess extends OrdersPageState {
-  final List<Map<String, dynamic>> orders;
+  final List<OrderModel> orders;
   OrdersPageSuccess(this.orders);
 }

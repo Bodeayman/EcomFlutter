@@ -1,8 +1,5 @@
 import 'package:ecomflutter/Features/HomePage/Data/Models/color.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Models/size.dart';
-import 'package:ecomflutter/utils/usefulFunctions.dart';
-import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Item {
   int id;

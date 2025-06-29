@@ -4,7 +4,7 @@ part of 'notifications_page_cubit.dart';
 sealed class NotificationsPageState {}
 
 final class NotificationsPageSuccess extends NotificationsPageState {
-  final List<Map<String, dynamic>> notifications;
+  final List<NotificationModel> notifications;
   NotificationsPageSuccess(this.notifications);
 }
 

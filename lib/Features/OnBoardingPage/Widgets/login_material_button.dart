@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomeElevatedButton extends StatelessWidget {
+class CustomeElevatedButton extends StatefulWidget {
   const CustomeElevatedButton({
     super.key,
     required this.buttonColor,
@@ -16,39 +16,60 @@ class CustomeElevatedButton extends StatelessWidget {
   final Color? iconColor;
   final Color textColor;
   final VoidCallback? callbackFunction;
+
+  @override
+  State<CustomeElevatedButton> createState() => _CustomeElevatedButtonState();
+}
+
+class _CustomeElevatedButtonState extends State<CustomeElevatedButton> {
+  double _scale = 1.0;
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(100),
-      child: SizedBox(
-        width: double.infinity,
-        height: 49,
-        child: MaterialButton(
-          onPressed: callbackFunction,
-          color: buttonColor,
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _scale = 0.95),
+      onTapUp: (_) => setState(() => _scale = 1.0),
+      onTapCancel: () => setState(() => _scale = 1.0),
+      child: AnimatedScale(
+        scale: _scale,
+        duration: Duration(milliseconds: 50),
+        curve: Curves.easeOut,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: SizedBox(
+            width: double.infinity,
+            height: 49,
+            child: MaterialButton(
+              onPressed: widget.callbackFunction,
+              color: widget.buttonColor,
 
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: (prefixIcon != null) ? 20 : 0,
-                child:
-                    (prefixIcon != null)
-                        ? Icon(prefixIcon, size: 25, color: iconColor)
-                        : null,
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    maxLines: 1,
-
-                    hintText,
-                    style: TextStyle(color: textColor),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: (widget.prefixIcon != null) ? 20 : 0,
+                    child:
+                        (widget.prefixIcon != null)
+                            ? Icon(
+                              widget.prefixIcon,
+                              size: 25,
+                              color: widget.iconColor,
+                            )
+                            : null,
                   ),
-                ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        maxLines: 1,
+
+                        widget.hintText,
+                        style: TextStyle(color: widget.textColor),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

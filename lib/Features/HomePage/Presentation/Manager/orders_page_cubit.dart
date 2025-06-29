@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/order_request_repo.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Models/orderItem.dart';
+import 'package:ecomflutter/Features/HomePage/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:meta/meta.dart';
 
@@ -11,8 +13,7 @@ class OrdersPageCubit extends Cubit<OrdersPageState> {
   }
   void fetchAllOrders() async {
     try {
-      List<Map<String, dynamic>> orders =
-          await sl<OrderRequestRepo>().getAllUserOrders();
+      List<OrderModel> orders = await sl<OrderRequestRepo>().getAllUserOrders();
 
       emit(OrdersPageSuccess(orders));
     } catch (e) {

@@ -1,10 +1,11 @@
+import 'package:ecomflutter/Features/HomePage/Data/Models/notificationModel.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class NotificationsRepo {
   final _client = Supabase.instance.client;
 
-  Future<List<Map<String, dynamic>>> notifyUsers() async {
+  Future<List<NotificationModel>> getAllNotifications() async {
     try {
       final user = _client.auth.currentUser;
 
@@ -16,9 +17,9 @@ class NotificationsRepo {
           .from('Notifications')
           .select()
           .eq('user_id', user.id);
-
-      // Return as list of maps
-      return List<Map<String, dynamic>>.from(response);
+      return (response as List)
+          .map((item) => NotificationModel.fromMap(item))
+          .toList();
     } catch (e) {
       debugPrint(e.toString());
       return [];
@@ -43,6 +44,22 @@ class NotificationsRepo {
                 "Your order has been confirmed, and it's on its way to shipping  ",
             'delivery_date': deliveryDate,
           }).select();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> deleteNotification(int id) async {
+    final user = _client.auth.currentUser;
+    debugPrint("Deleting now $id");
+
+    if (user == null) {
+      throw Exception("User not logged in");
+    }
+    try {
+      print("Deleting notification with ID: $id");
+
+      await _client.from('Notifications').delete().eq('id', id);
     } catch (e) {
       debugPrint(e.toString());
     }

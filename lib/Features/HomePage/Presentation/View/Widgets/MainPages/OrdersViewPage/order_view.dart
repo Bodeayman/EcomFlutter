@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class OrderView extends StatelessWidget {
-  const OrderView({super.key, required this.order});
-  final Order order;
+  const OrderView({super.key, required this.orderModel});
+  final OrderModel orderModel;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class OrderView extends StatelessWidget {
                 Expanded(
                   child: Center(
                     child: Text(
-                      "Order #${order.id}",
+                      "Order #${orderModel.id}",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -50,7 +50,7 @@ class OrderView extends StatelessWidget {
                 SizedBox(width: 40, height: 40),
               ],
             ),
-            OrderStatus(),
+            OrderStatus(orderModel: orderModel),
             const SizedBox(height: 50),
             SizedBox(
               width: double.infinity,
@@ -72,11 +72,44 @@ class OrderView extends StatelessWidget {
               child: Expanded(
                 child: Center(
                   child: OptionListTile(
-                    title: "${order.items.length} items",
+                    title: "items",
                     leading: Icon(Icons.receipt),
                     trailing: TextButton(
                       child: Text("View all"),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              child: SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisSize:
+                                        MainAxisSize
+                                            .min, // Prevents full screen
+                                    children:
+                                        orderModel.products.map((orderItem) {
+                                          final item = orderItem.itemId;
+                                          return ListTile(
+                                            leading: const Icon(
+                                              Icons.shopping_bag,
+                                            ),
+                                            title: Text("Item $item"),
+                                            subtitle: Text(
+                                              'Quantity: ${orderItem.quantity}',
+                                            ),
+                                          );
+                                        }).toList(),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -101,7 +134,7 @@ class OrderView extends StatelessWidget {
               width: double.infinity,
               height: 72,
               child: Expanded(
-                child: Center(child: OptionListTile(title: order.location)),
+                child: Center(child: OptionListTile(title: orderModel.address)),
               ),
             ),
           ],
