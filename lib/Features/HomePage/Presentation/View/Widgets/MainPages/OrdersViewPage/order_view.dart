@@ -1,7 +1,7 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/OrdersViewPage/Widgets/order_status.dart';
-import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/widgets/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

@@ -9,7 +9,7 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_price.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
-import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/widgets/option_list_tile.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

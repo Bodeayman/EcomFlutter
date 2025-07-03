@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'notificationModel.g.dart';
 
 @HiveType(typeId: 3)
-class NotificationModel {
+class NotificationModel extends HiveObject {
   @HiveField(0)
   final int id;
   @HiveField(1)

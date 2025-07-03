@@ -1,6 +1,8 @@
 import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
 import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
+import 'package:ecomflutter/utils/usefulFunctions.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class OrderRequestRepo {
@@ -13,14 +15,25 @@ class OrderRequestRepo {
       if (user == null) {
         throw Exception("No user is logged in");
       }
+      final ordersBox = Hive.box<OrderModel>('allOrders');
+      final connected = await isConnected();
+      if (!connected) {
+        final cachedItems = ordersBox.values.toList();
+        if (cachedItems.isNotEmpty) {
+          debugPrint("Returned cached data from Hive");
+          return (cachedItems);
+        }
+      }
       final response = await _client
           .from('Orders')
           .select('*, Orders_items(*)')
           .eq('user_id', user.id);
 
-      return (response as List)
-          .map((item) => OrderModel.fromMap(item))
-          .toList();
+      List<OrderModel> allOrders =
+          (response as List).map((item) => OrderModel.fromMap(item)).toList();
+      await ordersBox.clear();
+      await ordersBox.addAll(allOrders);
+      return allOrders;
     } catch (e) {
       debugPrint(e.toString());
       return [];
@@ -59,6 +72,22 @@ class OrderRequestRepo {
           });
         }),
       );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> deleteOrder(int id) async {
+    final user = _client.auth.currentUser;
+    debugPrint("Deleting now $id");
+
+    if (user == null) {
+      throw Exception("User not logged in");
+    }
+    try {
+      print("Deleting Order with ID: $id");
+
+      await _client.from('Orders').delete().eq('id', id);
     } catch (e) {
       debugPrint(e.toString());
     }

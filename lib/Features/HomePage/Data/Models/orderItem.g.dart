@@ -1,38 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'color.dart';
+part of 'orderItem.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CustomerColorAdapter extends TypeAdapter<CustomerColor> {
+class OrderItemAdapter extends TypeAdapter<OrderItem> {
   @override
-  final int typeId = 1;
+  final int typeId = 5;
 
   @override
-  CustomerColor read(BinaryReader reader) {
+  OrderItem read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return CustomerColor._fromHive(
-      productId: fields[0] as int,
-      colorName: fields[2] as String,
-      colorValue: fields[1] as int,
+    return OrderItem(
+      itemId: fields[0] as int,
+      quantity: fields[1] as int,
     );
   }
 
   @override
-  void write(BinaryWriter writer, CustomerColor obj) {
+  void write(BinaryWriter writer, OrderItem obj) {
     writer
-      ..writeByte(3)
-      ..writeByte(0)
-      ..write(obj.productId)
-      ..writeByte(1)
-      ..write(obj.colorValue)
       ..writeByte(2)
-      ..write(obj.colorName);
+      ..writeByte(0)
+      ..write(obj.itemId)
+      ..writeByte(1)
+      ..write(obj.quantity);
   }
 
   @override
@@ -41,7 +38,7 @@ class CustomerColorAdapter extends TypeAdapter<CustomerColor> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CustomerColorAdapter &&
+      other is OrderItemAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

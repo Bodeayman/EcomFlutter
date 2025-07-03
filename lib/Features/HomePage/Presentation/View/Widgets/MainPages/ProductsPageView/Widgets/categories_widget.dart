@@ -9,7 +9,6 @@ class CategoriesWidget extends StatelessWidget {
     ["assets/Ellipse 3.png", "Shoes"],
     ["assets/Ellipse 4.png", "Bags"],
     ["assets/Ellipse 5.png", "Accessories"],
-    ["assets/Ellipse 5.png", "Unknown"],
   ];
 
   @override
@@ -30,10 +29,7 @@ class CategoriesWidget extends StatelessWidget {
                   SizedBox(
                     height: 50,
                     width: 50,
-                    child:
-                        (categories[i][1] != "Unknown")
-                            ? Image.asset(categories[i][0])
-                            : const Icon(Icons.device_unknown),
+                    child: Image.asset(categories[i][0]),
                   ),
                   const SizedBox(height: 4),
                   Text(categories[i][1], style: const TextStyle(fontSize: 12)),

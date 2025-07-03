@@ -1,12 +1,22 @@
 import 'package:ecomflutter/Features/HomePage/Data/Models/orderItem.dart';
+import 'package:hive/hive.dart';
+part 'order.g.dart';
 
-class OrderModel {
+@HiveType(typeId: 4)
+class OrderModel extends HiveObject {
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String address;
+  @HiveField(2)
   final DateTime orderConfirmed;
+  @HiveField(3)
   final DateTime orderShipped;
+  @HiveField(4)
   final DateTime shippedDate;
+  @HiveField(5)
   final DateTime deliveryDate;
+  @HiveField(6)
   final List<OrderItem> products;
 
   OrderModel({

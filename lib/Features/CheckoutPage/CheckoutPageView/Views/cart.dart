@@ -23,7 +23,6 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: BlocBuilder<CartCubit, CartState>(
         builder: (context, state) {
           if (state.selectedItems.isNotEmpty) {

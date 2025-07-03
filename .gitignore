@@ -12,6 +12,9 @@
 .swiftpm/
 migrate_working_dir/
 lib/utils/api_key.dart
+lib/utils/firebase_key.dart
+/firebase.json
+/android/app/google-services.json
 # IntelliJ related
 *.iml
 *.ipr

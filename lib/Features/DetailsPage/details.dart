@@ -2,7 +2,7 @@ import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'package:ecomflutter/Features/DetailsPage/Widgets/details_view_functions.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
-import 'package:ecomflutter/shared/utils/option_list_tile.dart';
+import 'package:ecomflutter/utils/widgets/option_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -93,99 +93,93 @@ class _DetailsState extends State<Details> {
               ],
             ),
             const SizedBox(height: 10),
-            OptionListTile(
-              tileBorder: kExtremeRaduis,
+            SizedBox(
+              height: 65,
 
-              title: "Size",
-              trailing: SizedBox(
-                width: 60,
-                child: Row(
-                  children: [
-                    Text("S", style: TextStyle(fontWeight: FontWeight.bold)),
-                    IconButton(
-                      icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () => showSizes(context, widget.item.sizes),
-                    ),
-                  ],
+              child: OptionListTile(
+                tileBorder: kExtremeRaduis,
+
+                title: "Size",
+                trailing: SizedBox(
+                  width: 60,
+                  child: IconButton(
+                    icon: Image.asset("assets/arrowdown2.png"),
+                    onPressed: () => showSizes(context, widget.item.sizes),
+                  ),
                 ),
               ),
             ),
-            OptionListTile(
-              tileBorder: kExtremeRaduis,
+            SizedBox(
+              height: 65,
 
-              title: "Color",
-              trailing: SizedBox(
-                width: 60,
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: Container(
-                        color: Colors.amber,
-                        width: 10,
-                        height: 10,
-                      ),
-                    ),
-                    IconButton(
-                      icon: Image.asset("assets/arrowdown2.png"),
-                      onPressed: () => showColors(context, widget.item.colors),
-                    ),
-                  ],
+              child: OptionListTile(
+                tileBorder: kExtremeRaduis,
+
+                title: "Color",
+                trailing: SizedBox(
+                  width: 55,
+                  child: IconButton(
+                    icon: Image.asset("assets/arrowdown2.png"),
+                    onPressed: () => showColors(context, widget.item.colors),
+                  ),
                 ),
               ),
             ),
-            OptionListTile(
-              tileBorder: kExtremeRaduis,
-              title: "Quantity",
-              trailing: SizedBox(
-                width: 100,
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(color: appbarSec),
-                        child: RawMaterialButton(
-                          onPressed: () {
-                            setState(() {
-                              quantity++;
-                            });
-                          },
-                          child: Image.asset("assets/add.png"),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-
-                    Text(
-                      "$quantity",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(kExtremeRaduis),
-                      child: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(color: appbarSec),
-                        child: RawMaterialButton(
-                          onPressed: () {
-                            if (quantity > 0) {
+            SizedBox(
+              height: 65,
+              child: OptionListTile(
+                tileBorder: kExtremeRaduis,
+                title: "Quantity",
+                trailing: SizedBox(
+                  width: 100,
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(kExtremeRaduis),
+                        child: Container(
+                          height: 35,
+                          width: 35,
+                          decoration: BoxDecoration(color: appbarSec),
+                          child: RawMaterialButton(
+                            onPressed: () {
                               setState(() {
-                                quantity--;
+                                quantity++;
                               });
-                            }
-                          },
-                          child: Image.asset("assets/minus.png"),
+                            },
+                            child: Image.asset("assets/add.png"),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 5),
+
+                      Text(
+                        "$quantity",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(kExtremeRaduis),
+                        child: Container(
+                          height: 35,
+                          width: 35,
+                          decoration: BoxDecoration(color: appbarSec),
+                          child: RawMaterialButton(
+                            onPressed: () {
+                              if (quantity > 0) {
+                                setState(() {
+                                  quantity--;
+                                });
+                              }
+                            },
+                            child: Image.asset("assets/minus.png"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

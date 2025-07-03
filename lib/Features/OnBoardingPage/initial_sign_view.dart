@@ -25,16 +25,6 @@ class _InitialSignViewState extends State<InitialSignView> {
   @override
   void initState() {
     super.initState();
-    _checkOnBoarding();
-  }
-
-  Future<void> _checkOnBoarding() async {
-    bool valid = await ensureValidSession();
-    if (valid) {
-      if (mounted) {
-        context.pushReplacement('/home');
-      }
-    }
   }
 
   @override
