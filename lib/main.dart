@@ -15,8 +15,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
 import 'Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
 import 'Features/ProductsPage/Presentation/Manager/main_products_cubit.dart';
 import 'utils/api_key.dart';

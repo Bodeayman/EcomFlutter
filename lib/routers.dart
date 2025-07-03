@@ -1,13 +1,11 @@
 import 'package:ecomflutter/Features/CategoriesPage/Presentation/Views/category_view.dart';
 import 'package:ecomflutter/Features/CheckoutPage/SuccessPageView/success_view.dart';
-import 'package:ecomflutter/Features/DetailsPage/details.dart';
-import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 import 'package:ecomflutter/Features/HomePage/Presentation/View/home_view.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/cart.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/create_new_account_view.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/initial_sign_view.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/splash_view.dart';
-import 'package:ecomflutter/Features/RecordsPage/record_view.dart';
+import 'package:ecomflutter/Features/SearchPage/Widgets/search_found_results.dart';
 import 'package:ecomflutter/Features/SearchPage/search_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +14,6 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
   routes: [
-    GoRoute(path: "/records", builder: (context, state) => RecordView()),
     GoRoute(path: "/", builder: (context, state) => SplashView()),
     GoRoute(path: "/home", builder: (context, state) => Home(current: 0)),
 
@@ -28,7 +25,10 @@ final GoRouter router = GoRouter(
       path: "/initialE",
       builder: (context, state) => CreateNewAccountView(),
     ),
-    GoRoute(path: "/search", builder: (context, state) => SearchView()),
+    // GoRoute(
+    //   path: "/search",
+    //   builder: (context, state) => SearchFoundResultsView(),
+    // ),
     GoRoute(
       path: '/categories/:name',
       builder: (context, state) {

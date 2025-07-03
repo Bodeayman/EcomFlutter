@@ -6,7 +6,7 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: OrdersFoundViewBody());
+    return SafeArea(child: Scaffold(body: OrdersFoundViewBody()));
   }
 }
 

@@ -6,6 +6,6 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: NotificationFoundBodyView());
+    return SafeArea(child: Scaffold(body: NotificationFoundBodyView()));
   }
 }

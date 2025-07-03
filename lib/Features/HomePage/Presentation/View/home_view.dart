@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
               currentIndex = index;
             });
           },
-          children: const [
+          children: [
             ProductsPage(),
             NotificationsPage(),
             OrdersPage(),

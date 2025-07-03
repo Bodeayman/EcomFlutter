@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/SearchPage/Widgets/shop_by_categories_view.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
@@ -246,7 +247,11 @@ class _CartPageState extends State<CartPage> {
                           hintText: "Explore Categories",
                           textColor: Colors.white,
                           callbackFunction: () {
-                            context.push('/search');
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ShopByCategoriesView(),
+                              ),
+                            );
                           },
                         ),
                       ),

@@ -1,11 +1,5 @@
-import 'package:ecomflutter/Features/SearchPage/Widgets/search_view_body.dart';
+import 'package:ecomflutter/Features/SearchPage/Widgets/search_found_results.dart';
 import 'package:flutter/material.dart';
 
-class SearchView extends StatelessWidget {
-  const SearchView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(body: SearchViewBody());
-  }
-}
+/// A widget that represents the search view of the application.
+/// It displays the search results found in the application.

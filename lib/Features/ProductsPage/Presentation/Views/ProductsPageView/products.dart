@@ -1,6 +1,7 @@
 import 'package:ecomflutter/Features/CategoriesPage/Presentation/Views/category_view.dart';
 import 'package:ecomflutter/Features/ProductsPage/Presentation/Manager/main_products_cubit.dart';
 import 'package:ecomflutter/Features/SearchPage/Widgets/custom_search_field.dart';
+import 'package:ecomflutter/Features/SearchPage/Widgets/shop_by_categories_view.dart';
 import 'package:ecomflutter/Features/SearchPage/search_view.dart';
 import 'package:ecomflutter/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/categories_widget.dart';
 import 'package:ecomflutter/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/custom_main_page_app_bar.dart';
@@ -10,8 +11,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsPage extends StatelessWidget {
-  const ProductsPage({super.key});
-
+  ProductsPage({super.key});
+  final TextEditingController homePageSearchController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -26,7 +28,10 @@ class ProductsPage extends StatelessWidget {
               CustomMainPageAppBar(),
               const SizedBox(height: 40),
 
-              CustomSearchField(parentContext: context),
+              CustomSearchField(
+                parentContext: context,
+                controller: homePageSearchController,
+              ),
               ListTile(
                 title: Text(
                   "Categories",
@@ -36,7 +41,9 @@ class ProductsPage extends StatelessWidget {
                   onTap:
                       () => {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => SearchView()),
+                          MaterialPageRoute(
+                            builder: (context) => ShopByCategoriesView(),
+                          ),
                         ),
                       },
                   child: Text("See All", style: TextStyle(fontSize: 16)),

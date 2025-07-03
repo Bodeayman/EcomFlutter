@@ -1,10 +1,14 @@
+import 'package:ecomflutter/Features/SearchPage/Widgets/search_found_results.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/Features/SearchPage/Widgets/search_no_results.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchField extends StatelessWidget {
-  CustomSearchField({super.key, required this.parentContext});
-  final TextEditingController _controller = TextEditingController();
+  const CustomSearchField({
+    super.key,
+    required this.parentContext,
+    required this.controller,
+  });
+  final TextEditingController controller;
   final BuildContext parentContext;
   @override
   Widget build(BuildContext context) {
@@ -19,11 +23,13 @@ class CustomSearchField extends StatelessWidget {
             onSubmitted: (value) {
               Navigator.of(parentContext).push(
                 MaterialPageRoute(
-                  builder: (parentContext) => SearchNoResults(),
+                  builder:
+                      (parentContext) =>
+                          SearchFoundResultsView(searchController: controller),
                 ),
               );
             },
-            controller: _controller,
+            controller: controller,
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 10),
               enabledBorder: InputBorder.none,
