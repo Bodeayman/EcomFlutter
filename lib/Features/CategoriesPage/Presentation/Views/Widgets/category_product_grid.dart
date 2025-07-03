@@ -1,6 +1,6 @@
 import 'package:ecomflutter/Features/DetailsPage/details.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/main_products_cubit.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/ProductsPage/Presentation/Manager/main_products_cubit.dart';
 import 'package:ecomflutter/utils/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

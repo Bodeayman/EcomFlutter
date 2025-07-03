@@ -1,11 +1,11 @@
-import 'package:ecomflutter/Features/HomePage/Data/Models/color.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/notificationModel.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/order.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/orderItem.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/size.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/notifications_page_cubit.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/orders_page_cubit.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/color.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Data/Models/notificationModel.dart';
+import 'package:ecomflutter/Features/OrdersPage/Data/Models/order.dart';
+import 'package:ecomflutter/Features/OrdersPage/Data/Models/orderItem.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/size.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart';
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/firebase_options.dart';
 import 'package:ecomflutter/utils/helpers/notification_sender.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
@@ -18,7 +18,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';
-import 'Features/HomePage/Presentation/Manager/main_products_cubit.dart';
+import 'Features/ProductsPage/Presentation/Manager/main_products_cubit.dart';
 import 'utils/api_key.dart';
 import 'utils/theme_data.dart';
 import 'routers.dart';
@@ -27,8 +27,14 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await activiteNotifications();
+  const initSettings = InitializationSettings(
+    android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+  );
 
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
+
+  await setupNotificationChannel();
+  await scheduleDailyReminderIfNeeded();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.close();
   await Hive.initFlutter();

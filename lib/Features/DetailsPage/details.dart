@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 

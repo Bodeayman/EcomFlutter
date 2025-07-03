@@ -1,57 +1,43 @@
 import 'package:ecomflutter/main.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-Future<void> activiteNotifications() async {
+Future<void> scheduleDailyReminderIfNeeded() async {
   tz.initializeTimeZones();
   tz.setLocalLocation(tz.getLocation('Africa/Cairo'));
 
-  // 2. Request permission (optional but recommended for Android 13+)
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin
-      >()
-      ?.requestExactAlarmsPermission();
+  final prefs = await SharedPreferences.getInstance();
+  final isScheduled = prefs.getBool('daily_reminder_scheduled') ?? false;
 
-  // 3. Initialize plugin
-  const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-  const initSettings = InitializationSettings(android: androidSettings);
-  await flutterLocalNotificationsPlugin.initialize(initSettings);
-
-  // 4. Create channel
-  const channel = AndroidNotificationChannel(
-    'channel_id',
-    'channel_name',
-    description: 'Daily reminders',
-    importance: Importance.max,
-  );
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin
-      >()
-      ?.createNotificationChannel(channel);
-
-  // 5. Schedule daily notification at 9:00 AM
-  final now = tz.TZDateTime.now(tz.local);
-  var scheduledTime = tz.TZDateTime(
-    tz.local,
-    now.year,
-    now.month,
-    now.day,
-    2, // hour
-    36, // minute
-    00, // second
-  );
-
-  // // If 9:00 AM already passed today, schedule for tomorrow
-  if (scheduledTime.isBefore(now)) {
-    scheduledTime = scheduledTime.add(const Duration(days: 1));
+  if (isScheduled) {
+    print('Daily reminder already scheduled. Skipping.');
+    return;
   }
 
-  print('Flutter thinks local TZ is: ${tz.local}');
-  print('Scheduling for: $scheduledTime');
+  final hasPermission = await requestExactAlarmPermission();
+  if (!hasPermission) {
+    print('Cannot schedule exact alarms - permission denied');
+    return;
+  }
+
+  final now = tz.TZDateTime.now(tz.local);
+  // var scheduledTime = tz.TZDateTime(
+  //   tz.local,
+  //   now.year,
+  //   now.month,
+  //   now.day,
+  //   23,
+  //   21,
+  //   00,
+  // );
+  var scheduledTime = now.add(const Duration(minutes: 1));
+  // if (scheduledTime.isBefore(now)) {
+  //   scheduledTime = scheduledTime.add(const Duration(days: 1));
+  // }
+
+  print('Scheduling at: $scheduledTime');
 
   await flutterLocalNotificationsPlugin.zonedSchedule(
     0,
@@ -60,8 +46,8 @@ Future<void> activiteNotifications() async {
     scheduledTime,
     const NotificationDetails(
       android: AndroidNotificationDetails(
-        'channel_id',
-        'channel_name',
+        '123123',
+        'JimTan',
         channelDescription: 'Reminder',
         importance: Importance.max,
         priority: Priority.high,
@@ -71,7 +57,56 @@ Future<void> activiteNotifications() async {
       ),
     ),
     androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-
-    matchDateTimeComponents: DateTimeComponents.time,
+    uiLocalNotificationDateInterpretation:
+        UILocalNotificationDateInterpretation.absoluteTime,
   );
+
+  await prefs.setBool('daily_reminder_scheduled', true);
+  print('Daily reminder scheduled and saved in preferences.');
+}
+
+Future<bool> requestExactAlarmPermission() async {
+  final androidPlugin =
+      flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+
+  if (androidPlugin != null) {
+    final canSchedule = await androidPlugin.canScheduleExactNotifications();
+    print('Can schedule exact alarms: $canSchedule');
+
+    if (canSchedule == true) return true;
+
+    await androidPlugin.requestExactAlarmsPermission();
+
+    final canScheduleAfter =
+        await androidPlugin.canScheduleExactNotifications();
+    print('Can schedule after request: $canScheduleAfter');
+
+    return canScheduleAfter == true;
+  }
+
+  return false;
+}
+
+Future<void> setupNotificationChannel() async {
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    '123123',
+    'JimTan',
+    description: 'Reminder',
+    importance: Importance.max,
+    playSound: true,
+  );
+
+  final androidPlugin =
+      flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
+
+  if (androidPlugin != null) {
+    await androidPlugin.createNotificationChannel(channel);
+    print('Notification channel created: ${channel.id}');
+  }
 }

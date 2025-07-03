@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 
 part 'cart_state.dart';
 

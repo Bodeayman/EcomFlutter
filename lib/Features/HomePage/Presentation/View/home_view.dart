@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/main_products_cubit.dart';
+import 'package:ecomflutter/Features/ProductsPage/Presentation/Manager/main_products_cubit.dart';
 import 'package:ecomflutter/constants/colors.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/NotificationsPageView/notifications.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/OrdersViewPage/orders.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProductsPageView/products.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/View/Widgets/MainPages/ProfilePageView/profilePage.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Presentation/Views/NotificationsPageView/notifications.dart';
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Views/OrdersViewPage/orders.dart';
+import 'package:ecomflutter/Features/ProductsPage/Presentation/Views/ProductsPageView/products.dart';
+import 'package:ecomflutter/Features/ProfilePage/Presentation/Views/ProfilePageView/profilePage.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

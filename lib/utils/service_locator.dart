@@ -1,7 +1,7 @@
-import 'package:ecomflutter/Features/HomePage/Data/Repo/home_repo.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Repo/order_request_repo.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Repo/home_repo.dart';
+import 'package:ecomflutter/Features/OrdersPage/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Repo/notifications_repo.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Data/Repo/notifications_repo.dart';
 import 'package:ecomflutter/utils/api_service.dart';
 import 'package:get_it/get_it.dart';
 

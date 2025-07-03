@@ -1,9 +1,9 @@
-import 'package:ecomflutter/Features/HomePage/Data/Repo/order_request_repo.dart';
+import 'package:ecomflutter/Features/OrdersPage/Data/Repo/order_request_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Views/payment_web_view.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Repo/notifications_repo.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/notifications_page_cubit.dart';
-import 'package:ecomflutter/Features/HomePage/Presentation/Manager/orders_page_cubit.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Data/Repo/notifications_repo.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart';
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/constants/sizes.dart';
 import 'package:ecomflutter/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart';

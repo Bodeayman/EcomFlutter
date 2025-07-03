@@ -1,5 +1,5 @@
 import 'package:ecomflutter/Features/DetailsPage/details.dart';
-import 'package:ecomflutter/Features/HomePage/Data/Models/item.dart';
+import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
