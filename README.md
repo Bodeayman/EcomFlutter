@@ -17,7 +17,7 @@
 - Search Page  
 - Categories Page  
 - Cart Page  
-![CartPage](assets/IMG-20250704-WA0009.jpg)
+![CartPage](assets/screenshots/IMG-20250704-WA0009.jpg)
 
 - Checkout Page  
 
