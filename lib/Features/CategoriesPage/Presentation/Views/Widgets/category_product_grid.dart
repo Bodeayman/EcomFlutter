@@ -52,7 +52,12 @@ class CategoryProductGrid extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: BouncingScrollPhysics(),
-                itemCount: filtereddata.length,
+                itemCount:
+                    (categoryName == "Top Selling" || categoryName == "New in")
+                        ? (filtereddata.length < 6)
+                            ? filtereddata.length
+                            : 6 // This is if the products number didn't reduce than 6
+                        : filtereddata.length,
                 itemBuilder: (BuildContext context, int index) {
                   final Item item = filtereddata[index];
                   return Container(

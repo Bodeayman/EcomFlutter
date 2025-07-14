@@ -94,4 +94,21 @@ class OrderRequestRepo {
   }
 
   Future<void> addNewOrderItemsForOrder() async {}
+
+  Future<List<int>> fetchOrderProducts(int id) async {
+    final response = await Supabase.instance.client
+        .from("Orders_items")
+        .select("item_id")
+        .eq("order_id", id);
+    List<int> productIds =
+        response
+            .map<int>(
+              (item) =>
+                  item['item_id'] is int
+                      ? item['item_id']
+                      : int.parse(item['item_id'].toString()),
+            )
+            .toList();
+    return productIds;
+  }
 }

@@ -6,6 +6,7 @@ import 'package:ecomflutter/Features/OrdersPage/Data/Models/orderItem.dart';
 import 'package:ecomflutter/Features/ProductsPage/Data/Models/size.dart';
 import 'package:ecomflutter/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart';
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart';
+import 'package:ecomflutter/Features/ProfilePage/Presentation/Manager/profile_page_cubit_cubit.dart';
 import 'package:ecomflutter/firebase_options.dart';
 import 'package:ecomflutter/utils/helpers/notification_sender.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
@@ -75,6 +76,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => MainProductsCubit()),
         BlocProvider(create: (_) => NotificationsPageCubit()),
         BlocProvider(create: (_) => OrdersPageCubit()),
+        BlocProvider(create: (_) => ProfilePageCubit()),
       ],
       child: SafeArea(
         child: MaterialApp.router(

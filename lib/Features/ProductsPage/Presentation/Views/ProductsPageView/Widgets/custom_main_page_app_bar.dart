@@ -23,21 +23,21 @@ class CustomMainPageAppBar extends StatelessWidget {
         ),
         ClipRRect(
           borderRadius: BorderRadius.circular(100),
-          child: Container(
+          child: SizedBox(
             width: 72,
             height: 40,
-            decoration: BoxDecoration(color: kTextForm),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("Men", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(
-                  width: 16,
-                  height: 16,
-                  child: Image.asset("assets/arrowdown2.png"),
-                ),
-              ],
-            ),
+            // decoration: BoxDecoration(color: kTextForm),
+            // child: Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //   children: [
+            //     Text("Men", style: TextStyle(fontWeight: FontWeight.bold)),
+            //     SizedBox(
+            //       width: 16,
+            //       height: 16,
+            //       child: Image.asset("assets/arrowdown2.png"),
+            //     ),
+            //   ],
+            // ),
           ),
         ),
         Stack(

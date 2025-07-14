@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/utils/helpers/token_service.dart';
 import 'package:flutter/material.dart';
@@ -12,38 +13,55 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   double _opacity = 1;
+  Timer? _timer;
+  bool _navigated = false;
 
   @override
   void initState() {
     super.initState();
-    _animate();
+    _startLoopAnimation();
     _checkOnBoarding();
   }
 
-  void _animate() async {
-    if (mounted) {
-      await Future.delayed(Duration(seconds: 1));
-      setState(() {
-        _opacity = _opacity == 1 ? 0.5 : 1;
-      });
-    }
+  void _startLoopAnimation() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) {
+        setState(() {
+          _opacity = _opacity == 1 ? 0.0 : 1.0;
+        });
+      }
+    });
   }
 
   Future<void> _checkOnBoarding() async {
-    bool valid = await ensureValidSession();
+    try {
+      await Future.delayed(
+        const Duration(seconds: 3),
+      ); // Let animation play at least once
+
+      bool valid = await ensureValidSession();
+      _navigate(valid);
+    } catch (e) {
+      _navigate(false);
+    }
+  }
+
+  void _navigate(bool valid) {
+    if (_navigated) return; // Prevent multiple navigations
+    _navigated = true;
+
+    _timer?.cancel();
+
     if (valid) {
-      if (mounted) {
-        context.pushReplacement('/home');
-      }
+      context.pushReplacement('/home');
     } else {
-      if (mounted) {
-        context.pushReplacement('/initial');
-      }
+      context.pushReplacement('/initial');
     }
   }
 
   @override
   void dispose() {
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -52,10 +70,9 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: appbarSec,
       body: AnimatedOpacity(
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         opacity: _opacity,
-        curve: Curves.easeIn,
-
+        curve: Curves.easeInOut,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

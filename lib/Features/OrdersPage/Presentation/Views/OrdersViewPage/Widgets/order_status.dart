@@ -29,24 +29,6 @@ class OrderStatus extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 62,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                child: Row(
-                  children: [
-                    TickIcon(),
-                    const SizedBox(width: 10),
-                    Text("Shipped"),
-                  ],
-                ),
-              ),
-              Text(orderModel.shippedDate.toIso8601String().split('T').first),
-            ],
-          ),
-        ),
 
         SizedBox(
           height: 62,
@@ -58,7 +40,7 @@ class OrderStatus extends StatelessWidget {
                   children: [
                     TickIcon(),
                     const SizedBox(width: 10),
-                    Text("Order Shipped"),
+                    Text("Order out for delivery"),
                   ],
                 ),
               ),

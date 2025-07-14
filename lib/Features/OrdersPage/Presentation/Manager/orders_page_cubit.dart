@@ -31,4 +31,13 @@ class OrdersPageCubit extends Cubit<OrdersPageState> {
       emit(OrdersPageFailure("Failed to delete the Order"));
     }
   }
+
+  void fetchProductsNamesRelatedToOrderId(int id) async {
+    try {
+      await sl<OrderRequestRepo>().fetchOrderProducts(id);
+    } catch (e) {
+      debugPrint("Failed to delete order: $e");
+      emit(OrdersPageFailure("Failed to Load the product details"));
+    }
+  }
 }

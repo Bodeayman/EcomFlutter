@@ -1,4 +1,6 @@
+import 'package:ecomflutter/Features/OnBoardingPage/Widgets/login_material_button.dart';
 import 'package:ecomflutter/constants/colors.dart';
+import 'package:ecomflutter/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,6 +46,29 @@ class SupportView extends StatelessWidget {
                 const SizedBox(width: 40, height: 40),
               ],
             ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            "Write your problems here",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 30),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(kBorderSize),
+            child: Container(
+              decoration: BoxDecoration(color: kTextForm),
+              height: 200,
+              width: MediaQuery.of(context).size.width - 50,
+              child: TextFormField(
+                maxLines: 10,
+                decoration: InputDecoration(border: InputBorder.none),
+              ),
+            ),
+          ),
+          CustomeElevatedButton(
+            buttonColor: appbarSec,
+            hintText: "Submit",
+            textColor: Colors.white,
           ),
         ],
       ),

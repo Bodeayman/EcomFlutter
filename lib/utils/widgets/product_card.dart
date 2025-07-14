@@ -45,26 +45,23 @@ class ProductCard extends StatelessWidget {
                       borderRadius: const BorderRadius.vertical(
                         top: Radius.circular(12),
                       ),
-                      child: Hero(
-                        tag: "product_${item.id}",
-                        child: Image.network(
-                          item.url,
-                          fit: BoxFit.contain,
-                          height: 10,
-                          width: double.infinity,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            if (loadingProgress == null) return child;
-                            return Shimmer.fromColors(
-                              baseColor: Colors.grey[300]!,
-                              highlightColor: Colors.white,
-                              child: Container(color: Colors.grey[300]),
-                            );
-                          },
-                          errorBuilder:
-                              (context, error, stackTrace) => const Center(
-                                child: Icon(Icons.error, color: Colors.red),
-                              ),
-                        ),
+                      child: Image.network(
+                        item.url,
+                        fit: BoxFit.contain,
+                        height: 10,
+                        width: double.infinity,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.white,
+                            child: Container(color: Colors.grey[300]),
+                          );
+                        },
+                        errorBuilder:
+                            (context, error, stackTrace) => const Center(
+                              child: Icon(Icons.error, color: Colors.red),
+                            ),
                       ),
                     ),
                   ),

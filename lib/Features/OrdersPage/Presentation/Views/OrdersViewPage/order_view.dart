@@ -72,7 +72,7 @@ class OrderView extends StatelessWidget {
               child: Expanded(
                 child: Center(
                   child: OptionListTile(
-                    title: "items",
+                    title: "Items",
                     leading: Icon(Icons.receipt),
                     trailing: TextButton(
                       child: Text("View all"),
@@ -133,9 +133,7 @@ class OrderView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               height: 72,
-              child: Expanded(
-                child: Center(child: OptionListTile(title: orderModel.address)),
-              ),
+              child: Center(child: OptionListTile(title: orderModel.address)),
             ),
           ],
         ),
