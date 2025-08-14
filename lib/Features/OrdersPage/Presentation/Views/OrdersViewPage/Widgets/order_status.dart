@@ -19,13 +19,15 @@ class OrderStatus extends StatelessWidget {
               SizedBox(
                 child: Row(
                   children: [
-                    TickIcon(),
+                    TickIcon(time: orderModel.deliveryDate),
                     const SizedBox(width: 10),
                     Text("Delivered"),
                   ],
                 ),
               ),
-              Text(orderModel.deliveryDate.toIso8601String().split('T').first),
+              Text(
+                "${orderModel.deliveryDate.toIso8601String().split('T').first.substring(5)} ${orderModel.deliveryDate.toIso8601String().split("T")[1].substring(3, 8)}",
+              ),
             ],
           ),
         ),
@@ -38,13 +40,15 @@ class OrderStatus extends StatelessWidget {
               SizedBox(
                 child: Row(
                   children: [
-                    TickIcon(),
+                    TickIcon(time: orderModel.orderShipped),
                     const SizedBox(width: 10),
                     Text("Order out for delivery"),
                   ],
                 ),
               ),
-              Text(orderModel.orderShipped.toIso8601String().split('T').first),
+              Text(
+                "${orderModel.orderShipped.toIso8601String().split('T').first.substring(5)} ${orderModel.orderShipped.toIso8601String().split("T")[1].substring(3, 8)}",
+              ),
             ],
           ),
         ),
@@ -56,14 +60,14 @@ class OrderStatus extends StatelessWidget {
               SizedBox(
                 child: Row(
                   children: [
-                    TickIcon(),
+                    TickIcon(time: orderModel.orderConfirmed),
                     const SizedBox(width: 10),
                     Text("Order Confirmed"),
                   ],
                 ),
               ),
               Text(
-                orderModel.orderConfirmed.toIso8601String().split('T').first,
+                "${orderModel.orderConfirmed.toIso8601String().split('T').first.substring(5)} ${orderModel.orderConfirmed.toIso8601String().split("T")[1].substring(3, 8)}",
               ),
             ],
           ),
@@ -74,17 +78,19 @@ class OrderStatus extends StatelessWidget {
 }
 
 class TickIcon extends StatelessWidget {
-  const TickIcon({super.key});
-
+  const TickIcon({super.key, required this.time});
+  final DateTime time;
   @override
   Widget build(BuildContext context) {
+    final bool notReached = time.isAfter(DateTime.now());
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(kExtremeRaduis),
       child: SizedBox(
         height: 24,
         width: 24,
         child: Container(
-          color: appbarSec,
+          color: notReached ? Colors.grey : appbarSec,
           child: Icon(Icons.done, color: Colors.white, size: 15),
         ),
       ),

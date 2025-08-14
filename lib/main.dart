@@ -1,3 +1,4 @@
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/order_view_cubit.dart';
 import 'package:ecomflutter/Features/ProductsPage/Data/Models/color.dart';
 import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 import 'package:ecomflutter/Features/NotificationsPage/Data/Models/notificationModel.dart';
@@ -7,10 +8,13 @@ import 'package:ecomflutter/Features/ProductsPage/Data/Models/size.dart';
 import 'package:ecomflutter/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart';
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/Features/ProfilePage/Presentation/Manager/profile_page_cubit_cubit.dart';
-import 'package:ecomflutter/firebase_options.dart';
+import 'package:ecomflutter/Features/DashboardPage/Data/Models/dashboard_product.dart';
+import 'package:ecomflutter/Features/DashboardPage/Data/Models/dashboard_order.dart';
+import 'package:ecomflutter/Features/DashboardPage/Data/Models/dashboard_user.dart';
+import 'package:ecomflutter/Features/DashboardPage/Data/Repo/dashboard_repo.dart';
+import 'package:ecomflutter/Features/DashboardPage/Presentation/Manager/dashboard_cubit.dart';
 import 'package:ecomflutter/utils/helpers/notification_sender.dart';
 import 'package:ecomflutter/utils/service_locator.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -34,7 +38,7 @@ void main() async {
 
   await setupNotificationChannel();
   await scheduleDailyReminderIfNeeded();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.close();
   await Hive.initFlutter();
 
@@ -45,6 +49,12 @@ void main() async {
 
   Hive.registerAdapter(CustomerColorAdapter());
   Hive.registerAdapter(CustomerSizeAdapter());
+  
+  // Dashboard Hive adapters
+  Hive.registerAdapter(DashboardProductAdapter());
+  Hive.registerAdapter(DashboardOrderAdapter());
+  Hive.registerAdapter(DashboardOrderItemAdapter());
+  Hive.registerAdapter(DashboardUserAdapter());
   await Hive.openBox<Item>('allProducts');
   await Hive.openBox<NotificationModel>('allNotifications');
   await Hive.openBox<OrderModel>('allOrders');
@@ -77,6 +87,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => NotificationsPageCubit()),
         BlocProvider(create: (_) => OrdersPageCubit()),
         BlocProvider(create: (_) => ProfilePageCubit()),
+        BlocProvider(create: (_) => OrderViewCubit()),
+        BlocProvider(create: (_) => DashboardCubit(DashboardRepo())),
       ],
       child: SafeArea(
         child: MaterialApp.router(

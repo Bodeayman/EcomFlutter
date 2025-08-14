@@ -3,9 +3,23 @@ import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({super.key, required this.item});
   final Item item;
+  
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  bool isFavorite = false;
+
+  void _toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,7 +28,7 @@ class ProductCard extends StatelessWidget {
         onTap: () {
           try {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => Details(item: item)),
+              MaterialPageRoute(builder: (context) => Details(item: widget.item)),
             );
           } catch (err) {
             debugPrint(err.toString());
@@ -46,7 +60,7 @@ class ProductCard extends StatelessWidget {
                         top: Radius.circular(12),
                       ),
                       child: Image.network(
-                        item.url,
+                        widget.item.url,
                         fit: BoxFit.contain,
                         height: 10,
                         width: double.infinity,
@@ -72,14 +86,14 @@ class ProductCard extends StatelessWidget {
                     children: [
                       const SizedBox(height: 4),
                       Text(
-                        item.name,
+                        widget.item.name,
                         style: const TextStyle(fontSize: 16),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "${item.price} \$",
+                        "${widget.item.price} \$",
                         style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
@@ -95,9 +109,15 @@ class ProductCard extends StatelessWidget {
                   icon: SizedBox(
                     height: 20,
                     width: 20,
-                    child: Image.asset("assets/heart.png"),
+                    child: isFavorite 
+                      ? const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                          size: 20,
+                        )
+                      : Image.asset("assets/heart.png"),
                   ),
-                  onPressed: () {},
+                  onPressed: _toggleFavorite,
                 ),
               ),
             ],

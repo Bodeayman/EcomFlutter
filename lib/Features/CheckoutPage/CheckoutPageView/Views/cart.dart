@@ -194,12 +194,12 @@ class _CartPageState extends State<CartPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 100),
+                    const SizedBox(height: 50),
 
                     CheckoutPriceList(),
                     EnterCouponWidget(),
 
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 30),
                     SizedBox(
                       height: 52,
                       width: double.infinity,
@@ -216,6 +216,7 @@ class _CartPageState extends State<CartPage> {
                             ),
                       ),
                     ),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),

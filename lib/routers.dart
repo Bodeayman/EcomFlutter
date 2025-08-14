@@ -7,6 +7,8 @@ import 'package:ecomflutter/Features/OnBoardingPage/initial_sign_view.dart';
 import 'package:ecomflutter/Features/OnBoardingPage/splash_view.dart';
 import 'package:ecomflutter/Features/SearchPage/Widgets/search_found_results.dart';
 import 'package:ecomflutter/Features/SearchPage/search_view.dart';
+import 'package:ecomflutter/Features/DashboardPage/Presentation/Views/dashboard_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,9 +17,13 @@ final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
   routes: [
     GoRoute(path: "/", builder: (context, state) => SplashView()),
-    GoRoute(path: "/home", builder: (context, state) => Home(current: 0)),
+    GoRoute(
+      path: "/home",
+      builder: (context, state) => DashboardView(),
+    ), // Edit this line please
 
     GoRoute(path: "/orders", builder: (context, state) => Home(current: 2)),
+    GoRoute(path: "/dashboard", builder: (context, state) => DashboardView()),
 
     // GoRoute(path: "/details/:id", builder: (context, state) => Details(item: ,)),
     GoRoute(path: "/initial", builder: (context, state) => InitialSignView()),
@@ -39,38 +45,53 @@ final GoRouter router = GoRouter(
 
     GoRoute(
       path: "/cart",
-      pageBuilder:
-          (context, state) => CustomTransitionPage(
-            child: CartPage(),
-            key: state.pageKey,
-            transitionsBuilder: (
-              context,
-              animation,
-              secondaryAnimation,
-              child,
-            ) {
-              final curvedAnimation = CurvedAnimation(
-                curve: Curves.easeInOut,
-                parent: animation,
-              );
-              final secondaryCurvedAnimation = CurvedAnimation(
-                curve: Curves.easeInOut,
-                parent: secondaryAnimation,
-              );
-              final slideIn = Tween<Offset>(
-                begin: Offset(1, 0),
-                end: Offset.zero,
-              ).animate(curvedAnimation);
-              final slideOut = Tween<Offset>(
-                end: Offset(-0.3, 0),
-                begin: Offset.zero,
-              ).animate(secondaryCurvedAnimation);
-              return SlideTransition(
-                position: slideIn,
-                child: SlideTransition(position: slideOut, child: child),
-              );
-            },
-          ),
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          key: state.pageKey,
+          child: CartPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            final curved = CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOut,
+            );
+
+            return Stack(
+              children: [
+                // Previous page gets a shadow and slides slightly left
+                SlideTransition(
+                  position: Tween<Offset>(
+                    begin: Offset.zero,
+                    end: Offset(-0.05, 0), // Slight push back
+                  ).animate(secondaryAnimation),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 10,
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Container(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                    ),
+                  ),
+                ),
+
+                // New page slides in
+                SlideTransition(
+                  position: Tween<Offset>(
+                    begin: Offset(1.0, 0.0),
+                    end: Offset.zero,
+                  ).animate(curved),
+                  child: child,
+                ),
+              ],
+            );
+          },
+        );
+      },
     ),
     GoRoute(
       path: "/purSuccess",

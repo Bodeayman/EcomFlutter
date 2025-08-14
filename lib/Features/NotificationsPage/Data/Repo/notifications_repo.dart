@@ -27,7 +27,8 @@ class NotificationsRepo {
       final response = await _client
           .from('Notifications')
           .select()
-          .eq('user_id', user.id);
+          .eq('user_id', user.id)
+          .timeout(Duration(seconds: 15));
 
       List<NotificationModel> notifications =
           (response as List)

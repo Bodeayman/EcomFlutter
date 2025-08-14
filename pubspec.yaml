@@ -36,6 +36,7 @@ dependencies:
   dio : any
   dartz : any
   shimmer : any
+  equatable: any
   font_awesome_flutter : any
   go_router : any
   shared_preferences : any
@@ -47,9 +48,6 @@ dependencies:
   webview_flutter_android: any
   connectivity_plus: ^5.0.2
   get_it: any
-  flutterfire_cli : any
-  firebase_core: ^2.30.0
-  firebase_messaging: ^14.7.10
   flutter_local_notifications: ^17.1.2
   timezone: ^0.9.2
   permission_handler: ^11.3.1

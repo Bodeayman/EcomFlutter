@@ -1,8 +1,10 @@
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/order_view_cubit.dart';
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/Features/OrdersPage/Data/Models/order.dart';
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order_status.dart';
 import 'package:ecomflutter/utils/widgets/option_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class OrderView extends StatelessWidget {
@@ -77,35 +79,53 @@ class OrderView extends StatelessWidget {
                     trailing: TextButton(
                       child: Text("View all"),
                       onPressed: () {
+                        context.read<OrderViewCubit>().returnItemModelsPerOrder(
+                          orderModel.id,
+                        );
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return Dialog(
-                              child: SizedBox(
-                                height: 300,
-                                width: 300,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    mainAxisSize:
-                                        MainAxisSize
-                                            .min, // Prevents full screen
-                                    children:
-                                        orderModel.products.map((orderItem) {
-                                          final item = orderItem.itemId;
-                                          return ListTile(
-                                            leading: const Icon(
-                                              Icons.shopping_bag,
-                                            ),
-                                            title: Text("Item $item"),
-                                            subtitle: Text(
-                                              'Quantity: ${orderItem.quantity}',
-                                            ),
-                                          );
-                                        }).toList(),
+                            return BlocBuilder<OrderViewCubit, OrderViewState>(
+                              builder: (context, state) {
+                                return Dialog(
+                                  child: SizedBox(
+                                    height: 300,
+                                    width: 300,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child:
+                                          (state is OrderViewSuccess)
+                                              ? Column(
+                                                mainAxisSize:
+                                                    MainAxisSize
+                                                        .min, // Prevents full screen
+                                                children:
+                                                    state.productNames.map((
+                                                      product,
+                                                    ) {
+                                                      final itemName =
+                                                          product.name;
+                                                      return ListTile(
+                                                        leading: const Icon(
+                                                          Icons.shopping_bag,
+                                                        ),
+                                                        title: Text(itemName),
+                                                        subtitle: Text(
+                                                          'Quantity: ${orderModel.products.where((e) => e.itemId == product.id).first.quantity}',
+                                                        ),
+                                                      );
+                                                    }).toList(),
+                                              )
+                                              : SizedBox(
+                                                height: 30,
+                                                width: 30,
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              ),
+                                    ),
                                   ),
-                                ),
-                              ),
+                                );
+                              },
                             );
                           },
                         );

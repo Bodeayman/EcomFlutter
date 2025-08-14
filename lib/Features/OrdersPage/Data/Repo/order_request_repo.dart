@@ -27,7 +27,8 @@ class OrderRequestRepo {
       final response = await _client
           .from('Orders')
           .select('*, Orders_items(*)')
-          .eq('user_id', user.id);
+          .eq('user_id', user.id)
+          .timeout(Duration(seconds: 15));
 
       List<OrderModel> allOrders =
           (response as List).map((item) => OrderModel.fromMap(item)).toList();
@@ -48,10 +49,11 @@ class OrderRequestRepo {
     }
 
     final now = DateTime.now();
+    // it should be admin request
     final orderConfirmed = now.toIso8601String();
-    final orderShipped = now.add(Duration(days: 2)).toIso8601String();
-    final shippedDate = now.add(Duration(days: 4)).toIso8601String();
-    final deliveryDate = now.add(Duration(days: 6)).toIso8601String();
+    final orderShipped = now.add(Duration(hours: 2)).toIso8601String();
+    final shippedDate = now.add(Duration(hours: 4)).toIso8601String();
+    final deliveryDate = now.add(Duration(hours: 6)).toIso8601String();
     try {
       final newOrder =
           await _client.from('Orders').insert({

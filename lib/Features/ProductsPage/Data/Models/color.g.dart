@@ -16,11 +16,11 @@ class CustomerColorAdapter extends TypeAdapter<CustomerColor> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return CustomerColor._fromHive(
+    return CustomerColor(
+      color: Color(324),
       productId: fields[0] as int,
       colorName: fields[2] as String,
-      colorValue: fields[1] as int,
-    );
+    )..colorValue = fields[1] as int;
   }
 
   @override
