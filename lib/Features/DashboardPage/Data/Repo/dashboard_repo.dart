@@ -79,7 +79,7 @@ class DashboardRepo {
     try {
       final response = await _supabase
           .from('Orders')
-          .select('*, Order_items(*)');
+          .select('*, Orders_items(*)');
       return (response as List)
           .map((order) => DashboardOrder.fromMap(order))
           .toList();
@@ -91,14 +91,11 @@ class DashboardRepo {
 
   Future<DashboardOrder> updateOrderStatus(int orderId, String status) async {
     try {
-      Map<String, dynamic> updateData = {
-        'status': status,
-        'updated_at': DateTime.now().toIso8601String(),
-      };
+      Map<String, dynamic> updateData = {'status': status};
 
       switch (status) {
         case 'approved':
-          updateData['approved_date'] = DateTime.now().toIso8601String();
+          updateData['order_confirmed'] = DateTime.now().toIso8601String();
           break;
         case 'shipped':
           updateData['shipped_date'] = DateTime.now().toIso8601String();
@@ -150,10 +147,7 @@ class DashboardRepo {
       final response =
           await _supabase
               .from('Users')
-              .update({
-                'role': role,
-                'updated_at': DateTime.now().toIso8601String(),
-              })
+              .update({'role': role})
               .eq('auth_id', userId)
               .select()
               .single();

@@ -1,6 +1,7 @@
 import 'package:ecomflutter/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../Manager/dashboard_cubit.dart';
 import '../../Manager/dashboard_state.dart';
 
@@ -240,6 +241,19 @@ class _DashboardOverviewState extends State<DashboardOverview> {
               ),
             ),
           ],
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          width: double.infinity,
+          child: _buildActionButton(
+            context,
+            'Logout',
+            Icons.logout,
+            () {
+              // Call the logout function
+              context.go('/initial');
+            },
+          ),
         ),
       ],
     );

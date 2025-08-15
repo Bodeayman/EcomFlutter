@@ -112,11 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Overlay.of(context),
                       CustomSnackBar.info(message: "Wait..."),
                     );
-                    await Supabase.instance.client.auth.signOut();
-
-                    await clearSession();
-
-                    GoRouter.of(navigatorKey.currentContext!).go('/initial');
+                    await logout();
 
                     debugPrint('User successfully logged out');
                   } catch (e) {
@@ -131,4 +127,12 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+}
+
+Future<void> logout() async {
+  await Supabase.instance.client.auth.signOut();
+
+  await clearSession();
+
+  GoRouter.of(navigatorKey.currentContext!).go('/initial');
 }
