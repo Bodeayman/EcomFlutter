@@ -22,6 +22,13 @@ class _ProductsSectionState extends State<ProductsSection> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, DashboardState>(
+      buildWhen: (previous, current) {
+        // Only rebuild for products-related states
+        return current is ProductsLoading || 
+               current is ProductsLoaded || 
+               current is ProductOperationSuccess ||
+               current is DashboardError;
+      },
       builder: (context, state) {
         if (state is ProductsLoading) {
           return const Center(child: CircularProgressIndicator());

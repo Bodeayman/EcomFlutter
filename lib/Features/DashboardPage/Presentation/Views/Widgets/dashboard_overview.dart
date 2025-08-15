@@ -4,12 +4,32 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../Manager/dashboard_cubit.dart';
 import '../../Manager/dashboard_state.dart';
 
-class DashboardOverview extends StatelessWidget {
+class DashboardOverview extends StatefulWidget {
   const DashboardOverview({super.key});
+
+  @override
+  State<DashboardOverview> createState() => _DashboardOverviewState();
+}
+
+class _DashboardOverviewState extends State<DashboardOverview> {
+  @override
+  void initState() {
+    super.initState();
+    // Load dashboard stats when the widget is first created
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<DashboardCubit>().loadDashboardStats();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, DashboardState>(
+      buildWhen: (previous, current) {
+        // Only rebuild for stats-related states
+        return current is StatsLoading || 
+               current is StatsLoaded || 
+               current is DashboardError;
+      },
       builder: (context, state) {
         if (state is StatsLoading) {
           return const Center(child: CircularProgressIndicator());
@@ -69,8 +89,6 @@ class DashboardOverview extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                _buildRevenueCard(context, stats['totalRevenue']),
                 const SizedBox(height: 20),
                 _buildQuickActions(context),
               ],

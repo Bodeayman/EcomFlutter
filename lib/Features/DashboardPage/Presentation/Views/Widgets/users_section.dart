@@ -22,6 +22,13 @@ class _UsersSectionState extends State<UsersSection> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, DashboardState>(
+      buildWhen: (previous, current) {
+        // Only rebuild for users-related states
+        return current is UsersLoading || 
+               current is UsersLoaded || 
+               current is UserOperationSuccess ||
+               current is DashboardError;
+      },
       builder: (context, state) {
         if (state is UsersLoading) {
           return const Center(child: CircularProgressIndicator());

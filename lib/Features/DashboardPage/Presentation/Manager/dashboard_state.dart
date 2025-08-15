@@ -50,11 +50,12 @@ class OrdersLoading extends DashboardState {}
 
 class OrdersLoaded extends DashboardState {
   final List<DashboardOrder> orders;
+  final String selectedStatus;
 
-  const OrdersLoaded(this.orders);
+  const OrdersLoaded(this.orders, {this.selectedStatus = 'all'});
 
   @override
-  List<Object?> get props => [orders];
+  List<Object?> get props => [orders, selectedStatus];
 }
 
 class OrderOperationSuccess extends DashboardState {

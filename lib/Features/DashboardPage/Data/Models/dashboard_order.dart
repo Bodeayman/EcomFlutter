@@ -11,28 +11,28 @@ class DashboardOrder extends HiveObject {
   String address;
 
   @HiveField(2)
-  int userId;
+  String userId;
 
   @HiveField(3)
-  DateTime? shippedDate;
+  String status;
 
   @HiveField(4)
-  DateTime? deliveryDate;
+  DateTime? shippedDate;
 
   @HiveField(5)
-  bool orderConfirmed;
+  DateTime? deliveryDate;
 
   @HiveField(6)
-  bool orderShipped;
+  DateTime? orderConfirmed;
 
   DashboardOrder({
     required this.id,
     required this.address,
     required this.userId,
+    required this.status,
     this.shippedDate,
     this.deliveryDate,
-    this.orderConfirmed = false,
-    this.orderShipped = false,
+    this.orderConfirmed,
   });
 
   factory DashboardOrder.fromMap(Map<String, dynamic> map) {
@@ -40,6 +40,7 @@ class DashboardOrder extends HiveObject {
       id: map['id'],
       address: map['address'] ?? '',
       userId: map['user_id'] ?? 0,
+      status: map['status'] ?? 'pending',
       shippedDate:
           map['shipped_date'] != null
               ? DateTime.parse(map['shipped_date'])
@@ -48,8 +49,10 @@ class DashboardOrder extends HiveObject {
           map['delivery_date'] != null
               ? DateTime.parse(map['delivery_date'])
               : null,
-      orderConfirmed: map['order_confirmed'] ?? false,
-      orderShipped: map['order_shipped'] ?? false,
+      orderConfirmed:
+          map['approved_date'] != null
+              ? DateTime.parse(map['approved_date'])
+              : null,
     );
   }
 
@@ -58,10 +61,10 @@ class DashboardOrder extends HiveObject {
       'id': id,
       'address': address,
       'user_id': userId,
+      'status': status,
       'shipped_date': shippedDate?.toIso8601String(),
       'delivery_date': deliveryDate?.toIso8601String(),
-      'order_confirmed': orderConfirmed,
-      'order_shipped': orderShipped,
+      'order_confirmed': orderConfirmed?.toIso8601String(),
     };
   }
 }

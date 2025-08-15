@@ -19,11 +19,11 @@ class DashboardOrderAdapter extends TypeAdapter<DashboardOrder> {
     return DashboardOrder(
       id: fields[0] as int,
       address: fields[1] as String,
-      userId: fields[2] as int,
-      shippedDate: fields[3] as DateTime?,
-      deliveryDate: fields[4] as DateTime?,
-      orderConfirmed: fields[5] as bool,
-      orderShipped: fields[6] as bool,
+      userId: fields[2] as String,
+      status: fields[3] as String,
+      shippedDate: fields[4] as DateTime?,
+      deliveryDate: fields[5] as DateTime?,
+      orderConfirmed: fields[6] as DateTime?,
     );
   }
 
@@ -38,13 +38,13 @@ class DashboardOrderAdapter extends TypeAdapter<DashboardOrder> {
       ..writeByte(2)
       ..write(obj.userId)
       ..writeByte(3)
-      ..write(obj.shippedDate)
+      ..write(obj.status)
       ..writeByte(4)
-      ..write(obj.deliveryDate)
+      ..write(obj.shippedDate)
       ..writeByte(5)
-      ..write(obj.orderConfirmed)
+      ..write(obj.deliveryDate)
       ..writeByte(6)
-      ..write(obj.orderShipped);
+      ..write(obj.orderConfirmed);
   }
 
   @override

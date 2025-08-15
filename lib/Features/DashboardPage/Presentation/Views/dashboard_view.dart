@@ -21,19 +21,12 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   int _currentIndex = 0;
-  late final PageController _pageController = PageController();
 
   @override
   void initState() {
     super.initState();
     // Check access when the page loads
     context.read<DashboardCubit>().checkDashboardAccess();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
   }
 
   @override
@@ -99,14 +92,8 @@ class _DashboardViewState extends State<DashboardView> {
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
+            child: IndexedStack(
+              index: _currentIndex,
               children: [
                 DashboardOverview(),
                 ProductsSection(),
@@ -143,11 +130,6 @@ class _DashboardViewState extends State<DashboardView> {
                       setState(() {
                         _currentIndex = index;
                       });
-                      _pageController.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
                     },
                     items: const [
                       BottomNavigationBarItem(

@@ -8,6 +8,7 @@ import 'dashboard_state.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
   final DashboardRepo _dashboardRepo;
+  String _selectedOrderStatus = 'all';
 
   DashboardCubit(this._dashboardRepo) : super(DashboardInitial());
 
@@ -89,8 +90,9 @@ class DashboardCubit extends Cubit<DashboardState> {
   Future<void> loadOrders() async {
     emit(OrdersLoading());
     try {
+      _selectedOrderStatus = 'all';
       final orders = await _dashboardRepo.getAllOrders();
-      emit(OrdersLoaded(orders));
+      emit(OrdersLoaded(orders, selectedStatus: _selectedOrderStatus));
     } catch (e) {
       emit(DashboardError('Failed to load orders: $e'));
     }
@@ -99,8 +101,9 @@ class DashboardCubit extends Cubit<DashboardState> {
   Future<void> loadOrdersByStatus(String status) async {
     emit(OrdersLoading());
     try {
+      _selectedOrderStatus = status;
       final orders = await _dashboardRepo.getOrdersByStatus(status);
-      emit(OrdersLoaded(orders));
+      emit(OrdersLoaded(orders, selectedStatus: _selectedOrderStatus));
     } catch (e) {
       emit(DashboardError('Failed to load orders: $e'));
     }
@@ -111,6 +114,12 @@ class DashboardCubit extends Cubit<DashboardState> {
       await _dashboardRepo.updateOrderStatus(orderId, status);
       final orders = await _dashboardRepo.getAllOrders();
       emit(OrderOperationSuccess('Order status updated successfully', orders));
+      // Reload orders with current filter
+      if (_selectedOrderStatus == 'all') {
+        await loadOrders();
+      } else {
+        await loadOrdersByStatus(_selectedOrderStatus);
+      }
     } catch (e) {
       emit(DashboardError('Failed to update order status: $e'));
     }

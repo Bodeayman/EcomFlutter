@@ -10,8 +10,6 @@ class DashboardRepo {
   Future<List<DashboardProduct>> getAllProducts() async {
     try {
       final response = await _supabase.from('Products').select();
-      debugPrint(response.toString());
-      print(response.toString());
       return (response as List)
           .map((product) => DashboardProduct.fromMap(product))
           .toList();
@@ -67,9 +65,7 @@ class DashboardRepo {
     try {
       final response = await _supabase
           .from('Orders')
-          .select('*, Order_items(*)')
-          .order('order_date', ascending: false);
-
+          .select('*, Orders_items(*)');
       return (response as List)
           .map((order) => DashboardOrder.fromMap(order))
           .toList();
@@ -83,10 +79,7 @@ class DashboardRepo {
     try {
       final response = await _supabase
           .from('Orders')
-          .select('*, Order_items(*)')
-          .eq('status', status)
-          .order('order_date', ascending: false);
-
+          .select('*, Order_items(*)');
       return (response as List)
           .map((order) => DashboardOrder.fromMap(order))
           .toList();
@@ -181,27 +174,17 @@ class DashboardRepo {
           .select('id')
           .eq('status', 'pending');
       final usersResponse = await _supabase.from('Users').select('auth_id');
-      final revenueResponse = await _supabase
-          .from('Orders')
-          .select('total_amount')
-          .eq('status', 'delivered');
 
       final productsCount = productsResponse.length ?? 0;
       final ordersCount = ordersResponse.length ?? 0;
       final pendingOrdersCount = pendingOrdersResponse.length ?? 0;
       final usersCount = usersResponse.length ?? 0;
 
-      double totalRevenue = 0;
-      for (var order in revenueResponse as List) {
-        totalRevenue += (order['total_amount'] ?? 0).toDouble();
-      }
-
       return {
         'totalProducts': productsCount,
         'totalOrders': ordersCount,
         'pendingOrders': pendingOrdersCount,
         'totalUsers': usersCount,
-        'totalRevenue': totalRevenue,
       };
     } catch (e) {
       print('Error fetching dashboard stats: $e');
@@ -210,7 +193,6 @@ class DashboardRepo {
         'totalOrders': 0,
         'pendingOrders': 0,
         'totalUsers': 0,
-        'totalRevenue': 0.0,
       };
     }
   }
