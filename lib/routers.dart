@@ -19,7 +19,7 @@ final GoRouter router = GoRouter(
     GoRoute(path: "/", builder: (context, state) => SplashView()),
     GoRoute(
       path: "/home",
-      builder: (context, state) => DashboardView(),
+      builder: (context, state) => Home(current: 0),
     ), // Edit this line please
 
     GoRoute(path: "/orders", builder: (context, state) => Home(current: 2)),

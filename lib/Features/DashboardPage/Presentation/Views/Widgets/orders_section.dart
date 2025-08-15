@@ -24,10 +24,10 @@ class _OrdersSectionState extends State<OrdersSection> {
     return BlocBuilder<DashboardCubit, DashboardState>(
       buildWhen: (previous, current) {
         // Only rebuild for orders-related states
-        return current is OrdersLoading || 
-               current is OrdersLoaded || 
-               current is OrderOperationSuccess ||
-               current is DashboardError;
+        return current is OrdersLoading ||
+            current is OrdersLoaded ||
+            current is OrderOperationSuccess ||
+            current is DashboardError;
       },
       builder: (context, state) {
         if (state is OrdersLoading) {
@@ -100,7 +100,8 @@ Widget _buildStatusFilter(BuildContext context) {
 Widget _buildFilterChip(String status, String label) {
   return BlocBuilder<DashboardCubit, DashboardState>(
     builder: (context, state) {
-      final isSelected = state is OrdersLoaded && state.selectedStatus == status;
+      final isSelected =
+          state is OrdersLoaded && state.selectedStatus == status;
       return FilterChip(
         label: Text(label),
         selected: isSelected,
@@ -158,7 +159,7 @@ Widget _buildOrderCard(BuildContext context, DashboardOrder order) {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'User ID: ${order.userId}',
+                      'User ID: ${order.userId.substring(0, 8)}',
                       style: TextStyle(color: Colors.grey[600], fontSize: 14),
                     ),
                     Text(

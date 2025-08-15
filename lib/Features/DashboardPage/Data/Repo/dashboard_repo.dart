@@ -79,7 +79,8 @@ class DashboardRepo {
     try {
       final response = await _supabase
           .from('Orders')
-          .select('*, Orders_items(*)');
+          .select('*, Orders_items(*)')
+          .eq('status', status);
       return (response as List)
           .map((order) => DashboardOrder.fromMap(order))
           .toList();
@@ -101,7 +102,7 @@ class DashboardRepo {
           updateData['shipped_date'] = DateTime.now().toIso8601String();
           break;
         case 'delivered':
-          updateData['delivered_date'] = DateTime.now().toIso8601String();
+          updateData['delivery_date'] = DateTime.now().toIso8601String();
           break;
       }
 

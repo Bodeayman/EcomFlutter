@@ -24,10 +24,10 @@ class _UsersSectionState extends State<UsersSection> {
     return BlocBuilder<DashboardCubit, DashboardState>(
       buildWhen: (previous, current) {
         // Only rebuild for users-related states
-        return current is UsersLoading || 
-               current is UsersLoaded || 
-               current is UserOperationSuccess ||
-               current is DashboardError;
+        return current is UsersLoading ||
+            current is UsersLoaded ||
+            current is UserOperationSuccess ||
+            current is DashboardError;
       },
       builder: (context, state) {
         if (state is UsersLoading) {
@@ -35,6 +35,19 @@ class _UsersSectionState extends State<UsersSection> {
         }
 
         if (state is UsersLoaded) {
+          return Column(
+            children: [
+              _buildHeader(context),
+              Expanded(
+                child:
+                    state.users.isEmpty
+                        ? const Center(child: Text('No users found'))
+                        : _buildUsersList(context, state.users),
+              ),
+            ],
+          );
+        }
+        if (state is UserOperationSuccess) {
           return Column(
             children: [
               _buildHeader(context),
@@ -249,10 +262,6 @@ class _UsersSectionState extends State<UsersSection> {
                   items: const [
                     DropdownMenuItem(value: 'user', child: Text('User')),
                     DropdownMenuItem(value: 'admin', child: Text('Admin')),
-                    DropdownMenuItem(
-                      value: 'dashboard',
-                      child: Text('Dashboard Admin'),
-                    ),
                   ],
                   onChanged: (value) {
                     if (value != null) {

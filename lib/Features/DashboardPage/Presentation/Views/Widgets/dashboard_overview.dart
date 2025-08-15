@@ -27,9 +27,9 @@ class _DashboardOverviewState extends State<DashboardOverview> {
     return BlocBuilder<DashboardCubit, DashboardState>(
       buildWhen: (previous, current) {
         // Only rebuild for stats-related states
-        return current is StatsLoading || 
-               current is StatsLoaded || 
-               current is DashboardError;
+        return current is StatsLoading ||
+            current is StatsLoaded ||
+            current is DashboardError;
       },
       builder: (context, state) {
         if (state is StatsLoading) {
@@ -220,40 +220,13 @@ class _DashboardOverviewState extends State<DashboardOverview> {
           ),
         ),
         const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: _buildActionButton(context, 'Add Product', Icons.add, () {
-                // Navigate to products section and show add dialog
-                // This will be handled by the parent widget
-              }),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: _buildActionButton(
-                context,
-                'View Orders',
-                Icons.shopping_cart,
-                () {
-                  // Navigate to orders section
-                  // This will be handled by the parent widget
-                },
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
+
         SizedBox(
           width: double.infinity,
-          child: _buildActionButton(
-            context,
-            'Logout',
-            Icons.logout,
-            () {
-              // Call the logout function
-              context.go('/initial');
-            },
-          ),
+          child: _buildActionButton(context, 'Logout', Icons.logout, () {
+            // Call the logout function
+            context.go('/initial');
+          }),
         ),
       ],
     );

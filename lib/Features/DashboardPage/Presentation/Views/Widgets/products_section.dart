@@ -24,10 +24,10 @@ class _ProductsSectionState extends State<ProductsSection> {
     return BlocBuilder<DashboardCubit, DashboardState>(
       buildWhen: (previous, current) {
         // Only rebuild for products-related states
-        return current is ProductsLoading || 
-               current is ProductsLoaded || 
-               current is ProductOperationSuccess ||
-               current is DashboardError;
+        return current is ProductsLoading ||
+            current is ProductsLoaded ||
+            current is ProductOperationSuccess ||
+            current is DashboardError;
       },
       builder: (context, state) {
         if (state is ProductsLoading) {
@@ -35,6 +35,19 @@ class _ProductsSectionState extends State<ProductsSection> {
         }
 
         if (state is ProductsLoaded) {
+          return Column(
+            children: [
+              _buildHeader(context),
+              Expanded(
+                child:
+                    state.products.isEmpty
+                        ? const Center(child: Text('No products found'))
+                        : _buildProductsList(context, state.products),
+              ),
+            ],
+          );
+        }
+        if (state is ProductOperationSuccess) {
           return Column(
             children: [
               _buildHeader(context),

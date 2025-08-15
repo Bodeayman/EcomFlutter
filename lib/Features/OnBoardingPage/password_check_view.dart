@@ -100,7 +100,23 @@ class _PasswordCheckViewState extends State<PasswordCheckView> {
                           final session = response.session;
                           if (session != null) {
                             await saveSession(session);
-                            context.go("/home");
+                            final user =
+                                Supabase.instance.client.auth.currentUser;
+                            debugPrint(user.toString());
+                            debugPrint(user!.id.toString());
+                            String role = '';
+                            final response =
+                                await Supabase.instance.client
+                                    .from('Users')
+                                    .select('role')
+                                    .eq('auth_id', user.id)
+                                    .single();
+                            role = response['role'] ?? "user";
+                            if (role == 'admin') {
+                              context.pushReplacement('/dashboard');
+                            } else if (role == 'user') {
+                              context.pushReplacement('/home');
+                            }
                           }
                         }
                       } catch (e) {

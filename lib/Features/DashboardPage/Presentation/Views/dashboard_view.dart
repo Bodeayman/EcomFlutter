@@ -80,15 +80,6 @@ class _DashboardViewState extends State<DashboardView> {
               style: TextStyle(color: Colors.black),
             ),
             elevation: 0,
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.logout, color: Colors.white),
-                onPressed: () {
-                  // Handle logout
-                  context.go('/initial');
-                },
-              ),
-            ],
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),

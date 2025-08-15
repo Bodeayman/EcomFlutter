@@ -3,6 +3,7 @@ import 'package:ecomflutter/constants/colors.dart';
 import 'package:ecomflutter/utils/helpers/token_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -40,22 +41,38 @@ class _SplashViewState extends State<SplashView> {
       ); // Let animation play at least once
 
       bool valid = await ensureValidSession();
-      _navigate(valid);
+      await _navigate(valid);
     } catch (e) {
-      _navigate(false);
+      await _navigate(false);
     }
   }
 
-  void _navigate(bool valid) {
+  Future<void> _navigate(bool valid) async {
     if (_navigated) return; // Prevent multiple navigations
     _navigated = true;
 
     _timer?.cancel();
-
-    if (valid) {
-      context.pushReplacement('/home');
-    } else {
-      context.pushReplacement('/initial');
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
+      debugPrint(user.toString());
+      debugPrint(user!.id.toString());
+      String role = '';
+      final response =
+          await Supabase.instance.client
+              .from('Users')
+              .select('role')
+              .eq('auth_id', user.id)
+              .single();
+      role = response['role'] ?? "user";
+      if (role == 'admin' && valid) {
+        context.pushReplacement('/dashboard');
+      } else if (role == 'user' && valid) {
+        context.pushReplacement('/home');
+      } else {
+        context.pushReplacement('/initial');
+      }
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 

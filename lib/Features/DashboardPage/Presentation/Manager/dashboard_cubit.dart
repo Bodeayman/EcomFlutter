@@ -65,6 +65,7 @@ class DashboardCubit extends Cubit<DashboardState> {
       emit(DashboardError('Failed to create product: $e'));
     }
   }
+  // Why when the product is updated ,and i get all the products , it returns no data available?
 
   Future<void> updateProduct(DashboardProduct product) async {
     try {

@@ -61,6 +61,7 @@ class DashboardProduct extends HiveObject {
       'location': location,
       'name': name,
       'cat': cat,
+      'quantity': quantity,
     };
   }
 }
