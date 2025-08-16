@@ -123,24 +123,24 @@ class _DashboardOverviewState extends State<DashboardOverview> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 40, color: color),
-            const SizedBox(height: 8),
+            Icon(icon, size: 25, color: color),
+            const SizedBox(height: 4),
             Text(
               value,
               style: const TextStyle(
-                fontSize: 24,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: appbarSec,
               ),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
             Text(
               title,
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 10, color: Colors.grey[600]),
               textAlign: TextAlign.center,
             ),
           ],

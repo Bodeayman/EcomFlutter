@@ -1,6 +1,7 @@
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart';
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/allTabs.dart';
 import 'package:ecomflutter/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order_tile.dart';
+import 'package:ecomflutter/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/orders_not_found_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,9 @@ class OrdersFoundViewBody extends StatelessWidget {
         child: BlocBuilder<OrdersPageCubit, OrdersPageState>(
           builder: (context, state) {
             if (state is OrdersPageSuccess) {
+              if (state.orders.isEmpty) {
+                return OrdersNotFoundViewBody();
+              }
               return ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 2),
                 itemCount: state.orders.length + 1, // +1 for header

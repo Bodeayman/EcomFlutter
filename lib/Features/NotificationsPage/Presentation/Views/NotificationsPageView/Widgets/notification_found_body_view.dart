@@ -1,4 +1,5 @@
 import 'package:ecomflutter/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart';
+import 'package:ecomflutter/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notification_notFound_body_view.dart';
 import 'package:ecomflutter/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notifications_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,9 @@ class NotificationFoundBodyView extends StatelessWidget {
         child: BlocBuilder<NotificationsPageCubit, NotificationsPageState>(
           builder: (context, state) {
             if (state is NotificationsPageSuccess) {
+              if (state.notifications.isEmpty) {
+                return NotificationNotfoundBodyView();
+              }
               return ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 2),
                 itemCount: state.notifications.length + 1, // +1 for header

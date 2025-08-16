@@ -6,6 +6,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class NotificationsRepo {
   final _client = Supabase.instance.client;
+  final _choices = {
+    "cancelled": "Unfortuantely your order has been cancelled.",
+    "pending": "Your order is waiting for approval.",
+    "approved": "Your order has been approved. and it's on way to be shipped",
+    "shipped": "Your order has been shipped. and it's on way to be delivered",
+    "delivered": "Your order has been delivered.",
+  };
 
   Future<List<NotificationModel>> getAllNotifications() async {
     try {
