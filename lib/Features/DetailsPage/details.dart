@@ -22,8 +22,10 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   int quantity = 0;
+
   @override
   Widget build(BuildContext context) {
+    print(widget.item.id);
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

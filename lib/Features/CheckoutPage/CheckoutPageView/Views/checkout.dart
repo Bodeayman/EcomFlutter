@@ -121,16 +121,18 @@ class CheckoutPage extends StatelessWidget {
                                         .totalPrice
                                         .toInt(),
                                   );
-                              final result = await Navigator.of(
-                                context,
-                              ).push<bool>(
-                                MaterialPageRoute(
-                                  builder:
-                                      (_) => PaymentWebView(
-                                        paymentUrl: paymentUrl,
-                                      ),
-                                ),
-                              );
+                              final result = true;
+                              //await Navigator.of(
+                              //   context,
+                              // ).push<bool>(
+                              //   MaterialPageRoute(
+                              //     builder:
+                              //         (_) => PaymentWebView(
+                              //           paymentUrl: paymentUrl,
+                              //         ),
+                              //   ),
+
+                              // );
 
                               if (result == true) {
                                 await sl<OrderRequestRepo>().addNewOrder(

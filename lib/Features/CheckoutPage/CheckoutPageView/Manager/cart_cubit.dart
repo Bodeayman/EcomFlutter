@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:ecomflutter/Features/ProductsPage/Data/Models/item.dart';
 
@@ -14,6 +15,7 @@ class CartCubit extends Cubit<CartState> {
 
   /// Adds an item to the cart or increases its quantity
   void addItem(Item product) {
+    debugPrint("From the cubit this is ${product.id}");
     final updatedCart = Map<Item, int>.from(state.selectedItems);
     updatedCart[product] = (updatedCart[product] ?? 0) + 1;
 

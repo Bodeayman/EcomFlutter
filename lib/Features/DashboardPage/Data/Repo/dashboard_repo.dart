@@ -41,7 +41,7 @@ class DashboardRepo {
           await _supabase
               .from('Products')
               .update(product.toMap())
-              .eq('id', product.id)
+              .eq('id', product.id!)
               .select()
               .single();
 

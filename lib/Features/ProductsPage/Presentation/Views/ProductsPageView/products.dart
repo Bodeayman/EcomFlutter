@@ -71,27 +71,27 @@ class ProductsPage extends StatelessWidget {
                 ),
               ),
               TopSellingWidget(),
-              ListTile(
-                title: Text(
-                  "New in",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                trailing: InkWell(
-                  child: Text("See All", style: TextStyle(fontSize: 16)),
-                  onTap:
-                      () => {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder:
-                                (context) =>
-                                    CategoryView(categoryName: "New in"),
-                          ),
-                        ),
-                        debugPrint("New in"),
-                      },
-                ),
-              ),
-              NewItemsWidget(),
+              // ListTile(
+              //   title: Text(
+              //     "New in",
+              //     style: TextStyle(fontWeight: FontWeight.bold),
+              //   ),
+              //   trailing: InkWell(
+              //     child: Text("See All", style: TextStyle(fontSize: 16)),
+              //     onTap:
+              //         () => {
+              //           Navigator.of(context).push(
+              //             MaterialPageRoute(
+              //               builder:
+              //                   (context) =>
+              //                       CategoryView(categoryName: "New in"),
+              //             ),
+              //           ),
+              //           debugPrint("New in"),
+              //         },
+              //   ),
+              // ),
+              // NewItemsWidget(),
             ],
           ),
         ),

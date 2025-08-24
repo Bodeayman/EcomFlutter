@@ -35,7 +35,7 @@ class OrderModel extends HiveObject {
       id: map['id'],
       address: map['address'] ?? '',
       orderConfirmed: DateTime.parse(map['order_confirmed']),
-      orderShipped: DateTime.parse(map['order_shipped']),
+      orderShipped: DateTime.parse(map['order_shipped']), // orderRequested Date
       shippedDate: DateTime.parse(map['shipped_date']),
       deliveryDate: DateTime.parse(map['delivery_date']),
       products:

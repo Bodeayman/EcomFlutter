@@ -1,0 +1,136 @@
+# Details
+
+Date : 2025-08-16 17:12:58
+
+Directory c:\\ifit\\ecomflutter\\lib
+
+Total : 121 files,  8768 codes, 331 comments, 871 blanks, all 9970 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [lib/Features/CategoriesPage/Presentation/Views/Widgets/category\_product\_grid.dart](/lib/Features/CategoriesPage/Presentation/Views/Widgets/category_product_grid.dart) | Dart | 74 | 0 | 4 | 78 |
+| [lib/Features/CategoriesPage/Presentation/Views/Widgets/category\_view\_body.dart](/lib/Features/CategoriesPage/Presentation/Views/Widgets/category_view_body.dart) | Dart | 43 | 0 | 2 | 45 |
+| [lib/Features/CategoriesPage/Presentation/Views/category\_view.dart](/lib/Features/CategoriesPage/Presentation/Views/category_view.dart) | Dart | 10 | 0 | 2 | 12 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment\_repo.dart](/lib/Features/CheckoutPage/CheckoutPageView/Data/Repo/payment_repo.dart) | Dart | 116 | 0 | 11 | 127 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Manager/cart\_cubit.dart](/lib/Features/CheckoutPage/CheckoutPageView/Manager/cart_cubit.dart) | Dart | 48 | 5 | 12 | 65 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Manager/cart\_state.dart](/lib/Features/CheckoutPage/CheckoutPageView/Manager/cart_state.dart) | Dart | 26 | 0 | 5 | 31 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout\_dialog.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_dialog.dart) | Dart | 0 | 84 | 6 | 90 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout\_list.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_list.dart) | Dart | 8 | 0 | 3 | 11 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout\_price.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/checkout_price.dart) | Dart | 71 | 0 | 3 | 74 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/enter\_coupon\_widget.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/Widgets/enter_coupon_widget.dart) | Dart | 71 | 0 | 7 | 78 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/cart.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/cart.dart) | Dart | 259 | 12 | 11 | 282 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/checkout.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/checkout.dart) | Dart | 200 | 10 | 7 | 217 |
+| [lib/Features/CheckoutPage/CheckoutPageView/Views/payment\_web\_view.dart](/lib/Features/CheckoutPage/CheckoutPageView/Views/payment_web_view.dart) | Dart | 56 | 0 | 15 | 71 |
+| [lib/Features/CheckoutPage/SuccessPageView/success\_view.dart](/lib/Features/CheckoutPage/SuccessPageView/success_view.dart) | Dart | 66 | 0 | 5 | 71 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_order.dart](/lib/Features/DashboardPage/Data/Models/dashboard_order.dart) | Dart | 92 | 2 | 19 | 113 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_order.g.dart](/lib/Features/DashboardPage/Data/Models/dashboard_order.g.dart) | Dart | 86 | 4 | 13 | 103 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_product.dart](/lib/Features/DashboardPage/Data/Models/dashboard_product.dart) | Dart | 55 | 0 | 13 | 68 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_product.g.dart](/lib/Features/DashboardPage/Data/Models/dashboard_product.g.dart) | Dart | 51 | 4 | 8 | 63 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_user.dart](/lib/Features/DashboardPage/Data/Models/dashboard_user.dart) | Dart | 40 | 0 | 10 | 50 |
+| [lib/Features/DashboardPage/Data/Models/dashboard\_user.g.dart](/lib/Features/DashboardPage/Data/Models/dashboard_user.g.dart) | Dart | 42 | 4 | 8 | 54 |
+| [lib/Features/DashboardPage/Data/Repo/dashboard\_repo.dart](/lib/Features/DashboardPage/Data/Repo/dashboard_repo.dart) | Dart | 187 | 0 | 24 | 211 |
+| [lib/Features/DashboardPage/Presentation/Manager/dashboard\_cubit.dart](/lib/Features/DashboardPage/Presentation/Manager/dashboard_cubit.dart) | Dart | 137 | 7 | 16 | 160 |
+| [lib/Features/DashboardPage/Presentation/Manager/dashboard\_state.dart](/lib/Features/DashboardPage/Presentation/Manager/dashboard_state.dart) | Dart | 75 | 5 | 37 | 117 |
+| [lib/Features/DashboardPage/Presentation/Views/Widgets/dashboard\_overview.dart](/lib/Features/DashboardPage/Presentation/Views/Widgets/dashboard_overview.dart) | Dart | 244 | 3 | 12 | 259 |
+| [lib/Features/DashboardPage/Presentation/Views/Widgets/orders\_section.dart](/lib/Features/DashboardPage/Presentation/Views/Widgets/orders_section.dart) | Dart | 396 | 1 | 22 | 419 |
+| [lib/Features/DashboardPage/Presentation/Views/Widgets/products\_section.dart](/lib/Features/DashboardPage/Presentation/Views/Widgets/products_section.dart) | Dart | 507 | 1 | 18 | 526 |
+| [lib/Features/DashboardPage/Presentation/Views/Widgets/users\_section.dart](/lib/Features/DashboardPage/Presentation/Views/Widgets/users_section.dart) | Dart | 310 | 1 | 17 | 328 |
+| [lib/Features/DashboardPage/Presentation/Views/dashboard\_view.dart](/lib/Features/DashboardPage/Presentation/Views/dashboard_view.dart) | Dart | 143 | 2 | 8 | 153 |
+| [lib/Features/DashboardPage/README.md](/lib/Features/DashboardPage/README.md) | Markdown | 75 | 0 | 22 | 97 |
+| [lib/Features/DetailsPage/Widgets/color\_list\_tile.dart](/lib/Features/DetailsPage/Widgets/color_list_tile.dart) | Dart | 56 | 0 | 4 | 60 |
+| [lib/Features/DetailsPage/Widgets/details\_view\_functions.dart](/lib/Features/DetailsPage/Widgets/details_view_functions.dart) | Dart | 113 | 0 | 4 | 117 |
+| [lib/Features/DetailsPage/Widgets/size\_list\_tile.dart](/lib/Features/DetailsPage/Widgets/size_list_tile.dart) | Dart | 49 | 1 | 3 | 53 |
+| [lib/Features/DetailsPage/details.dart](/lib/Features/DetailsPage/details.dart) | Dart | 243 | 0 | 17 | 260 |
+| [lib/Features/HomePage/Presentation/View/Widgets/home\_view\_body.dart](/lib/Features/HomePage/Presentation/View/Widgets/home_view_body.dart) | Dart | 8 | 0 | 3 | 11 |
+| [lib/Features/HomePage/Presentation/View/home\_view.dart](/lib/Features/HomePage/Presentation/View/home_view.dart) | Dart | 154 | 0 | 10 | 164 |
+| [lib/Features/NotificationsPage/Data/Models/notificationModel.dart](/lib/Features/NotificationsPage/Data/Models/notificationModel.dart) | Dart | 30 | 0 | 6 | 36 |
+| [lib/Features/NotificationsPage/Data/Models/notificationModel.g.dart](/lib/Features/NotificationsPage/Data/Models/notificationModel.g.dart) | Dart | 36 | 4 | 8 | 48 |
+| [lib/Features/NotificationsPage/Data/Repo/notifications\_repo.dart](/lib/Features/NotificationsPage/Data/Repo/notifications_repo.dart) | Dart | 79 | 0 | 13 | 92 |
+| [lib/Features/NotificationsPage/Presentation/Manager/notifications\_page\_cubit.dart](/lib/Features/NotificationsPage/Presentation/Manager/notifications_page_cubit.dart) | Dart | 35 | 0 | 4 | 39 |
+| [lib/Features/NotificationsPage/Presentation/Manager/notifications\_page\_state.dart](/lib/Features/NotificationsPage/Presentation/Manager/notifications_page_state.dart) | Dart | 12 | 0 | 5 | 17 |
+| [lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notification\_found\_body\_view.dart](/lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notification_found_body_view.dart) | Dart | 52 | 1 | 3 | 56 |
+| [lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notification\_notFound\_body\_view.dart](/lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notification_notFound_body_view.dart) | Dart | 45 | 0 | 4 | 49 |
+| [lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notifications\_tile.dart](/lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/Widgets/notifications_tile.dart) | Dart | 55 | 0 | 4 | 59 |
+| [lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/notifications.dart](/lib/Features/NotificationsPage/Presentation/Views/NotificationsPageView/notifications.dart) | Dart | 9 | 0 | 3 | 12 |
+| [lib/Features/OnBoardingPage/Widgets/login\_material\_button.dart](/lib/Features/OnBoardingPage/Widgets/login_material_button.dart) | Dart | 73 | 0 | 6 | 79 |
+| [lib/Features/OnBoardingPage/Widgets/login\_text\_field.dart](/lib/Features/OnBoardingPage/Widgets/login_text_field.dart) | Dart | 45 | 0 | 2 | 47 |
+| [lib/Features/OnBoardingPage/Widgets/sign\_in\_group\_buttons.dart](/lib/Features/OnBoardingPage/Widgets/sign_in_group_buttons.dart) | Dart | 50 | 0 | 6 | 56 |
+| [lib/Features/OnBoardingPage/Widgets/sign\_in\_text.dart](/lib/Features/OnBoardingPage/Widgets/sign_in_text.dart) | Dart | 15 | 0 | 3 | 18 |
+| [lib/Features/OnBoardingPage/create\_new\_account\_view.dart](/lib/Features/OnBoardingPage/create_new_account_view.dart) | Dart | 160 | 0 | 11 | 171 |
+| [lib/Features/OnBoardingPage/initial\_sign\_view.dart](/lib/Features/OnBoardingPage/initial_sign_view.dart) | Dart | 170 | 0 | 10 | 180 |
+| [lib/Features/OnBoardingPage/logo\_view.dart](/lib/Features/OnBoardingPage/logo_view.dart) | Dart | 36 | 0 | 5 | 41 |
+| [lib/Features/OnBoardingPage/password\_check\_view.dart](/lib/Features/OnBoardingPage/password_check_view.dart) | Dart | 156 | 0 | 9 | 165 |
+| [lib/Features/OnBoardingPage/splash\_view.dart](/lib/Features/OnBoardingPage/splash_view.dart) | Dart | 98 | 0 | 12 | 110 |
+| [lib/Features/OrdersPage/Data/Models/order.dart](/lib/Features/OrdersPage/Data/Models/order.dart) | Dart | 43 | 1 | 4 | 48 |
+| [lib/Features/OrdersPage/Data/Models/order.g.dart](/lib/Features/OrdersPage/Data/Models/order.g.dart) | Dart | 48 | 4 | 8 | 60 |
+| [lib/Features/OrdersPage/Data/Models/orderItem.dart](/lib/Features/OrdersPage/Data/Models/orderItem.dart) | Dart | 13 | 0 | 4 | 17 |
+| [lib/Features/OrdersPage/Data/Models/orderItem.g.dart](/lib/Features/OrdersPage/Data/Models/orderItem.g.dart) | Dart | 33 | 4 | 8 | 45 |
+| [lib/Features/OrdersPage/Data/Repo/order\_request\_repo.dart](/lib/Features/OrdersPage/Data/Repo/order_request_repo.dart) | Dart | 102 | 1 | 14 | 117 |
+| [lib/Features/OrdersPage/Presentation/Manager/order\_view\_cubit.dart](/lib/Features/OrdersPage/Presentation/Manager/order_view_cubit.dart) | Dart | 23 | 0 | 3 | 26 |
+| [lib/Features/OrdersPage/Presentation/Manager/order\_view\_state.dart](/lib/Features/OrdersPage/Presentation/Manager/order_view_state.dart) | Dart | 9 | 0 | 5 | 14 |
+| [lib/Features/OrdersPage/Presentation/Manager/orders\_page\_cubit.dart](/lib/Features/OrdersPage/Presentation/Manager/orders_page_cubit.dart) | Dart | 30 | 0 | 5 | 35 |
+| [lib/Features/OrdersPage/Presentation/Manager/orders\_page\_state.dart](/lib/Features/OrdersPage/Presentation/Manager/orders_page_state.dart) | Dart | 12 | 0 | 5 | 17 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/allTabs.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/allTabs.dart) | Dart | 57 | 0 | 6 | 63 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order\_status.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order_status.dart) | Dart | 94 | 0 | 6 | 100 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order\_tile.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/order_tile.dart) | Dart | 62 | 0 | 5 | 67 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/orders\_found\_view\_body.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/orders_found_view_body.dart) | Dart | 53 | 1 | 3 | 57 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/orders\_not\_found\_view\_body.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/Widgets/orders_not_found_view_body.dart) | Dart | 45 | 0 | 4 | 49 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/order\_view.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/order_view.dart) | Dart | 157 | 0 | 7 | 164 |
+| [lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/orders.dart](/lib/Features/OrdersPage/Presentation/Views/OrdersViewPage/orders.dart) | Dart | 9 | 3 | 4 | 16 |
+| [lib/Features/PaymentScreens/Widgets/payment\_fail\_view\_body.dart](/lib/Features/PaymentScreens/Widgets/payment_fail_view_body.dart) | Dart | 59 | 0 | 3 | 62 |
+| [lib/Features/PaymentScreens/Widgets/payment\_success\_view\_body.dart](/lib/Features/PaymentScreens/Widgets/payment_success_view_body.dart) | Dart | 53 | 0 | 3 | 56 |
+| [lib/Features/PaymentScreens/payment\_view.dart](/lib/Features/PaymentScreens/payment_view.dart) | Dart | 20 | 1 | 5 | 26 |
+| [lib/Features/PreferencesPage/AddPages/add\_address\_view.dart](/lib/Features/PreferencesPage/AddPages/add_address_view.dart) | Dart | 164 | 0 | 13 | 177 |
+| [lib/Features/PreferencesPage/AddPages/add\_card\_view.dart](/lib/Features/PreferencesPage/AddPages/add_card_view.dart) | Dart | 164 | 0 | 14 | 178 |
+| [lib/Features/PreferencesPage/address\_view.dart](/lib/Features/PreferencesPage/address_view.dart) | Dart | 90 | 0 | 3 | 93 |
+| [lib/Features/PreferencesPage/help\_view.dart](/lib/Features/PreferencesPage/help_view.dart) | Dart | 78 | 0 | 4 | 82 |
+| [lib/Features/PreferencesPage/payment\_view.dart](/lib/Features/PreferencesPage/payment_view.dart) | Dart | 128 | 0 | 7 | 135 |
+| [lib/Features/PreferencesPage/support\_view.dart](/lib/Features/PreferencesPage/support_view.dart) | Dart | 76 | 0 | 2 | 78 |
+| [lib/Features/PreferencesPage/wishlist\_view.dart](/lib/Features/PreferencesPage/wishlist_view.dart) | Dart | 51 | 0 | 2 | 53 |
+| [lib/Features/ProductsPage/Data/Models/color.dart](/lib/Features/ProductsPage/Data/Models/color.dart) | Dart | 24 | 0 | 9 | 33 |
+| [lib/Features/ProductsPage/Data/Models/color.g.dart](/lib/Features/ProductsPage/Data/Models/color.g.dart) | Dart | 36 | 4 | 8 | 48 |
+| [lib/Features/ProductsPage/Data/Models/item.dart](/lib/Features/ProductsPage/Data/Models/item.dart) | Dart | 36 | 0 | 12 | 48 |
+| [lib/Features/ProductsPage/Data/Models/item.g.dart](/lib/Features/ProductsPage/Data/Models/item.g.dart) | Dart | 54 | 4 | 8 | 66 |
+| [lib/Features/ProductsPage/Data/Models/size.dart](/lib/Features/ProductsPage/Data/Models/size.dart) | Dart | 10 | 0 | 5 | 15 |
+| [lib/Features/ProductsPage/Data/Models/size.g.dart](/lib/Features/ProductsPage/Data/Models/size.g.dart) | Dart | 33 | 4 | 8 | 45 |
+| [lib/Features/ProductsPage/Data/Repo/home\_repo.dart](/lib/Features/ProductsPage/Data/Repo/home_repo.dart) | Dart | 91 | 1 | 9 | 101 |
+| [lib/Features/ProductsPage/Presentation/Manager/main\_products\_cubit.dart](/lib/Features/ProductsPage/Presentation/Manager/main_products_cubit.dart) | Dart | 19 | 0 | 3 | 22 |
+| [lib/Features/ProductsPage/Presentation/Manager/main\_products\_state.dart](/lib/Features/ProductsPage/Presentation/Manager/main_products_state.dart) | Dart | 13 | 0 | 6 | 19 |
+| [lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/categories\_widget.dart](/lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/categories_widget.dart) | Dart | 41 | 0 | 4 | 45 |
+| [lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/custom\_main\_page\_app\_bar.dart](/lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/custom_main_page_app_bar.dart) | Dart | 75 | 12 | 3 | 90 |
+| [lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/new\_items\_widget.dart](/lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/new_items_widget.dart) | Dart | 47 | 0 | 3 | 50 |
+| [lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/top\_selling\_widget.dart](/lib/Features/ProductsPage/Presentation/Views/ProductsPageView/Widgets/top_selling_widget.dart) | Dart | 47 | 0 | 4 | 51 |
+| [lib/Features/ProductsPage/Presentation/Views/ProductsPageView/products.dart](/lib/Features/ProductsPage/Presentation/Views/ProductsPageView/products.dart) | Dart | 99 | 0 | 3 | 102 |
+| [lib/Features/ProfilePage/Presentation/Manager/profile\_page\_cubit\_cubit.dart](/lib/Features/ProfilePage/Presentation/Manager/profile_page_cubit_cubit.dart) | Dart | 20 | 0 | 3 | 23 |
+| [lib/Features/ProfilePage/Presentation/Manager/profile\_page\_cubit\_state.dart](/lib/Features/ProfilePage/Presentation/Manager/profile_page_cubit_state.dart) | Dart | 10 | 0 | 5 | 15 |
+| [lib/Features/ProfilePage/Presentation/Views/ProfilePageView/Widgets/profile\_details\_tile.dart](/lib/Features/ProfilePage/Presentation/Views/ProfilePageView/Widgets/profile_details_tile.dart) | Dart | 65 | 0 | 2 | 67 |
+| [lib/Features/ProfilePage/Presentation/Views/ProfilePageView/profilePage.dart](/lib/Features/ProfilePage/Presentation/Views/ProfilePageView/profilePage.dart) | Dart | 127 | 1 | 11 | 139 |
+| [lib/Features/SearchPage/Widgets/categories\_show.dart](/lib/Features/SearchPage/Widgets/categories_show.dart) | Dart | 49 | 0 | 2 | 51 |
+| [lib/Features/SearchPage/Widgets/custom\_search\_field.dart](/lib/Features/SearchPage/Widgets/custom_search_field.dart) | Dart | 45 | 0 | 4 | 49 |
+| [lib/Features/SearchPage/Widgets/search\_found\_results.dart](/lib/Features/SearchPage/Widgets/search_found_results.dart) | Dart | 55 | 0 | 2 | 57 |
+| [lib/Features/SearchPage/Widgets/search\_products\_grid.dart](/lib/Features/SearchPage/Widgets/search_products_grid.dart) | Dart | 104 | 0 | 4 | 108 |
+| [lib/Features/SearchPage/Widgets/shop\_by\_categories\_view.dart](/lib/Features/SearchPage/Widgets/shop_by_categories_view.dart) | Dart | 39 | 0 | 3 | 42 |
+| [lib/Features/SearchPage/search\_view.dart](/lib/Features/SearchPage/search_view.dart) | Dart | 2 | 2 | 2 | 6 |
+| [lib/constants/colors.dart](/lib/constants/colors.dart) | Dart | 9 | 0 | 2 | 11 |
+| [lib/constants/constant.dart](/lib/constants/constant.dart) | Dart | 11 | 9 | 4 | 24 |
+| [lib/constants/sizes.dart](/lib/constants/sizes.dart) | Dart | 10 | 0 | 2 | 12 |
+| [lib/firebase\_options.dart](/lib/firebase_options.dart) | Dart | 0 | 61 | 3 | 64 |
+| [lib/main.dart](/lib/main.dart) | Dart | 91 | 2 | 11 | 104 |
+| [lib/routers.dart](/lib/routers.dart) | Dart | 97 | 7 | 7 | 111 |
+| [lib/utils/api\_service.dart](/lib/utils/api_service.dart) | Dart | 66 | 0 | 9 | 75 |
+| [lib/utils/errors/failures.dart](/lib/utils/errors/failures.dart) | Dart | 0 | 0 | 1 | 1 |
+| [lib/utils/helpers/notification\_sender.dart](/lib/utils/helpers/notification_sender.dart) | Dart | 82 | 12 | 19 | 113 |
+| [lib/utils/helpers/token\_service.dart](/lib/utils/helpers/token_service.dart) | Dart | 68 | 1 | 17 | 86 |
+| [lib/utils/service\_locator.dart](/lib/utils/service_locator.dart) | Dart | 15 | 0 | 3 | 18 |
+| [lib/utils/shared\_func.dart](/lib/utils/shared_func.dart) | Dart | 7 | 0 | 2 | 9 |
+| [lib/utils/stripe\_service.dart](/lib/utils/stripe_service.dart) | Dart | 0 | 41 | 7 | 48 |
+| [lib/utils/theme\_data.dart](/lib/utils/theme_data.dart) | Dart | 36 | 0 | 3 | 39 |
+| [lib/utils/usefulFunctions.dart](/lib/utils/usefulFunctions.dart) | Dart | 12 | 0 | 3 | 15 |
+| [lib/utils/widgets/listtile.dart](/lib/utils/widgets/listtile.dart) | Dart | 25 | 1 | 2 | 28 |
+| [lib/utils/widgets/option\_list\_tile.dart](/lib/utils/widgets/option_list_tile.dart) | Dart | 39 | 0 | 3 | 42 |
+| [lib/utils/widgets/product\_card.dart](/lib/utils/widgets/product_card.dart) | Dart | 119 | 3 | 8 | 130 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

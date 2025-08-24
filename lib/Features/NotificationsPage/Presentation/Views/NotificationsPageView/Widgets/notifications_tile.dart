@@ -50,7 +50,7 @@ class NotificationsTile extends StatelessWidget {
           leading: const Icon(Icons.notification_add),
           title: notification.content,
           subtitle:
-              notification.deliveryDate.toIso8601String().split('T').first,
+              "${notification.deliveryDate.toIso8601String().split('T').first} ${notification.deliveryDate.toIso8601String().split('T').last.substring(0, 5)}",
         ),
       ),
     );

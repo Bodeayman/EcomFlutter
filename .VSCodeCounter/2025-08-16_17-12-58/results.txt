@@ -1,0 +1,235 @@
+Date : 2025-08-16 17:12:58
+Directory : c:\ifit\ecomflutter\lib
+Total : 121 files,  8768 codes, 331 comments, 871 blanks, all 9970 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |        120 |      8,693 |        331 |        849 |      9,873 |
+| Markdown |          1 |         75 |          0 |         22 |         97 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                     | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                        |        121 |      8,768 |        331 |        871 |      9,970 |
+| . (Files)                                                                                                                                |          3 |        188 |         70 |         21 |        279 |
+| Features                                                                                                                                 |        103 |      8,081 |        194 |        765 |      9,040 |
+| Features\CategoriesPage                                                                                                                  |          3 |        127 |          0 |          8 |        135 |
+| Features\CategoriesPage\Presentation                                                                                                     |          3 |        127 |          0 |          8 |        135 |
+| Features\CategoriesPage\Presentation\Views                                                                                               |          3 |        127 |          0 |          8 |        135 |
+| Features\CategoriesPage\Presentation\Views (Files)                                                                                       |          1 |         10 |          0 |          2 |         12 |
+| Features\CategoriesPage\Presentation\Views\Widgets                                                                                       |          2 |        117 |          0 |          6 |        123 |
+| Features\CheckoutPage                                                                                                                    |         11 |        921 |        111 |         85 |      1,117 |
+| Features\CheckoutPage\CheckoutPageView                                                                                                   |         10 |        855 |        111 |         80 |      1,046 |
+| Features\CheckoutPage\CheckoutPageView\Data                                                                                              |          1 |        116 |          0 |         11 |        127 |
+| Features\CheckoutPage\CheckoutPageView\Data\Repo                                                                                         |          1 |        116 |          0 |         11 |        127 |
+| Features\CheckoutPage\CheckoutPageView\Manager                                                                                           |          2 |         74 |          5 |         17 |         96 |
+| Features\CheckoutPage\CheckoutPageView\Views                                                                                             |          7 |        665 |        106 |         52 |        823 |
+| Features\CheckoutPage\CheckoutPageView\Views (Files)                                                                                     |          3 |        515 |         22 |         33 |        570 |
+| Features\CheckoutPage\CheckoutPageView\Views\Widgets                                                                                     |          4 |        150 |         84 |         19 |        253 |
+| Features\CheckoutPage\SuccessPageView                                                                                                    |          1 |         66 |          0 |          5 |         71 |
+| Features\DashboardPage                                                                                                                   |         15 |      2,440 |         34 |        247 |      2,721 |
+| Features\DashboardPage (Files)                                                                                                           |          1 |         75 |          0 |         22 |         97 |
+| Features\DashboardPage\Data                                                                                                              |          7 |        553 |         14 |         95 |        662 |
+| Features\DashboardPage\Data\Models                                                                                                       |          6 |        366 |         14 |         71 |        451 |
+| Features\DashboardPage\Data\Repo                                                                                                         |          1 |        187 |          0 |         24 |        211 |
+| Features\DashboardPage\Presentation                                                                                                      |          7 |      1,812 |         20 |        130 |      1,962 |
+| Features\DashboardPage\Presentation\Manager                                                                                              |          2 |        212 |         12 |         53 |        277 |
+| Features\DashboardPage\Presentation\Views                                                                                                |          5 |      1,600 |          8 |         77 |      1,685 |
+| Features\DashboardPage\Presentation\Views (Files)                                                                                        |          1 |        143 |          2 |          8 |        153 |
+| Features\DashboardPage\Presentation\Views\Widgets                                                                                        |          4 |      1,457 |          6 |         69 |      1,532 |
+| Features\DetailsPage                                                                                                                     |          4 |        461 |          1 |         28 |        490 |
+| Features\DetailsPage (Files)                                                                                                             |          1 |        243 |          0 |         17 |        260 |
+| Features\DetailsPage\Widgets                                                                                                             |          3 |        218 |          1 |         11 |        230 |
+| Features\HomePage                                                                                                                        |          2 |        162 |          0 |         13 |        175 |
+| Features\HomePage\Presentation                                                                                                           |          2 |        162 |          0 |         13 |        175 |
+| Features\HomePage\Presentation\View                                                                                                      |          2 |        162 |          0 |         13 |        175 |
+| Features\HomePage\Presentation\View (Files)                                                                                              |          1 |        154 |          0 |         10 |        164 |
+| Features\HomePage\Presentation\View\Widgets                                                                                              |          1 |          8 |          0 |          3 |         11 |
+| Features\NotificationsPage                                                                                                               |          9 |        353 |          5 |         50 |        408 |
+| Features\NotificationsPage\Data                                                                                                          |          3 |        145 |          4 |         27 |        176 |
+| Features\NotificationsPage\Data\Models                                                                                                   |          2 |         66 |          4 |         14 |         84 |
+| Features\NotificationsPage\Data\Repo                                                                                                     |          1 |         79 |          0 |         13 |         92 |
+| Features\NotificationsPage\Presentation                                                                                                  |          6 |        208 |          1 |         23 |        232 |
+| Features\NotificationsPage\Presentation\Manager                                                                                          |          2 |         47 |          0 |          9 |         56 |
+| Features\NotificationsPage\Presentation\Views                                                                                            |          4 |        161 |          1 |         14 |        176 |
+| Features\NotificationsPage\Presentation\Views\NotificationsPageView                                                                      |          4 |        161 |          1 |         14 |        176 |
+| Features\NotificationsPage\Presentation\Views\NotificationsPageView (Files)                                                              |          1 |          9 |          0 |          3 |         12 |
+| Features\NotificationsPage\Presentation\Views\NotificationsPageView\Widgets                                                              |          3 |        152 |          1 |         11 |        164 |
+| Features\OnBoardingPage                                                                                                                  |          9 |        803 |          0 |         64 |        867 |
+| Features\OnBoardingPage (Files)                                                                                                          |          5 |        620 |          0 |         47 |        667 |
+| Features\OnBoardingPage\Widgets                                                                                                          |          4 |        183 |          0 |         17 |        200 |
+| Features\OrdersPage                                                                                                                      |         16 |        790 |         14 |         91 |        895 |
+| Features\OrdersPage\Data                                                                                                                 |          5 |        239 |         10 |         38 |        287 |
+| Features\OrdersPage\Data\Models                                                                                                          |          4 |        137 |          9 |         24 |        170 |
+| Features\OrdersPage\Data\Repo                                                                                                            |          1 |        102 |          1 |         14 |        117 |
+| Features\OrdersPage\Presentation                                                                                                         |         11 |        551 |          4 |         53 |        608 |
+| Features\OrdersPage\Presentation\Manager                                                                                                 |          4 |         74 |          0 |         18 |         92 |
+| Features\OrdersPage\Presentation\Views                                                                                                   |          7 |        477 |          4 |         35 |        516 |
+| Features\OrdersPage\Presentation\Views\OrdersViewPage                                                                                    |          7 |        477 |          4 |         35 |        516 |
+| Features\OrdersPage\Presentation\Views\OrdersViewPage (Files)                                                                            |          2 |        166 |          3 |         11 |        180 |
+| Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets                                                                            |          5 |        311 |          1 |         24 |        336 |
+| Features\PaymentScreens                                                                                                                  |          3 |        132 |          1 |         11 |        144 |
+| Features\PaymentScreens (Files)                                                                                                          |          1 |         20 |          1 |          5 |         26 |
+| Features\PaymentScreens\Widgets                                                                                                          |          2 |        112 |          0 |          6 |        118 |
+| Features\PreferencesPage                                                                                                                 |          7 |        751 |          0 |         45 |        796 |
+| Features\PreferencesPage (Files)                                                                                                         |          5 |        423 |          0 |         18 |        441 |
+| Features\PreferencesPage\AddPages                                                                                                        |          2 |        328 |          0 |         27 |        355 |
+| Features\ProductsPage                                                                                                                    |         14 |        625 |         25 |         85 |        735 |
+| Features\ProductsPage\Data                                                                                                               |          7 |        284 |         13 |         59 |        356 |
+| Features\ProductsPage\Data\Models                                                                                                        |          6 |        193 |         12 |         50 |        255 |
+| Features\ProductsPage\Data\Repo                                                                                                          |          1 |         91 |          1 |          9 |        101 |
+| Features\ProductsPage\Presentation                                                                                                       |          7 |        341 |         12 |         26 |        379 |
+| Features\ProductsPage\Presentation\Manager                                                                                               |          2 |         32 |          0 |          9 |         41 |
+| Features\ProductsPage\Presentation\Views                                                                                                 |          5 |        309 |         12 |         17 |        338 |
+| Features\ProductsPage\Presentation\Views\ProductsPageView                                                                                |          5 |        309 |         12 |         17 |        338 |
+| Features\ProductsPage\Presentation\Views\ProductsPageView (Files)                                                                        |          1 |         99 |          0 |          3 |        102 |
+| Features\ProductsPage\Presentation\Views\ProductsPageView\Widgets                                                                        |          4 |        210 |         12 |         14 |        236 |
+| Features\ProfilePage                                                                                                                     |          4 |        222 |          1 |         21 |        244 |
+| Features\ProfilePage\Presentation                                                                                                        |          4 |        222 |          1 |         21 |        244 |
+| Features\ProfilePage\Presentation\Manager                                                                                                |          2 |         30 |          0 |          8 |         38 |
+| Features\ProfilePage\Presentation\Views                                                                                                  |          2 |        192 |          1 |         13 |        206 |
+| Features\ProfilePage\Presentation\Views\ProfilePageView                                                                                  |          2 |        192 |          1 |         13 |        206 |
+| Features\ProfilePage\Presentation\Views\ProfilePageView (Files)                                                                          |          1 |        127 |          1 |         11 |        139 |
+| Features\ProfilePage\Presentation\Views\ProfilePageView\Widgets                                                                          |          1 |         65 |          0 |          2 |         67 |
+| Features\SearchPage                                                                                                                      |          6 |        294 |          2 |         17 |        313 |
+| Features\SearchPage (Files)                                                                                                              |          1 |          2 |          2 |          2 |          6 |
+| Features\SearchPage\Widgets                                                                                                              |          5 |        292 |          0 |         15 |        307 |
+| constants                                                                                                                                |          3 |         30 |          9 |          8 |         47 |
+| utils                                                                                                                                    |         12 |        469 |         58 |         77 |        604 |
+| utils (Files)                                                                                                                            |          6 |        136 |         41 |         27 |        204 |
+| utils\errors                                                                                                                             |          1 |          0 |          0 |          1 |          1 |
+| utils\helpers                                                                                                                            |          2 |        150 |         13 |         36 |        199 |
+| utils\widgets                                                                                                                            |          3 |        183 |          4 |         13 |        200 |
++------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                                 | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\ifit\ecomflutter\lib\Features\CategoriesPage\Presentation\Views\Widgets\category_product_grid.dart                                    | Dart     |         74 |          0 |          4 |         78 |
+| c:\ifit\ecomflutter\lib\Features\CategoriesPage\Presentation\Views\Widgets\category_view_body.dart                                       | Dart     |         43 |          0 |          2 |         45 |
+| c:\ifit\ecomflutter\lib\Features\CategoriesPage\Presentation\Views\category_view.dart                                                    | Dart     |         10 |          0 |          2 |         12 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Data\Repo\payment_repo.dart                                               | Dart     |        116 |          0 |         11 |        127 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Manager\cart_cubit.dart                                                   | Dart     |         48 |          5 |         12 |         65 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Manager\cart_state.dart                                                   | Dart     |         26 |          0 |          5 |         31 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\Widgets\checkout_dialog.dart                                        | Dart     |          0 |         84 |          6 |         90 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\Widgets\checkout_list.dart                                          | Dart     |          8 |          0 |          3 |         11 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\Widgets\checkout_price.dart                                         | Dart     |         71 |          0 |          3 |         74 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\Widgets\enter_coupon_widget.dart                                    | Dart     |         71 |          0 |          7 |         78 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\cart.dart                                                           | Dart     |        259 |         12 |         11 |        282 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\checkout.dart                                                       | Dart     |        200 |         10 |          7 |        217 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\CheckoutPageView\Views\payment_web_view.dart                                               | Dart     |         56 |          0 |         15 |         71 |
+| c:\ifit\ecomflutter\lib\Features\CheckoutPage\SuccessPageView\success_view.dart                                                          | Dart     |         66 |          0 |          5 |         71 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_order.dart                                                          | Dart     |         92 |          2 |         19 |        113 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_order.g.dart                                                        | Dart     |         86 |          4 |         13 |        103 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_product.dart                                                        | Dart     |         55 |          0 |         13 |         68 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_product.g.dart                                                      | Dart     |         51 |          4 |          8 |         63 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_user.dart                                                           | Dart     |         40 |          0 |         10 |         50 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Models\dashboard_user.g.dart                                                         | Dart     |         42 |          4 |          8 |         54 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Data\Repo\dashboard_repo.dart                                                             | Dart     |        187 |          0 |         24 |        211 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Manager\dashboard_cubit.dart                                                 | Dart     |        137 |          7 |         16 |        160 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Manager\dashboard_state.dart                                                 | Dart     |         75 |          5 |         37 |        117 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Views\Widgets\dashboard_overview.dart                                        | Dart     |        244 |          3 |         12 |        259 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Views\Widgets\orders_section.dart                                            | Dart     |        396 |          1 |         22 |        419 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Views\Widgets\products_section.dart                                          | Dart     |        507 |          1 |         18 |        526 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Views\Widgets\users_section.dart                                             | Dart     |        310 |          1 |         17 |        328 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\Presentation\Views\dashboard_view.dart                                                    | Dart     |        143 |          2 |          8 |        153 |
+| c:\ifit\ecomflutter\lib\Features\DashboardPage\README.md                                                                                 | Markdown |         75 |          0 |         22 |         97 |
+| c:\ifit\ecomflutter\lib\Features\DetailsPage\Widgets\color_list_tile.dart                                                                | Dart     |         56 |          0 |          4 |         60 |
+| c:\ifit\ecomflutter\lib\Features\DetailsPage\Widgets\details_view_functions.dart                                                         | Dart     |        113 |          0 |          4 |        117 |
+| c:\ifit\ecomflutter\lib\Features\DetailsPage\Widgets\size_list_tile.dart                                                                 | Dart     |         49 |          1 |          3 |         53 |
+| c:\ifit\ecomflutter\lib\Features\DetailsPage\details.dart                                                                                | Dart     |        243 |          0 |         17 |        260 |
+| c:\ifit\ecomflutter\lib\Features\HomePage\Presentation\View\Widgets\home_view_body.dart                                                  | Dart     |          8 |          0 |          3 |         11 |
+| c:\ifit\ecomflutter\lib\Features\HomePage\Presentation\View\home_view.dart                                                               | Dart     |        154 |          0 |         10 |        164 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Data\Models\notificationModel.dart                                                    | Dart     |         30 |          0 |          6 |         36 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Data\Models\notificationModel.g.dart                                                  | Dart     |         36 |          4 |          8 |         48 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Data\Repo\notifications_repo.dart                                                     | Dart     |         79 |          0 |         13 |         92 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Manager\notifications_page_cubit.dart                                    | Dart     |         35 |          0 |          4 |         39 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Manager\notifications_page_state.dart                                    | Dart     |         12 |          0 |          5 |         17 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Views\NotificationsPageView\Widgets\notification_found_body_view.dart    | Dart     |         52 |          1 |          3 |         56 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Views\NotificationsPageView\Widgets\notification_notFound_body_view.dart | Dart     |         45 |          0 |          4 |         49 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Views\NotificationsPageView\Widgets\notifications_tile.dart              | Dart     |         55 |          0 |          4 |         59 |
+| c:\ifit\ecomflutter\lib\Features\NotificationsPage\Presentation\Views\NotificationsPageView\notifications.dart                           | Dart     |          9 |          0 |          3 |         12 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\Widgets\login_material_button.dart                                                       | Dart     |         73 |          0 |          6 |         79 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\Widgets\login_text_field.dart                                                            | Dart     |         45 |          0 |          2 |         47 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\Widgets\sign_in_group_buttons.dart                                                       | Dart     |         50 |          0 |          6 |         56 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\Widgets\sign_in_text.dart                                                                | Dart     |         15 |          0 |          3 |         18 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\create_new_account_view.dart                                                             | Dart     |        160 |          0 |         11 |        171 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\initial_sign_view.dart                                                                   | Dart     |        170 |          0 |         10 |        180 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\logo_view.dart                                                                           | Dart     |         36 |          0 |          5 |         41 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\password_check_view.dart                                                                 | Dart     |        156 |          0 |          9 |        165 |
+| c:\ifit\ecomflutter\lib\Features\OnBoardingPage\splash_view.dart                                                                         | Dart     |         98 |          0 |         12 |        110 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Data\Models\order.dart                                                                       | Dart     |         43 |          1 |          4 |         48 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Data\Models\order.g.dart                                                                     | Dart     |         48 |          4 |          8 |         60 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Data\Models\orderItem.dart                                                                   | Dart     |         13 |          0 |          4 |         17 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Data\Models\orderItem.g.dart                                                                 | Dart     |         33 |          4 |          8 |         45 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Data\Repo\order_request_repo.dart                                                            | Dart     |        102 |          1 |         14 |        117 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Manager\order_view_cubit.dart                                                   | Dart     |         23 |          0 |          3 |         26 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Manager\order_view_state.dart                                                   | Dart     |          9 |          0 |          5 |         14 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Manager\orders_page_cubit.dart                                                  | Dart     |         30 |          0 |          5 |         35 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Manager\orders_page_state.dart                                                  | Dart     |         12 |          0 |          5 |         17 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets\allTabs.dart                                       | Dart     |         57 |          0 |          6 |         63 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets\order_status.dart                                  | Dart     |         94 |          0 |          6 |        100 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets\order_tile.dart                                    | Dart     |         62 |          0 |          5 |         67 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets\orders_found_view_body.dart                        | Dart     |         53 |          1 |          3 |         57 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\Widgets\orders_not_found_view_body.dart                    | Dart     |         45 |          0 |          4 |         49 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\order_view.dart                                            | Dart     |        157 |          0 |          7 |        164 |
+| c:\ifit\ecomflutter\lib\Features\OrdersPage\Presentation\Views\OrdersViewPage\orders.dart                                                | Dart     |          9 |          3 |          4 |         16 |
+| c:\ifit\ecomflutter\lib\Features\PaymentScreens\Widgets\payment_fail_view_body.dart                                                      | Dart     |         59 |          0 |          3 |         62 |
+| c:\ifit\ecomflutter\lib\Features\PaymentScreens\Widgets\payment_success_view_body.dart                                                   | Dart     |         53 |          0 |          3 |         56 |
+| c:\ifit\ecomflutter\lib\Features\PaymentScreens\payment_view.dart                                                                        | Dart     |         20 |          1 |          5 |         26 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\AddPages\add_address_view.dart                                                          | Dart     |        164 |          0 |         13 |        177 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\AddPages\add_card_view.dart                                                             | Dart     |        164 |          0 |         14 |        178 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\address_view.dart                                                                       | Dart     |         90 |          0 |          3 |         93 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\help_view.dart                                                                          | Dart     |         78 |          0 |          4 |         82 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\payment_view.dart                                                                       | Dart     |        128 |          0 |          7 |        135 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\support_view.dart                                                                       | Dart     |         76 |          0 |          2 |         78 |
+| c:\ifit\ecomflutter\lib\Features\PreferencesPage\wishlist_view.dart                                                                      | Dart     |         51 |          0 |          2 |         53 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\color.dart                                                                     | Dart     |         24 |          0 |          9 |         33 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\color.g.dart                                                                   | Dart     |         36 |          4 |          8 |         48 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\item.dart                                                                      | Dart     |         36 |          0 |         12 |         48 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\item.g.dart                                                                    | Dart     |         54 |          4 |          8 |         66 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\size.dart                                                                      | Dart     |         10 |          0 |          5 |         15 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Models\size.g.dart                                                                    | Dart     |         33 |          4 |          8 |         45 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Data\Repo\home_repo.dart                                                                   | Dart     |         91 |          1 |          9 |        101 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Manager\main_products_cubit.dart                                              | Dart     |         19 |          0 |          3 |         22 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Manager\main_products_state.dart                                              | Dart     |         13 |          0 |          6 |         19 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Views\ProductsPageView\Widgets\categories_widget.dart                         | Dart     |         41 |          0 |          4 |         45 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Views\ProductsPageView\Widgets\custom_main_page_app_bar.dart                  | Dart     |         75 |         12 |          3 |         90 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Views\ProductsPageView\Widgets\new_items_widget.dart                          | Dart     |         47 |          0 |          3 |         50 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Views\ProductsPageView\Widgets\top_selling_widget.dart                        | Dart     |         47 |          0 |          4 |         51 |
+| c:\ifit\ecomflutter\lib\Features\ProductsPage\Presentation\Views\ProductsPageView\products.dart                                          | Dart     |         99 |          0 |          3 |        102 |
+| c:\ifit\ecomflutter\lib\Features\ProfilePage\Presentation\Manager\profile_page_cubit_cubit.dart                                          | Dart     |         20 |          0 |          3 |         23 |
+| c:\ifit\ecomflutter\lib\Features\ProfilePage\Presentation\Manager\profile_page_cubit_state.dart                                          | Dart     |         10 |          0 |          5 |         15 |
+| c:\ifit\ecomflutter\lib\Features\ProfilePage\Presentation\Views\ProfilePageView\Widgets\profile_details_tile.dart                        | Dart     |         65 |          0 |          2 |         67 |
+| c:\ifit\ecomflutter\lib\Features\ProfilePage\Presentation\Views\ProfilePageView\profilePage.dart                                         | Dart     |        127 |          1 |         11 |        139 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\Widgets\categories_show.dart                                                                 | Dart     |         49 |          0 |          2 |         51 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\Widgets\custom_search_field.dart                                                             | Dart     |         45 |          0 |          4 |         49 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\Widgets\search_found_results.dart                                                            | Dart     |         55 |          0 |          2 |         57 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\Widgets\search_products_grid.dart                                                            | Dart     |        104 |          0 |          4 |        108 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\Widgets\shop_by_categories_view.dart                                                         | Dart     |         39 |          0 |          3 |         42 |
+| c:\ifit\ecomflutter\lib\Features\SearchPage\search_view.dart                                                                             | Dart     |          2 |          2 |          2 |          6 |
+| c:\ifit\ecomflutter\lib\constants\colors.dart                                                                                            | Dart     |          9 |          0 |          2 |         11 |
+| c:\ifit\ecomflutter\lib\constants\constant.dart                                                                                          | Dart     |         11 |          9 |          4 |         24 |
+| c:\ifit\ecomflutter\lib\constants\sizes.dart                                                                                             | Dart     |         10 |          0 |          2 |         12 |
+| c:\ifit\ecomflutter\lib\firebase_options.dart                                                                                            | Dart     |          0 |         61 |          3 |         64 |
+| c:\ifit\ecomflutter\lib\main.dart                                                                                                        | Dart     |         91 |          2 |         11 |        104 |
+| c:\ifit\ecomflutter\lib\routers.dart                                                                                                     | Dart     |         97 |          7 |          7 |        111 |
+| c:\ifit\ecomflutter\lib\utils\api_service.dart                                                                                           | Dart     |         66 |          0 |          9 |         75 |
+| c:\ifit\ecomflutter\lib\utils\errors\failures.dart                                                                                       | Dart     |          0 |          0 |          1 |          1 |
+| c:\ifit\ecomflutter\lib\utils\helpers\notification_sender.dart                                                                           | Dart     |         82 |         12 |         19 |        113 |
+| c:\ifit\ecomflutter\lib\utils\helpers\token_service.dart                                                                                 | Dart     |         68 |          1 |         17 |         86 |
+| c:\ifit\ecomflutter\lib\utils\service_locator.dart                                                                                       | Dart     |         15 |          0 |          3 |         18 |
+| c:\ifit\ecomflutter\lib\utils\shared_func.dart                                                                                           | Dart     |          7 |          0 |          2 |          9 |
+| c:\ifit\ecomflutter\lib\utils\stripe_service.dart                                                                                        | Dart     |          0 |         41 |          7 |         48 |
+| c:\ifit\ecomflutter\lib\utils\theme_data.dart                                                                                            | Dart     |         36 |          0 |          3 |         39 |
+| c:\ifit\ecomflutter\lib\utils\usefulFunctions.dart                                                                                       | Dart     |         12 |          0 |          3 |         15 |
+| c:\ifit\ecomflutter\lib\utils\widgets\listtile.dart                                                                                      | Dart     |         25 |          1 |          2 |         28 |
+| c:\ifit\ecomflutter\lib\utils\widgets\option_list_tile.dart                                                                              | Dart     |         39 |          0 |          3 |         42 |
+| c:\ifit\ecomflutter\lib\utils\widgets\product_card.dart                                                                                  | Dart     |        119 |          3 |          8 |        130 |
+| Total                                                                                                                                    |          |      8,768 |        331 |        871 |      9,970 |
++------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

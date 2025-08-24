@@ -45,7 +45,7 @@ class DashboardProduct extends HiveObject {
       url: map['url'] ?? '',
       description: map['description'] ?? '',
       price: (map['price'] ?? 0).toDouble(),
-      location: map['location'] ?? '',
+      location: map['location'] ?? 'Cairo',
       name: map['name'] ?? '',
       cat: map['cat'] ?? '',
       quantity: map['quantity'] ?? 0,
@@ -54,7 +54,6 @@ class DashboardProduct extends HiveObject {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'url': url,
       'description': description,
       'price': price,

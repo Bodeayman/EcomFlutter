@@ -80,13 +80,16 @@ class _ProductsSectionState extends State<ProductsSection> {
               color: appbarSec,
             ),
           ),
-          ElevatedButton.icon(
-            onPressed: () => _showAddProductDialog(context),
-            icon: const Icon(Icons.add),
-            label: const Text('Add Product'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: appbarSec,
-              foregroundColor: Colors.white,
+          SizedBox(
+            width: 125,
+            child: ElevatedButton.icon(
+              onPressed: () => _showAddProductDialog(context),
+              icon: const Icon(Icons.add),
+              label: const Text('Add Product'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: appbarSec,
+                foregroundColor: Colors.white,
+              ),
             ),
           ),
         ],
@@ -254,7 +257,8 @@ class _ProductsSectionState extends State<ProductsSection> {
     final priceController = TextEditingController();
     final quantityController = TextEditingController();
     final categoryController = TextEditingController();
-
+    final locationController = TextEditingController();
+    String? selectedCategory;
     showDialog(
       context: context,
       builder:
@@ -299,10 +303,34 @@ class _ProductsSectionState extends State<ProductsSection> {
                     keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 16),
-                  TextField(
-                    controller: categoryController,
+                  DropdownButtonFormField<String>(
+                    value: selectedCategory,
                     decoration: const InputDecoration(
                       labelText: 'Category',
+                      border: OutlineInputBorder(),
+                    ),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 'Hoodies',
+                        child: Text('Hoodies'),
+                      ),
+                      DropdownMenuItem(value: 'Shoes', child: Text('Shoes')),
+                      DropdownMenuItem(
+                        value: 'Accessories',
+                        child: Text('Accessories'),
+                      ),
+                      DropdownMenuItem(value: 'Bags', child: Text('Bags')),
+                      DropdownMenuItem(value: 'Shorts', child: Text('Shorts')),
+                    ],
+                    onChanged: (value) {
+                      selectedCategory = value;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: locationController,
+                    decoration: const InputDecoration(
+                      labelText: 'Location',
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -320,13 +348,15 @@ class _ProductsSectionState extends State<ProductsSection> {
                       priceController.text.isNotEmpty &&
                       quantityController.text.isNotEmpty) {
                     final product = DashboardProduct(
-                      id: 0, // Will be set by the database
+                      // Will be set by the database
+                      id: 0,
                       name: nameController.text,
                       description: descriptionController.text,
                       price: double.tryParse(priceController.text) ?? 0.0,
                       quantity: int.tryParse(quantityController.text) ?? 0,
-                      cat: categoryController.text,
-                      location: 'Default Location', // Set a default location
+                      cat: selectedCategory ?? '',
+                      location:
+                          locationController.text, // Set a default location
                       url: "",
                     );
                     context.read<DashboardCubit>().createProduct(product);

@@ -78,7 +78,6 @@ class HomeRepo {
                 colors: List.from(itemColors),
                 sizes: List.from(itemSizes),
               );
-
               itemList.add(newItem);
             }
             debugPrint("The data is fetched successfully");

@@ -43,25 +43,25 @@ class OrderRequestRepo {
 
   Future<void> addNewOrder(Map<Item, int> productsInCart) async {
     final user = _client.auth.currentUser;
-
+    debugPrint(productsInCart.keys.first.id.toString());
     if (user == null) {
       throw Exception("User not logged in");
     }
 
     final now = DateTime.now();
     // it should be admin request
-    final orderConfirmed = now.toIso8601String();
-    final orderShipped = now.add(Duration(hours: 2)).toIso8601String();
-    final shippedDate = now.add(Duration(hours: 4)).toIso8601String();
-    final deliveryDate = now.add(Duration(hours: 6)).toIso8601String();
+    // final orderConfirmed = now.toIso8601String();
+    // final orderShipped = now.add(Duration(hours: 2)).toIso8601String();
+    // final shippedDate = now.add(Duration(hours: 4)).toIso8601String();
+    // final deliveryDate = now.add(Duration(hours: 6)).toIso8601String();
     try {
       final newOrder =
           await _client.from('Orders').insert({
             'user_id': user.id,
-            'order_confirmed': orderConfirmed,
-            'order_shipped': orderShipped,
-            'shipped_date': shippedDate,
-            'delivery_date': deliveryDate,
+            'order_confirmed': null,
+            'order_shipped': now.toIso8601String(),
+            'shipped_date': null,
+            'delivery_date': null,
             'address': 'Cairo',
           }).select();
 

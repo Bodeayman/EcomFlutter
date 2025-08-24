@@ -31,7 +31,6 @@ class NewItemsWidget extends StatelessWidget {
 
                 itemBuilder: (BuildContext context, int index) {
                   final item = state.data[index];
-                  item.id += 999;
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(4, 4, 12, 4),
                     child: ProductCard(item: item),

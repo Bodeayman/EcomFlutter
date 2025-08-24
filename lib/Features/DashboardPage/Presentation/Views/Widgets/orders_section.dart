@@ -181,18 +181,21 @@ Widget _buildOrderCard(BuildContext context, DashboardOrder order) {
                 order.status.toUpperCase(),
                 _getStatusColor(order.status),
               ),
-              if (order.shippedDate != null)
-                _buildInfoChip(
-                  'Shipped',
-                  _formatDate(order.shippedDate!),
-                  Colors.purple,
-                ),
-              if (order.deliveryDate != null)
-                _buildInfoChip(
-                  'Delivered',
-                  _formatDate(order.deliveryDate!),
-                  Colors.green,
-                ),
+              _buildInfoChip(
+                'Shipped',
+                (order.shippedDate != null)
+                    ? _formatDate(order.shippedDate!)
+                    : "Not yet",
+                Colors.purple,
+              ),
+
+              _buildInfoChip(
+                'Delivered',
+                (order.deliveryDate != null)
+                    ? _formatDate(order.deliveryDate!)
+                    : "Not yet",
+                Colors.green,
+              ),
             ],
           ),
           if (order.orderConfirmed != null) ...[
@@ -280,7 +283,7 @@ Widget _buildInfoChip(String label, String value, Color color) {
         Text(
           value,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 12,
             color: color,
             fontWeight: FontWeight.bold,
           ),
@@ -414,5 +417,5 @@ void _updateOrderStatus(BuildContext context, int orderId, String status) {
 }
 
 String _formatDate(DateTime date) {
-  return '${date.day}/${date.month}/${date.year}';
+  return '${date.day}/${date.month}/${date.year} ${date.hour}:${date.minute}';
 }
